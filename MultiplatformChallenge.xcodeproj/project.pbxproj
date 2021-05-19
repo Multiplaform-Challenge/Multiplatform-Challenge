@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		390FE40526547CB30065F26C /* BackgroundModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390FE40426547CB30065F26C /* BackgroundModelView.swift */; };
 		390FE40F26547D170065F26C /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390FE40E26547D170065F26C /* ModalView.swift */; };
+		39D3F83E265555A5001DF144 /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D3F83D265555A5001DF144 /* KeyboardResponder.swift */; };
+		39D3F84E26555752001DF144 /* TextFieldModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D3F84D26555752001DF144 /* TextFieldModalView.swift */; };
 		57F24AC42653FB9C001E4B05 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F24AC32653FB9C001E4B05 /* Tests_iOS.swift */; };
 		57F24ACF2653FB9C001E4B05 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F24ACE2653FB9C001E4B05 /* Tests_macOS.swift */; };
 		57F24AD12653FB9C001E4B05 /* MultiplatformChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 57F24AA52653FB9B001E4B05 /* MultiplatformChallenge.xcdatamodeld */; };
@@ -43,6 +45,8 @@
 /* Begin PBXFileReference section */
 		390FE40426547CB30065F26C /* BackgroundModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundModelView.swift; sourceTree = "<group>"; };
 		390FE40E26547D170065F26C /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
+		39D3F83D265555A5001DF144 /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
+		39D3F84D26555752001DF144 /* TextFieldModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldModalView.swift; sourceTree = "<group>"; };
 		57F24AA62653FB9B001E4B05 /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		57F24AA72653FB9B001E4B05 /* MultiplatformChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplatformChallengeApp.swift; sourceTree = "<group>"; };
 		57F24AA82653FB9B001E4B05 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -93,11 +97,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		57F03CA52653FC15006613AE /* View */ = {
+		39D3F83C26555542001DF144 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				39D3F83D265555A5001DF144 /* KeyboardResponder.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		39D3F84826555702001DF144 /* Modal */ = {
 			isa = PBXGroup;
 			children = (
 				390FE40426547CB30065F26C /* BackgroundModelView.swift */,
 				390FE40E26547D170065F26C /* ModalView.swift */,
+				39D3F84D26555752001DF144 /* TextFieldModalView.swift */,
+			);
+			path = Modal;
+			sourceTree = "<group>";
+		};
+		57F03CA52653FC15006613AE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				39D3F84826555702001DF144 /* Modal */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -131,6 +152,7 @@
 		57F24AA42653FB9B001E4B05 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				39D3F83C26555542001DF144 /* Utilities */,
 				57F03CA72653FC21006613AE /* Model */,
 				57F03CA62653FC1A006613AE /* ViewModel */,
 				57F03CA52653FC15006613AE /* View */,
@@ -387,7 +409,9 @@
 			files = (
 				390FE40F26547D170065F26C /* ModalView.swift in Sources */,
 				57F24AD32653FB9C001E4B05 /* MultiplatformChallengeApp.swift in Sources */,
+				39D3F83E265555A5001DF144 /* KeyboardResponder.swift in Sources */,
 				57F24AD72653FB9C001E4B05 /* Persistence.swift in Sources */,
+				39D3F84E26555752001DF144 /* TextFieldModalView.swift in Sources */,
 				57F24AD12653FB9C001E4B05 /* MultiplatformChallenge.xcdatamodeld in Sources */,
 				390FE40526547CB30065F26C /* BackgroundModelView.swift in Sources */,
 				57F24AD52653FB9C001E4B05 /* ContentView.swift in Sources */,
