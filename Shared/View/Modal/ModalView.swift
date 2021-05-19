@@ -2,8 +2,9 @@ import SwiftUI
 import Combine
 import UIKit
 
-public struct ModalSheetMain: View {
+public struct ModalView: View {
     
+    @ObservedObject var keyboardRef: KeyboardResponder
     @State var offset = UIScreen.main.bounds.height
     @Binding var isShowing: Bool
     
@@ -17,18 +18,24 @@ public struct ModalSheetMain: View {
     
     var buttonsBar: Bool
     
+    var textFieldModalView: TextFieldModalView
+    
     public init(isShowing: Binding<Bool>,
                 backgroundColor: Color = Color.white,
                 titleModal: String,
                 buttonsBar: Bool,
                 titleButtonRight: String = "Adicionar",
-                titleButtonLeft: String = "Cancelar") {
+                titleButtonLeft: String = "Cancelar",
+                textFieldModalView: TextFieldModalView,
+                keyboardRef: KeyboardResponder) {
         _isShowing = isShowing
         self.backgroundColor = backgroundColor
         self.titleModal = titleModal
         self.buttonsBar = buttonsBar
         self.titleButtonRight = titleButtonRight
         self.titleButtonLeft = titleButtonLeft
+        self.textFieldModalView = textFieldModalView
+        self.keyboardRef = keyboardRef
     }
     
     func hide() {
@@ -36,8 +43,9 @@ public struct ModalSheetMain: View {
         isShowing = false
     }
         
-    var headerModalViewCustom: some View {
+    var headerModalSheetCustom: some View {
         VStack() {
+            
             Capsule()
                 .frame(width: 50, height: 5)
                 .foregroundColor(Color.gray)
@@ -76,15 +84,17 @@ public struct ModalSheetMain: View {
                 .padding(.horizontal)
                 
             }
+            
         }
-        
     }
     
     var itemsView: some View {
         VStack {
+            textFieldModalView
+                .frame(height: cellHeight)
             
         }
-        .padding()
+        .padding(.top, 20)
     }
     
     var dragGestureDismissModal: some Gesture {
@@ -121,14 +131,15 @@ public struct ModalSheetMain: View {
             Spacer()
             
             VStack {
-                headerModalViewCustom
+                headerModalSheetCustom
                 itemsView
-                Text("").frame(height: 50)
+                Text("").frame(height:  keyboardRef.isActive ? keyboardRef.currentHeight : 50)
             }
             .background(backgroundColor)
             .cornerRadius(15)
             .offset(y: offset)
             .gesture(dragGestureDismissModal)
+            
         }
     }
     
@@ -152,13 +163,15 @@ public struct ModalSheetMain: View {
     }
 }
 
-struct ModalSheetMain_Previews: PreviewProvider {
+struct ModalView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             Spacer()
-            ModalSheetMain(isShowing: .constant(true),
+            ModalView(isShowing: .constant(true),
                             titleModal: "Adicionar Produto",
-                            buttonsBar: true)
+                            buttonsBar: true,
+                            textFieldModalView: TextFieldModalView(title: "Nome", placeholder: "EX.: Arroz branco"),
+                            keyboardRef: KeyboardResponder())
         }
     }
 }
