@@ -13,12 +13,14 @@
 		57F24AD22653FB9C001E4B05 /* MultiplatformChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 57F24AA52653FB9B001E4B05 /* MultiplatformChallenge.xcdatamodeld */; };
 		57F24AD32653FB9C001E4B05 /* MultiplatformChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F24AA72653FB9B001E4B05 /* MultiplatformChallengeApp.swift */; };
 		57F24AD42653FB9C001E4B05 /* MultiplatformChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F24AA72653FB9B001E4B05 /* MultiplatformChallengeApp.swift */; };
-		57F24AD52653FB9C001E4B05 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F24AA82653FB9B001E4B05 /* ContentView.swift */; };
-		57F24AD62653FB9C001E4B05 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F24AA82653FB9B001E4B05 /* ContentView.swift */; };
 		57F24AD72653FB9C001E4B05 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F24AA92653FB9B001E4B05 /* Persistence.swift */; };
 		57F24AD82653FB9C001E4B05 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F24AA92653FB9B001E4B05 /* Persistence.swift */; };
 		57F24AD92653FB9C001E4B05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57F24AAA2653FB9C001E4B05 /* Assets.xcassets */; };
 		57F24ADA2653FB9C001E4B05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57F24AAA2653FB9C001E4B05 /* Assets.xcassets */; };
+		7C7C9BBE265539CD002E2F78 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7C9BBA265539CD002E2F78 /* ContentView.swift */; };
+		7C7C9BBF265539CD002E2F78 /* ListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7C9BBB265539CD002E2F78 /* ListRow.swift */; };
+		7C7C9BC0265539CD002E2F78 /* MoneyDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7C9BBC265539CD002E2F78 /* MoneyDetails.swift */; };
+		7C7C9BC7265539DF002E2F78 /* ProductItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7C9BC6265539DF002E2F78 /* ProductItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +43,6 @@
 /* Begin PBXFileReference section */
 		57F24AA62653FB9B001E4B05 /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		57F24AA72653FB9B001E4B05 /* MultiplatformChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplatformChallengeApp.swift; sourceTree = "<group>"; };
-		57F24AA82653FB9B001E4B05 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		57F24AA92653FB9B001E4B05 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		57F24AAA2653FB9C001E4B05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		57F24AAF2653FB9C001E4B05 /* MultiplatformChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MultiplatformChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,6 +56,10 @@
 		57F24ACA2653FB9C001E4B05 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57F24ACE2653FB9C001E4B05 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		57F24AD02653FB9C001E4B05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C7C9BBA265539CD002E2F78 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		7C7C9BBB265539CD002E2F78 /* ListRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListRow.swift; sourceTree = "<group>"; };
+		7C7C9BBC265539CD002E2F78 /* MoneyDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoneyDetails.swift; sourceTree = "<group>"; };
+		7C7C9BC6265539DF002E2F78 /* ProductItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +97,9 @@
 		57F03CA52653FC15006613AE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7C7C9BBA265539CD002E2F78 /* ContentView.swift */,
+				7C7C9BBB265539CD002E2F78 /* ListRow.swift */,
+				7C7C9BBC265539CD002E2F78 /* MoneyDetails.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -106,6 +114,7 @@
 		57F03CA72653FC21006613AE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7C7C9BC6265539DF002E2F78 /* ProductItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -129,7 +138,6 @@
 				57F03CA62653FC1A006613AE /* ViewModel */,
 				57F03CA52653FC15006613AE /* View */,
 				57F24AA72653FB9B001E4B05 /* MultiplatformChallengeApp.swift */,
-				57F24AA82653FB9B001E4B05 /* ContentView.swift */,
 				57F24AA92653FB9B001E4B05 /* Persistence.swift */,
 				57F24AAA2653FB9C001E4B05 /* Assets.xcassets */,
 				57F24AA52653FB9B001E4B05 /* MultiplatformChallenge.xcdatamodeld */,
@@ -380,9 +388,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				57F24AD32653FB9C001E4B05 /* MultiplatformChallengeApp.swift in Sources */,
+				7C7C9BBE265539CD002E2F78 /* ContentView.swift in Sources */,
+				7C7C9BC0265539CD002E2F78 /* MoneyDetails.swift in Sources */,
+				7C7C9BC7265539DF002E2F78 /* ProductItem.swift in Sources */,
+				7C7C9BBF265539CD002E2F78 /* ListRow.swift in Sources */,
 				57F24AD72653FB9C001E4B05 /* Persistence.swift in Sources */,
 				57F24AD12653FB9C001E4B05 /* MultiplatformChallenge.xcdatamodeld in Sources */,
-				57F24AD52653FB9C001E4B05 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,7 +404,6 @@
 				57F24AD42653FB9C001E4B05 /* MultiplatformChallengeApp.swift in Sources */,
 				57F24AD82653FB9C001E4B05 /* Persistence.swift in Sources */,
 				57F24AD22653FB9C001E4B05 /* MultiplatformChallenge.xcdatamodeld in Sources */,
-				57F24AD62653FB9C001E4B05 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -640,7 +650,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 828XYUZTZQ;
 				INFOPLIST_FILE = "Tests iOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -662,7 +672,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 828XYUZTZQ;
 				INFOPLIST_FILE = "Tests iOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -3,7 +3,7 @@
 //  Shared
 //
 //  Created by José Mateus Azevedo on 11/05/21.
-//
+// swiftlint:disable identifier_name
 
 import SwiftUI
 
