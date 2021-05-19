@@ -17,22 +17,18 @@ public struct ModalSheetMain: View {
     
     var buttonsBar: Bool
     
-    var textFieldModalView: TextFieldModalView
-    
     public init(isShowing: Binding<Bool>,
                 backgroundColor: Color = Color.white,
                 titleModal: String,
                 buttonsBar: Bool,
                 titleButtonRight: String = "Adicionar",
-                titleButtonLeft: String = "Cancelar",
-                textFieldModalView: TextFieldModalView) {
+                titleButtonLeft: String = "Cancelar") {
         _isShowing = isShowing
         self.backgroundColor = backgroundColor
         self.titleModal = titleModal
         self.buttonsBar = buttonsBar
         self.titleButtonRight = titleButtonRight
         self.titleButtonLeft = titleButtonLeft
-        self.textFieldModalView = textFieldModalView
     }
     
     func hide() {
@@ -40,7 +36,7 @@ public struct ModalSheetMain: View {
         isShowing = false
     }
         
-    var headerModalSheetCustom: some View {
+    var headerModalViewCustom: some View {
         VStack() {
             Capsule()
                 .frame(width: 50, height: 5)
@@ -80,20 +76,18 @@ public struct ModalSheetMain: View {
                 .padding(.horizontal)
                 
             }
-            
-            
         }
         
     }
     
     var itemsView: some View {
         VStack {
-            textFieldModalView
-                .frame(height: cellHeight)
+            
         }
+        .padding()
     }
     
-    var interactiveGesture: some Gesture {
+    var dragGestureDismissModal: some Gesture {
         DragGesture()
             .onChanged({ (value) in
                 if value.translation.height > 0 {
@@ -102,7 +96,7 @@ public struct ModalSheetMain: View {
             })
             .onEnded({ (value) in
                 let diff = abs(offset-value.location.y)
-                if diff > 200 {
+                if diff > 100 {
                     hide()
                 }
                 else {
@@ -127,15 +121,14 @@ public struct ModalSheetMain: View {
             Spacer()
             
             VStack {
-                headerModalSheetCustom
+                headerModalViewCustom
                 itemsView
+                Text("").frame(height: 50)
             }
-            .padding(.top, -UIScreen.main.bounds.height/4)
-            .frame(height: UIScreen.main.bounds.height/2)
             .background(backgroundColor)
             .cornerRadius(15)
             .offset(y: offset)
-            .gesture(interactiveGesture)
+            .gesture(dragGestureDismissModal)
         }
     }
     
@@ -165,17 +158,7 @@ struct ModalSheetMain_Previews: PreviewProvider {
             Spacer()
             ModalSheetMain(isShowing: .constant(true),
                             titleModal: "Adicionar Produto",
-                            buttonsBar: true,
-                            textFieldModalView: TextFieldModalView(title: "Nome", placeholder: "EX.: Arroz branco"))
+                            buttonsBar: true)
         }
     }
 }
-//        VStack {
-//                   ForEach(0..<items.count) { index in
-//                       if index > 0 {
-//                           Divider()
-//                       }
-//                    items[index]
-//                   }
-//               }
-//               .padding()
