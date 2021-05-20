@@ -9,8 +9,13 @@
 /* Begin PBXBuildFile section */
 		390FE40526547CB30065F26C /* BackgroundModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390FE40426547CB30065F26C /* BackgroundModelView.swift */; };
 		390FE40F26547D170065F26C /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390FE40E26547D170065F26C /* ModalView.swift */; };
+		39338F802656A40E00871989 /* CurrencyTextFieldModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39338F7F2656A40E00871989 /* CurrencyTextFieldModalView.swift */; };
+		39338F8C2656B30800871989 /* ButtonModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39338F8B2656B30800871989 /* ButtonModalView.swift */; };
+		39338F922656BC8200871989 /* AddItemModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39338F912656BC8200871989 /* AddItemModalView.swift */; };
 		39D3F83E265555A5001DF144 /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D3F83D265555A5001DF144 /* KeyboardResponder.swift */; };
 		39D3F84E26555752001DF144 /* TextFieldModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D3F84D26555752001DF144 /* TextFieldModalView.swift */; };
+		39D3F8552655ED4A001DF144 /* headerModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D3F8542655ED4A001DF144 /* headerModalView.swift */; };
+		39D3F85F26568703001DF144 /* QuantityModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D3F85E26568703001DF144 /* QuantityModalView.swift */; };
 		57F24AC42653FB9C001E4B05 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F24AC32653FB9C001E4B05 /* Tests_iOS.swift */; };
 		57F24ACF2653FB9C001E4B05 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F24ACE2653FB9C001E4B05 /* Tests_macOS.swift */; };
 		57F24AD12653FB9C001E4B05 /* MultiplatformChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 57F24AA52653FB9B001E4B05 /* MultiplatformChallenge.xcdatamodeld */; };
@@ -45,8 +50,13 @@
 /* Begin PBXFileReference section */
 		390FE40426547CB30065F26C /* BackgroundModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundModelView.swift; sourceTree = "<group>"; };
 		390FE40E26547D170065F26C /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
+		39338F7F2656A40E00871989 /* CurrencyTextFieldModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTextFieldModalView.swift; sourceTree = "<group>"; };
+		39338F8B2656B30800871989 /* ButtonModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonModalView.swift; sourceTree = "<group>"; };
+		39338F912656BC8200871989 /* AddItemModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemModalView.swift; sourceTree = "<group>"; };
 		39D3F83D265555A5001DF144 /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
 		39D3F84D26555752001DF144 /* TextFieldModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldModalView.swift; sourceTree = "<group>"; };
+		39D3F8542655ED4A001DF144 /* headerModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = headerModalView.swift; sourceTree = "<group>"; };
+		39D3F85E26568703001DF144 /* QuantityModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityModalView.swift; sourceTree = "<group>"; };
 		57F24AA62653FB9B001E4B05 /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		57F24AA72653FB9B001E4B05 /* MultiplatformChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplatformChallengeApp.swift; sourceTree = "<group>"; };
 		57F24AA82653FB9B001E4B05 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -108,11 +118,24 @@
 		39D3F84826555702001DF144 /* Modal */ = {
 			isa = PBXGroup;
 			children = (
-				390FE40426547CB30065F26C /* BackgroundModelView.swift */,
-				390FE40E26547D170065F26C /* ModalView.swift */,
-				39D3F84D26555752001DF144 /* TextFieldModalView.swift */,
+				39338F912656BC8200871989 /* AddItemModalView.swift */,
+				39D3F8532655ED14001DF144 /* Components */,
 			);
 			path = Modal;
+			sourceTree = "<group>";
+		};
+		39D3F8532655ED14001DF144 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				390FE40E26547D170065F26C /* ModalView.swift */,
+				390FE40426547CB30065F26C /* BackgroundModelView.swift */,
+				39D3F8542655ED4A001DF144 /* headerModalView.swift */,
+				39338F8B2656B30800871989 /* ButtonModalView.swift */,
+				39D3F84D26555752001DF144 /* TextFieldModalView.swift */,
+				39D3F85E26568703001DF144 /* QuantityModalView.swift */,
+				39338F7F2656A40E00871989 /* CurrencyTextFieldModalView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		57F03CA52653FC15006613AE /* View */ = {
@@ -408,13 +431,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				390FE40F26547D170065F26C /* ModalView.swift in Sources */,
+				39338F922656BC8200871989 /* AddItemModalView.swift in Sources */,
 				57F24AD32653FB9C001E4B05 /* MultiplatformChallengeApp.swift in Sources */,
 				39D3F83E265555A5001DF144 /* KeyboardResponder.swift in Sources */,
+				39338F802656A40E00871989 /* CurrencyTextFieldModalView.swift in Sources */,
 				57F24AD72653FB9C001E4B05 /* Persistence.swift in Sources */,
 				39D3F84E26555752001DF144 /* TextFieldModalView.swift in Sources */,
 				57F24AD12653FB9C001E4B05 /* MultiplatformChallenge.xcdatamodeld in Sources */,
+				39338F8C2656B30800871989 /* ButtonModalView.swift in Sources */,
 				390FE40526547CB30065F26C /* BackgroundModelView.swift in Sources */,
+				39D3F85F26568703001DF144 /* QuantityModalView.swift in Sources */,
 				57F24AD52653FB9C001E4B05 /* ContentView.swift in Sources */,
+				39D3F8552655ED4A001DF144 /* headerModalView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
