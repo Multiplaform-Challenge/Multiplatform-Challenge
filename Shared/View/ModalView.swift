@@ -109,7 +109,7 @@ struct ModalView_Previews: PreviewProvider {
                       titleModal: "Adicionar Produto",
                       contentBuilder: {
                         VStack {
-
+                            CurrencyTextFieldModalView(title: "Preço")
                         }
                     })
         }
