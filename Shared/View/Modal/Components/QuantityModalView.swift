@@ -1,0 +1,95 @@
+import SwiftUI
+
+public struct QuantityModalView: View {
+    let title: String
+    let titleFont: Font
+    let foregrounColor: Color
+    let backgroundRectangleColor: Color
+    
+    @Binding var quantity: Int
+    
+    public init(quantity: Binding<Int>,
+                title: String,
+                titleFont: Font = Font.headline,
+                foregrounColor: Color = Color("TitleActionColor"),
+                backgroundRectangleColor: Color) {
+        _quantity = quantity
+        self.title = title
+        self.titleFont = titleFont
+        self.foregrounColor = foregrounColor
+        self.backgroundRectangleColor = backgroundRectangleColor
+    }
+    
+    var textFieldView: some View {
+        HStack {
+            Text(title)
+                .font(.callout)
+                .bold()
+            Spacer()
+            HStack {
+                Button(action:{
+                    if quantity > 0 {
+                        quantity -= 1
+                    }
+                }){
+                    Image(systemName: "minus")
+                }
+                Text("\(quantity)")
+                    .font(.body)
+                    .bold()
+                Button(action:{
+                    quantity += 1
+                }){
+                    Image(systemName: "plus")
+                }
+            }
+            .frame(maxWidth: .infinity, alignment: .trailing)
+            .multilineTextAlignment(.trailing)
+        }
+        .padding(.horizontal)
+    }
+    
+    var selectorQuantityView: some View {
+        HStack {
+            ForEach(1..<6) { i in
+                Button(action: {
+                    quantity = 2 * i
+                }) {
+                    ZStack {
+                        Rectangle()
+                            .fill(backgroundRectangleColor)
+                            .frame(width: 50, height: 30)
+                        Text("\(2 * i)")
+                            .font(.title2)
+                            .bold()
+                            .frame(width: 50, height: 30, alignment: .center)
+                            .foregroundColor(foregrounColor)
+                            
+                    }
+                }
+            }
+        }
+        .padding(.horizontal)
+    }
+    
+    
+    public var body: some View {
+        Group {
+            textFieldView
+                .foregroundColor(foregrounColor)
+            selectorQuantityView
+                .padding(.top, 20)
+        }
+    }
+}
+
+//struct QuantityModalView_Previews: PreviewProvider {
+//
+//    static var previews: some View {
+//        VStack {
+//            Spacer()
+//            QuantityModalView(title: "Teste", backgroundRectangleColor: Color( "ActionColorSecond"))
+//            Spacer()
+//        }
+//    }
+//}
