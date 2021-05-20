@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		390FE40526547CB30065F26C /* BackgroundModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390FE40426547CB30065F26C /* BackgroundModelView.swift */; };
+		390FE40F26547D170065F26C /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390FE40E26547D170065F26C /* ModalView.swift */; };
 		57F24AC42653FB9C001E4B05 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F24AC32653FB9C001E4B05 /* Tests_iOS.swift */; };
 		57F24ACF2653FB9C001E4B05 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F24ACE2653FB9C001E4B05 /* Tests_macOS.swift */; };
 		57F24AD12653FB9C001E4B05 /* MultiplatformChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 57F24AA52653FB9B001E4B05 /* MultiplatformChallenge.xcdatamodeld */; };
@@ -41,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		390FE40426547CB30065F26C /* BackgroundModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundModelView.swift; sourceTree = "<group>"; };
+		390FE40E26547D170065F26C /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		57F24AA62653FB9B001E4B05 /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		57F24AA72653FB9B001E4B05 /* MultiplatformChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplatformChallengeApp.swift; sourceTree = "<group>"; };
 		57F24AA92653FB9B001E4B05 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -100,6 +104,8 @@
 				7C7C9BBA265539CD002E2F78 /* ContentView.swift */,
 				7C7C9BBB265539CD002E2F78 /* ListRow.swift */,
 				7C7C9BBC265539CD002E2F78 /* MoneyDetails.swift */,
+				390FE40426547CB30065F26C /* BackgroundModelView.swift */,
+				390FE40E26547D170065F26C /* ModalView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -387,6 +393,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				390FE40F26547D170065F26C /* ModalView.swift in Sources */,
 				57F24AD32653FB9C001E4B05 /* MultiplatformChallengeApp.swift in Sources */,
 				7C7C9BBE265539CD002E2F78 /* ContentView.swift in Sources */,
 				7C7C9BC0265539CD002E2F78 /* MoneyDetails.swift in Sources */,
@@ -394,6 +401,8 @@
 				7C7C9BBF265539CD002E2F78 /* ListRow.swift in Sources */,
 				57F24AD72653FB9C001E4B05 /* Persistence.swift in Sources */,
 				57F24AD12653FB9C001E4B05 /* MultiplatformChallenge.xcdatamodeld in Sources */,
+				390FE40526547CB30065F26C /* BackgroundModelView.swift in Sources */,
+				57F24AD52653FB9C001E4B05 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
