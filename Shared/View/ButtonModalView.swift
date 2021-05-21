@@ -5,7 +5,7 @@ public struct ButtonModalView: View {
     let backgroundColor: Color
     let titleButton: String
     let actionButton: (() -> ())?
-    
+
     public init(foregrounColor: Color = Color("TitleColor"),
                 backgroundColor: Color = Color("ActionColorPrimary"),
                 titleButton: String,
@@ -15,7 +15,7 @@ public struct ButtonModalView: View {
         self.titleButton = titleButton
         self.actionButton = actionButton
     }
-    
+
     var buttonView: some View {
         Button(action: {
             actionButton?()
@@ -30,7 +30,7 @@ public struct ButtonModalView: View {
                 .cornerRadius(40)
         }
     }
-    
+
     public var body: some View {
         Group {
             buttonView

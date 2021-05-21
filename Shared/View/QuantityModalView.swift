@@ -5,19 +5,21 @@ public struct QuantityModalView: View {
     let titleFont: Font
     let foregrounColor: Color
     let backgroundRectangleColor: Color
-    
-    @State var quantity: Int = 0
-    
-    public init(title: String,
+
+    @Binding var quantity: Int
+
+    public init(quantity: Binding<Int>,
+                title: String,
                 titleFont: Font = Font.headline,
                 foregrounColor: Color = Color("TitleColor"),
                 backgroundRectangleColor: Color) {
+        _quantity = quantity
         self.title = title
         self.titleFont = titleFont
         self.foregrounColor = foregrounColor
         self.backgroundRectangleColor = backgroundRectangleColor
     }
-    
+
     var textFieldView: some View {
         HStack {
             Text(title)
@@ -46,7 +48,7 @@ public struct QuantityModalView: View {
         }
         .padding(.horizontal)
     }
-    
+
     var selectorQuantityView: some View {
         HStack {
             ForEach(1..<6) { index in
@@ -68,24 +70,13 @@ public struct QuantityModalView: View {
         }
         .padding(.horizontal)
     }
-    
+
     public var body: some View {
         Group {
             textFieldView
                 .foregroundColor(foregrounColor)
             selectorQuantityView
                 .padding(.top, 20)
-        }
-    }
-}
-
-struct QuantityModalView_Previews: PreviewProvider {
-
-    static var previews: some View {
-        VStack {
-            Spacer()
-            QuantityModalView(title: "Teste", backgroundRectangleColor: Color( "ActionColorSecond"))
-            Spacer()
         }
     }
 }

@@ -4,7 +4,7 @@ final public class KeyboardResponder: ObservableObject {
     private var notificationCenter: NotificationCenter
     @Published private(set) var currentHeight: CGFloat = 0
     @Published private(set) var isActive: Bool = false
-    
+
     init(center: NotificationCenter = .default) {
         notificationCenter = center
         notificationCenter.addObserver(self, selector: #selector(keyBoardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
