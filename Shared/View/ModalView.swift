@@ -3,6 +3,7 @@ import Combine
 import UIKit
 
 public struct ModalView<Content: View>: View {
+    @ObservedObject var keyboardRef: KeyboardResponder
     @State var offset = UIScreen.main.bounds.height
     @Binding var isShowing: Bool
     
@@ -17,6 +18,7 @@ public struct ModalView<Content: View>: View {
     let content: Content
     
     public init(isShowing: Binding<Bool>,
+                keyboardRef: KeyboardResponder,
                 backgroundColor: Color = Color.white,
                 isTitleLarge: Bool,
                 titleModal: String,
@@ -24,6 +26,7 @@ public struct ModalView<Content: View>: View {
                 titleButtonRight: String = "Adicionar",
                 @ViewBuilder contentBuilder: () -> Content) {
         _isShowing = isShowing
+        self.keyboardRef = keyboardRef
         self.backgroundColor = backgroundColor
         self.isTitleLarge = isTitleLarge
         self.titleModal = titleModal
@@ -71,7 +74,14 @@ public struct ModalView<Content: View>: View {
                 HeaderModalView(titleModal: titleModal,
                                 isTitleLarge: isTitleLarge)
                 content
-                Text("").frame(height: 50)
+                HStack {
+                    ButtonModalView(backgroundColor: .clear,
+                                    titleButton: titleButtonLeft,
+                                    actionButton: hide)
+                    ButtonModalView(titleButton: titleButtonRight)
+                }
+                .padding(.top, 30)
+                Text("").frame(height:  keyboardRef.isActive ? keyboardRef.currentHeight : 50)
             }
             .background(backgroundColor)
             .cornerRadius(15)
@@ -93,6 +103,7 @@ public struct ModalView<Content: View>: View {
                 bodyContet
             }
         }
+        .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
         .animation(.default)
         .onReceive(Just(isShowing), perform: { isShowing in
             offset = isShowing ? 0 : heightToDisappear
@@ -105,11 +116,16 @@ struct ModalView_Previews: PreviewProvider {
         VStack {
             Spacer()
             ModalView(isShowing: .constant(true),
+                      keyboardRef: KeyboardResponder(),
                       isTitleLarge: false,
                       titleModal: "Adicionar Produto",
                       contentBuilder: {
                         VStack {
+                            TextFieldModalView(title: "Nome",
+                                               placeholder: "Ex.: Arroz branco")
+                                .frame(height: 50)
                             CurrencyTextFieldModalView(title: "Preço")
+                                .frame(height: 50)
                         }
                     })
         }
