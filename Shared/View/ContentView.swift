@@ -16,45 +16,43 @@ struct ContentView: View {
     @StateObject var shoppingList = ShoppingListDemo()
 
     var body: some View {
-        NavigationView {
-            VStack {
-                MoneyDetails()
-                HStack {
-                    Text("Minha Lista")
-                    Spacer()
-                    Button("Adicionar produto") {
-                        showSheet.toggle()
-                    }.sheet(isPresented: self.$showSheet, content: {
-                        Text("sfsdfdsf")
-                    })
-                }.padding()
+        ZStack {
+            NavigationView {
+                VStack {
+                    MoneyDetails()
+                    HStack {
+                        Text("Minha Lista")
+                        Spacer()
+                        Button("Adicionar produto") {
+                            showSheet.toggle()
+                        }
+                    }.padding()
 
-                List {
-                    ForEach(allItens) { item in
-                        ListRow(item: ProductItem(id: UUID.init(), name: "arroz", price: 32.99, itemNumber: 4))
-                    }
-                    .onDelete(perform: deleteItem)
-                    .onTapGesture {
-                        self.showSheet.toggle()
+                    List {
+                        ForEach(allItens) { item in
+                            ListRow(item: ProductItem(id: UUID.init(), name: "arroz", price: 32.99, itemNumber: 4))
+                        }
+                        .onDelete(perform: deleteItem)
+                        .onTapGesture {
+                            self.showSheet.toggle()
+                        }
                     }
                 }
-                .sheet(isPresented: self.$showSheet, content: {
-                    Text("sfsdfdsf")
-                })
-            }
-            .navigationBarTitle("Compras da semana")
-            .listStyle(GroupedListStyle())
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink(
-                        destination: SettingsView(shoppingList: shoppingList),
-                        label: {
-                            Image(systemName: "gearshape")
-                        })
+                .navigationBarTitle("Compras da semana")
+                .listStyle(GroupedListStyle())
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        NavigationLink(
+                            destination: SettingsView(shoppingList: shoppingList),
+                            label: {
+                                Image(systemName: "gearshape")
+                            })
+                    }
                 }
             }
+            .onAppear(perform: loadList)
+            AddProductModalView(isShowing: $showSheet)
         }
-        .onAppear(perform: loadList)
     }
 
     private func saveList() {

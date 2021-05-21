@@ -7,12 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		390FE40526547CB30065F26C /* BackgroundModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390FE40426547CB30065F26C /* BackgroundModelView.swift */; };
+		390FE40F26547D170065F26C /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390FE40E26547D170065F26C /* ModalView.swift */; };
+		3944E118265727930095934A /* CurrencyTextFieldModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3944E117265727930095934A /* CurrencyTextFieldModalView.swift */; };
+		3944E12626575BD60095934A /* TextFieldModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3944E12526575BD60095934A /* TextFieldModalView.swift */; };
+		3944E13526575E190095934A /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3944E13426575E190095934A /* KeyboardResponder.swift */; };
+		3944E13B2657678D0095934A /* ButtonModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3944E13A2657678D0095934A /* ButtonModalView.swift */; };
+		3944E14126576B5A0095934A /* QuantityModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3944E14026576B5A0095934A /* QuantityModalView.swift */; };
+		3944E14726576E430095934A /* AddProductModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3944E14626576E430095934A /* AddProductModalView.swift */; };
+		399477902657157A00D66D82 /* HeaderModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3994778F2657157A00D66D82 /* HeaderModalView.swift */; };
 		570656142655405400903AC1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570656132655405400903AC1 /* SettingsView.swift */; };
 		5706561A265555E800903AC1 /* ObjectiveViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57065619265555E800903AC1 /* ObjectiveViewCell.swift */; };
 		5706561C265555F300903AC1 /* BudgetViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5706561B265555F300903AC1 /* BudgetViewCell.swift */; };
+		57AF03452657F48E00D1DB5A /* MultiplatformChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 57F24AA52653FB9B001E4B05 /* MultiplatformChallenge.xcdatamodeld */; };
 		57F24AC42653FB9C001E4B05 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F24AC32653FB9C001E4B05 /* Tests_iOS.swift */; };
 		57F24ACF2653FB9C001E4B05 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F24ACE2653FB9C001E4B05 /* Tests_macOS.swift */; };
-		57F24AD12653FB9C001E4B05 /* MultiplatformChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 57F24AA52653FB9B001E4B05 /* MultiplatformChallenge.xcdatamodeld */; };
 		57F24AD22653FB9C001E4B05 /* MultiplatformChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 57F24AA52653FB9B001E4B05 /* MultiplatformChallenge.xcdatamodeld */; };
 		57F24AD32653FB9C001E4B05 /* MultiplatformChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F24AA72653FB9B001E4B05 /* MultiplatformChallengeApp.swift */; };
 		57F24AD42653FB9C001E4B05 /* MultiplatformChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F24AA72653FB9B001E4B05 /* MultiplatformChallengeApp.swift */; };
@@ -44,6 +53,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		390FE40426547CB30065F26C /* BackgroundModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundModelView.swift; sourceTree = "<group>"; };
+		390FE40E26547D170065F26C /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
+		3944E117265727930095934A /* CurrencyTextFieldModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTextFieldModalView.swift; sourceTree = "<group>"; };
+		3944E12526575BD60095934A /* TextFieldModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldModalView.swift; sourceTree = "<group>"; };
+		3944E13426575E190095934A /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
+		3944E13A2657678D0095934A /* ButtonModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonModalView.swift; sourceTree = "<group>"; };
+		3944E14026576B5A0095934A /* QuantityModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityModalView.swift; sourceTree = "<group>"; };
+		3944E14626576E430095934A /* AddProductModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductModalView.swift; sourceTree = "<group>"; };
+		3994778F2657157A00D66D82 /* HeaderModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderModalView.swift; sourceTree = "<group>"; };
 		570656132655405400903AC1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		57065619265555E800903AC1 /* ObjectiveViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectiveViewCell.swift; sourceTree = "<group>"; };
 		5706561B265555F300903AC1 /* BudgetViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewCell.swift; sourceTree = "<group>"; };
@@ -100,6 +118,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3944E13326575DDE0095934A /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				3944E13426575E190095934A /* KeyboardResponder.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		572EA686265683F900993D79 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +133,13 @@
 				7C7C9BBC265539CD002E2F78 /* MoneyDetails.swift */,
 				57065619265555E800903AC1 /* ObjectiveViewCell.swift */,
 				5706561B265555F300903AC1 /* BudgetViewCell.swift */,
+				390FE40426547CB30065F26C /* BackgroundModelView.swift */,
+				390FE40E26547D170065F26C /* ModalView.swift */,
+				3994778F2657157A00D66D82 /* HeaderModalView.swift */,
+				3944E117265727930095934A /* CurrencyTextFieldModalView.swift */,
+				3944E12526575BD60095934A /* TextFieldModalView.swift */,
+				3944E13A2657678D0095934A /* ButtonModalView.swift */,
+				3944E14026576B5A0095934A /* QuantityModalView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -116,6 +149,7 @@
 			children = (
 				7C7C9BBA265539CD002E2F78 /* ContentView.swift */,
 				570656132655405400903AC1 /* SettingsView.swift */,
+				3944E14626576E430095934A /* AddProductModalView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -150,6 +184,7 @@
 		57F24AA42653FB9B001E4B05 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				3944E13326575DDE0095934A /* Utilities */,
 				57F03CA72653FC21006613AE /* Model */,
 				57F03CA62653FC1A006613AE /* ViewModel */,
 				57F03CA52653FC15006613AE /* View */,
@@ -404,6 +439,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57AF03452657F48E00D1DB5A /* MultiplatformChallenge.xcdatamodeld in Sources */,
+				390FE40F26547D170065F26C /* ModalView.swift in Sources */,
 				57F24AD32653FB9C001E4B05 /* MultiplatformChallengeApp.swift in Sources */,
 				570656142655405400903AC1 /* SettingsView.swift in Sources */,
 				7C7C9BBE265539CD002E2F78 /* ContentView.swift in Sources */,
@@ -413,7 +450,14 @@
 				7C7C9BBF265539CD002E2F78 /* ListRow.swift in Sources */,
 				57F24AD72653FB9C001E4B05 /* Persistence.swift in Sources */,
 				5706561A265555E800903AC1 /* ObjectiveViewCell.swift in Sources */,
-				57F24AD12653FB9C001E4B05 /* MultiplatformChallenge.xcdatamodeld in Sources */,
+				3944E14726576E430095934A /* AddProductModalView.swift in Sources */,
+				3944E13526575E190095934A /* KeyboardResponder.swift in Sources */,
+				3944E14126576B5A0095934A /* QuantityModalView.swift in Sources */,
+				3944E13B2657678D0095934A /* ButtonModalView.swift in Sources */,
+				399477902657157A00D66D82 /* HeaderModalView.swift in Sources */,
+				390FE40526547CB30065F26C /* BackgroundModelView.swift in Sources */,
+				3944E12626575BD60095934A /* TextFieldModalView.swift in Sources */,
+				3944E118265727930095934A /* CurrencyTextFieldModalView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
