@@ -7,7 +7,7 @@ public struct AddProductModalView: View {
     @State var nameItem: String = ""
     @State var quantityItem: Int = 0
     @State var priceItem: Double = 0.0
-    
+
     var bodyContet: some View {
         VStack {
             TextFieldModalView(nameText: $nameItem,
@@ -28,7 +28,7 @@ public struct AddProductModalView: View {
         }
         .padding()
     }
-    
+
     public var body: some View {
         VStack {
             Spacer()

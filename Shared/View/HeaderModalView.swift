@@ -3,13 +3,13 @@ import SwiftUI
 public struct HeaderModalView: View {
     var titleModal: String
     var isTitleLarge: Bool
-    
+
     public init(titleModal: String,
                 isTitleLarge: Bool) {
         self.titleModal = titleModal
         self.isTitleLarge = isTitleLarge
     }
-    
+
     public var body: some View {
         VStack {
             Capsule()

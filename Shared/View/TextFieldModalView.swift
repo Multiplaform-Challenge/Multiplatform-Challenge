@@ -5,9 +5,9 @@ public struct TextFieldModalView: View {
     let placeholder: String
     let titleFont: Font
     let foregrounColor: Color
-    
+
     @Binding var nameText: String
-    
+
     public init(nameText: Binding<String>,
                 title: String,
                 placeholder: String,
@@ -18,9 +18,8 @@ public struct TextFieldModalView: View {
         self.placeholder = placeholder
         self.titleFont = titleFont
         self.foregrounColor = foregrounColor
-        
     }
-    
+
     var textFieldView: some View {
         HStack {
             Text(title)
@@ -33,7 +32,7 @@ public struct TextFieldModalView: View {
         }
         .padding(.horizontal)
     }
-    
+
     public var body: some View {
         Group {
             textFieldView

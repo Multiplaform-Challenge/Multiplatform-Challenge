@@ -6,17 +6,17 @@ public struct ModalView<Content: View>: View {
     @ObservedObject var keyboardRef: KeyboardResponder
     @State var offset = UIScreen.main.bounds.height
     @Binding var isShowing: Bool
-    
+
     let heightToDisappear = UIScreen.main.bounds.height
     let cellHeight: CGFloat = 50
     let backgroundColor: Color
-    
+
     var isTitleLarge: Bool
     var titleModal: String
     var titleButtonRight: String
     var titleButtonLeft: String
     let content: Content
-    
+
     public init(isShowing: Binding<Bool>,
                 keyboardRef: KeyboardResponder,
                 backgroundColor: Color = Color.white,
@@ -34,12 +34,12 @@ public struct ModalView<Content: View>: View {
         self.titleButtonLeft = titleButtonLeft
         self.titleButtonRight = titleButtonRight
     }
-    
+
     func hide() {
         offset = heightToDisappear
         isShowing = false
     }
-    
+
     var dragGestureDismissModal: some Gesture {
         DragGesture()
             .onChanged({ (value) in
@@ -56,7 +56,7 @@ public struct ModalView<Content: View>: View {
                 }
             })
     }
-    
+
     var backgroundAreaView: some View {
         Group {
             if isShowing {
@@ -66,7 +66,7 @@ public struct ModalView<Content: View>: View {
             }
         }
     }
-    
+
     var sheetView: some View {
         VStack {
             Spacer()
@@ -89,14 +89,14 @@ public struct ModalView<Content: View>: View {
             .gesture(dragGestureDismissModal)
         }
     }
-    
+
     var bodyContet: some View {
         ZStack {
             backgroundAreaView
             sheetView
         }
     }
-    
+
     public var body: some View {
         Group {
             if isShowing {
