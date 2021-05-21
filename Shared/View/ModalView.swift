@@ -2,8 +2,7 @@ import SwiftUI
 import Combine
 import UIKit
 
-public struct ModalSheetMain: View {
-    
+public struct ModalView<Content: View>: View {
     @State var offset = UIScreen.main.bounds.height
     @Binding var isShowing: Bool
     
@@ -11,80 +10,31 @@ public struct ModalSheetMain: View {
     let cellHeight: CGFloat = 50
     let backgroundColor: Color
     
+    var isTitleLarge: Bool
     var titleModal: String
     var titleButtonRight: String
     var titleButtonLeft: String
-    
-    var buttonsBar: Bool
+    let content: Content
     
     public init(isShowing: Binding<Bool>,
                 backgroundColor: Color = Color.white,
+                isTitleLarge: Bool,
                 titleModal: String,
-                buttonsBar: Bool,
+                titleButtonLeft: String = "Cancelar",
                 titleButtonRight: String = "Adicionar",
-                titleButtonLeft: String = "Cancelar") {
+                @ViewBuilder contentBuilder: () -> Content) {
         _isShowing = isShowing
         self.backgroundColor = backgroundColor
+        self.isTitleLarge = isTitleLarge
         self.titleModal = titleModal
-        self.buttonsBar = buttonsBar
-        self.titleButtonRight = titleButtonRight
+        self.content = contentBuilder()
         self.titleButtonLeft = titleButtonLeft
+        self.titleButtonRight = titleButtonRight
     }
     
     func hide() {
         offset = heightToDisappear
         isShowing = false
-    }
-        
-    var headerModalViewCustom: some View {
-        VStack() {
-            Capsule()
-                .frame(width: 50, height: 5)
-                .foregroundColor(Color.gray)
-                .padding(.top, 20)
-            
-            if buttonsBar {
-                
-                HStack {
-                    Button(titleButtonLeft) {
-                        hide()
-                    }
-                    Spacer()
-                    Text(titleModal)
-                        .font(.title3)
-                        .bold()
-                    Spacer()
-                    Button(action: {
-                        
-                    }) {
-                        Text(titleButtonRight)
-                            .bold()
-                    }
-                }
-                .padding(.horizontal)
-                .padding(.top, 10)
-                
-            } else {
-                
-                HStack {
-                    Text(titleModal)
-                        .font(.largeTitle)
-                        .bold()
-                        .padding(.top, 30)
-                    Spacer()
-                }
-                .padding(.horizontal)
-                
-            }
-        }
-        
-    }
-    
-    var itemsView: some View {
-        VStack {
-            
-        }
-        .padding()
     }
     
     var dragGestureDismissModal: some Gesture {
@@ -98,13 +48,11 @@ public struct ModalSheetMain: View {
                 let diff = abs(offset-value.location.y)
                 if diff > 100 {
                     hide()
-                }
-                else {
+                } else {
                     offset = 0
                 }
             })
     }
-    
     
     var backgroundAreaView: some View {
         Group {
@@ -119,10 +67,10 @@ public struct ModalSheetMain: View {
     var sheetView: some View {
         VStack {
             Spacer()
-            
             VStack {
-                headerModalViewCustom
-                itemsView
+                HeaderModalView(titleModal: titleModal,
+                                isTitleLarge: isTitleLarge)
+                content
                 Text("").frame(height: 50)
             }
             .background(backgroundColor)
@@ -152,13 +100,18 @@ public struct ModalSheetMain: View {
     }
 }
 
-struct ModalSheetMain_Previews: PreviewProvider {
+struct ModalView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             Spacer()
-            ModalSheetMain(isShowing: .constant(true),
-                            titleModal: "Adicionar Produto",
-                            buttonsBar: true)
+            ModalView(isShowing: .constant(true),
+                      isTitleLarge: false,
+                      titleModal: "Adicionar Produto",
+                      contentBuilder: {
+                        VStack {
+                            CurrencyTextFieldModalView(title: "Preço")
+                        }
+                    })
         }
     }
 }

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		390FE40526547CB30065F26C /* BackgroundModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390FE40426547CB30065F26C /* BackgroundModelView.swift */; };
 		390FE40F26547D170065F26C /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390FE40E26547D170065F26C /* ModalView.swift */; };
+		3944E118265727930095934A /* CurrencyTextFieldModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3944E117265727930095934A /* CurrencyTextFieldModalView.swift */; };
+		399477902657157A00D66D82 /* HeaderModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3994778F2657157A00D66D82 /* HeaderModalView.swift */; };
 		57F24AC42653FB9C001E4B05 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F24AC32653FB9C001E4B05 /* Tests_iOS.swift */; };
 		57F24ACF2653FB9C001E4B05 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F24ACE2653FB9C001E4B05 /* Tests_macOS.swift */; };
 		57F24AD12653FB9C001E4B05 /* MultiplatformChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 57F24AA52653FB9B001E4B05 /* MultiplatformChallenge.xcdatamodeld */; };
@@ -43,6 +45,8 @@
 /* Begin PBXFileReference section */
 		390FE40426547CB30065F26C /* BackgroundModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundModelView.swift; sourceTree = "<group>"; };
 		390FE40E26547D170065F26C /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
+		3944E117265727930095934A /* CurrencyTextFieldModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTextFieldModalView.swift; sourceTree = "<group>"; };
+		3994778F2657157A00D66D82 /* HeaderModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderModalView.swift; sourceTree = "<group>"; };
 		57F24AA62653FB9B001E4B05 /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		57F24AA72653FB9B001E4B05 /* MultiplatformChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplatformChallengeApp.swift; sourceTree = "<group>"; };
 		57F24AA82653FB9B001E4B05 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -98,6 +102,8 @@
 			children = (
 				390FE40426547CB30065F26C /* BackgroundModelView.swift */,
 				390FE40E26547D170065F26C /* ModalView.swift */,
+				3994778F2657157A00D66D82 /* HeaderModalView.swift */,
+				3944E117265727930095934A /* CurrencyTextFieldModalView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -389,7 +395,9 @@
 				57F24AD32653FB9C001E4B05 /* MultiplatformChallengeApp.swift in Sources */,
 				57F24AD72653FB9C001E4B05 /* Persistence.swift in Sources */,
 				57F24AD12653FB9C001E4B05 /* MultiplatformChallenge.xcdatamodeld in Sources */,
+				399477902657157A00D66D82 /* HeaderModalView.swift in Sources */,
 				390FE40526547CB30065F26C /* BackgroundModelView.swift in Sources */,
+				3944E118265727930095934A /* CurrencyTextFieldModalView.swift in Sources */,
 				57F24AD52653FB9C001E4B05 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
