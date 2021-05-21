@@ -13,6 +13,7 @@
 		3944E12626575BD60095934A /* TextFieldModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3944E12526575BD60095934A /* TextFieldModalView.swift */; };
 		3944E13526575E190095934A /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3944E13426575E190095934A /* KeyboardResponder.swift */; };
 		3944E13B2657678D0095934A /* ButtonModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3944E13A2657678D0095934A /* ButtonModalView.swift */; };
+		3944E14126576B5A0095934A /* QuantityModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3944E14026576B5A0095934A /* QuantityModalView.swift */; };
 		399477902657157A00D66D82 /* HeaderModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3994778F2657157A00D66D82 /* HeaderModalView.swift */; };
 		57F24AC42653FB9C001E4B05 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F24AC32653FB9C001E4B05 /* Tests_iOS.swift */; };
 		57F24ACF2653FB9C001E4B05 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F24ACE2653FB9C001E4B05 /* Tests_macOS.swift */; };
@@ -52,6 +53,7 @@
 		3944E12526575BD60095934A /* TextFieldModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldModalView.swift; sourceTree = "<group>"; };
 		3944E13426575E190095934A /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
 		3944E13A2657678D0095934A /* ButtonModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonModalView.swift; sourceTree = "<group>"; };
+		3944E14026576B5A0095934A /* QuantityModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityModalView.swift; sourceTree = "<group>"; };
 		3994778F2657157A00D66D82 /* HeaderModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderModalView.swift; sourceTree = "<group>"; };
 		57F24AA62653FB9B001E4B05 /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		57F24AA72653FB9B001E4B05 /* MultiplatformChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplatformChallengeApp.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				3944E117265727930095934A /* CurrencyTextFieldModalView.swift */,
 				3944E12526575BD60095934A /* TextFieldModalView.swift */,
 				3944E13A2657678D0095934A /* ButtonModalView.swift */,
+				3944E14026576B5A0095934A /* QuantityModalView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 				57F24AD72653FB9C001E4B05 /* Persistence.swift in Sources */,
 				3944E13526575E190095934A /* KeyboardResponder.swift in Sources */,
 				57F24AD12653FB9C001E4B05 /* MultiplatformChallenge.xcdatamodeld in Sources */,
+				3944E14126576B5A0095934A /* QuantityModalView.swift in Sources */,
 				3944E13B2657678D0095934A /* ButtonModalView.swift in Sources */,
 				399477902657157A00D66D82 /* HeaderModalView.swift in Sources */,
 				390FE40526547CB30065F26C /* BackgroundModelView.swift in Sources */,

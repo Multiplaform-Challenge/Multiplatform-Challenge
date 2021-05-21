@@ -126,6 +126,8 @@ struct ModalView_Previews: PreviewProvider {
                                 .frame(height: 50)
                             CurrencyTextFieldModalView(title: "Preço")
                                 .frame(height: 50)
+                            QuantityModalView(title: "Quantidade", backgroundRectangleColor: Color( "ActionColorSecond"))
+                                .frame(height: 50)
                         }
                     })
         }
