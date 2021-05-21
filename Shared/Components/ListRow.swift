@@ -27,10 +27,9 @@ struct CheckboxFieldView : View {
     @State var checkState:Bool = false
 
     var body: some View {
-         Button(action:
-            {
+         Button(action: {
                 self.checkState = !self.checkState
-            }){
+            }) {
             HStack(alignment: .top, spacing: 10) {
                    Rectangle()
                             .fill(self.checkState ? Color.gray : Color.black)
@@ -48,4 +47,3 @@ struct ListRow_Previews: PreviewProvider {
         ListRow(item: ProductItem(id: UUID.init(), name: "arroz", price: 32.99, itemNumber: 4))
     }
 }
-
