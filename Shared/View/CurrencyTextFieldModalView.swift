@@ -3,6 +3,7 @@ import SwiftUI
 public struct CurrencyTextFieldModalView: View {
     @State var title: String = ""
     @State var valueText: String = ""
+    @Binding var valueFinal: Double
     
     var value: Double {
         (Double(self.valueText) ?? 0.0) / 100
@@ -17,6 +18,7 @@ public struct CurrencyTextFieldModalView: View {
                 !char.isNumber
             }
             self.valueText = text
+            self.valueFinal = (Double(self.valueText) ?? 0.0) / 100
         }
         HStack {
             Text(title)

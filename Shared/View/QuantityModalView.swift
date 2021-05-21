@@ -6,12 +6,14 @@ public struct QuantityModalView: View {
     let foregrounColor: Color
     let backgroundRectangleColor: Color
     
-    @State var quantity: Int = 0
+    @Binding var quantity: Int
     
-    public init(title: String,
+    public init(quantity: Binding<Int>,
+                title: String,
                 titleFont: Font = Font.headline,
                 foregrounColor: Color = Color("TitleColor"),
                 backgroundRectangleColor: Color) {
+        _quantity = quantity
         self.title = title
         self.titleFont = titleFont
         self.foregrounColor = foregrounColor
@@ -75,17 +77,6 @@ public struct QuantityModalView: View {
                 .foregroundColor(foregrounColor)
             selectorQuantityView
                 .padding(.top, 20)
-        }
-    }
-}
-
-struct QuantityModalView_Previews: PreviewProvider {
-
-    static var previews: some View {
-        VStack {
-            Spacer()
-            QuantityModalView(title: "Teste", backgroundRectangleColor: Color( "ActionColorSecond"))
-            Spacer()
         }
     }
 }

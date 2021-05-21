@@ -110,26 +110,3 @@ public struct ModalView<Content: View>: View {
         })
     }
 }
-
-struct ModalView_Previews: PreviewProvider {
-    static var previews: some View {
-        VStack {
-            Spacer()
-            ModalView(isShowing: .constant(true),
-                      keyboardRef: KeyboardResponder(),
-                      isTitleLarge: false,
-                      titleModal: "Adicionar Produto",
-                      contentBuilder: {
-                        VStack {
-                            TextFieldModalView(title: "Nome",
-                                               placeholder: "Ex.: Arroz branco")
-                                .frame(height: 50)
-                            CurrencyTextFieldModalView(title: "Preço")
-                                .frame(height: 50)
-                            QuantityModalView(title: "Quantidade", backgroundRectangleColor: Color( "ActionColorSecond"))
-                                .frame(height: 50)
-                        }
-                    })
-        }
-    }
-}
