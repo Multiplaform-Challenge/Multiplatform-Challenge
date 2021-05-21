@@ -44,14 +44,23 @@ struct SettingsView: View {
         if !showSeparator {
             formattedValue.removeLast()
         }
-        return formattedValue
+        return "R$ \(formattedValue)"
     }
+
+    let budgetCharLimit = 15
 
     func format(text: String) -> Double {
 //        print("Text: \(text)")
+        if text.count >= budgetCharLimit {
+            return shoppingList.budget
+        }
         let separator = Locale.current.decimalSeparator ?? "."
         let formattedText = text
             .replacingOccurrences(of: separator, with: ".")
+            .replacingOccurrences(of: "R", with: "")
+            .replacingOccurrences(of: "$", with: "")
+            .replacingOccurrences(of: " ", with: "")
+//        print(formattedText)
         if formattedText.contains(".") {
             showSeparator = true
         } else {

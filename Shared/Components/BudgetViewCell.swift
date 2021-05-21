@@ -15,11 +15,8 @@ struct BudgetViewCell: View {
             Text("Orçamento")
                 .fixedSize()
             Spacer(minLength: 16)
-            Text("R$")
-                .fixedSize()
             TextField("Orçamento", text: $budget)
                 .keyboardType(.decimalPad)
-                .fixedSize()
                 .multilineTextAlignment(.trailing)
 //                .border(Color.blue)
         }
