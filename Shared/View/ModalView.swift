@@ -71,6 +71,7 @@ public struct ModalView<Content: View>: View {
                 HeaderModalView(titleModal: titleModal,
                                 isTitleLarge: isTitleLarge)
                 content
+                    .padding(.top, 30)
                 Text("").frame(height: 50)
             }
             .background(backgroundColor)
@@ -109,7 +110,11 @@ struct ModalView_Previews: PreviewProvider {
                       titleModal: "Adicionar Produto",
                       contentBuilder: {
                         VStack {
+                            TextFieldModalView(title: "Nome",
+                                               placeholder: "Ex.: Arroz branco")
+                                .frame(height: 50)
                             CurrencyTextFieldModalView(title: "Preço")
+                                .frame(height: 50)
                         }
                     })
         }
