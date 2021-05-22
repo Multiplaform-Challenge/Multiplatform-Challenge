@@ -22,13 +22,12 @@ public struct CurrencyTextFieldModalView: View {
         }
         HStack {
             Text(title)
-                .font(.callout)
-                .bold()
+                .font(FontNameManager.CustomFont.titleComponentFont)
             Spacer()
             TextField("R$ 0.00", text: typing).keyboardType(.numbersAndPunctuation)
                 .frame(maxWidth: .infinity, alignment: .trailing)
                 .multilineTextAlignment(.trailing)
+                .font(FontNameManager.CustomFont.textfieldComponentFont)
         }
-        .padding(.horizontal)
     }
 }

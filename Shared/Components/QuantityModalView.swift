@@ -23,8 +23,7 @@ public struct QuantityModalView: View {
     var textFieldView: some View {
         HStack {
             Text(title)
-                .font(.callout)
-                .bold()
+                .font(FontNameManager.CustomFont.titleComponentFont)
             Spacer()
             HStack {
                 Button(action: {
@@ -35,8 +34,7 @@ public struct QuantityModalView: View {
                     Image(systemName: "minus")
                 }
                 Text("\(quantity)")
-                    .font(.body)
-                    .bold()
+                    .font(Font.custom(FontNameManager.Poppins.regular, size: 24))
                 Button(action: {
                     quantity += 1
                 }) {
@@ -46,7 +44,6 @@ public struct QuantityModalView: View {
             .frame(maxWidth: .infinity, alignment: .trailing)
             .multilineTextAlignment(.trailing)
         }
-        .padding(.horizontal)
     }
 
     var selectorQuantityView: some View {
@@ -60,15 +57,13 @@ public struct QuantityModalView: View {
                             .fill(backgroundRectangleColor)
                             .frame(width: 50, height: 30)
                         Text("\(2 * index)")
-                            .font(.title2)
-                            .bold()
+                            .font(FontNameManager.CustomFont.boxQuantityComponentFont)
                             .frame(width: 50, height: 30, alignment: .center)
                             .foregroundColor(foregrounColor)
                     }
                 }
             }
         }
-        .padding(.horizontal)
     }
 
     public var body: some View {
