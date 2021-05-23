@@ -15,8 +15,9 @@ public struct AddProductModalView: View {
                                title: "Nome",
                                placeholder: "EX.: Arroz branco")
                 .frame(height: heightCell)
-            CurrencyTextFieldModalView(title: "Preço",
-                                       valueFinal: $priceItem)
+            CurrencyTextFieldModalView(valueFinal: $priceItem,
+                                       hasTitle: true,
+                                       title: "Preço")
                 .frame(height: heightCell)
             QuantityModalView(quantity: $quantityItem,
                               title: "Quantidade",
