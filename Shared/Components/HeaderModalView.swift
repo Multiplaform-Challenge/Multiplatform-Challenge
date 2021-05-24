@@ -20,21 +20,18 @@ public struct HeaderModalView: View {
                 HStack {
                     Spacer()
                     Text(titleModal)
-                        .font(.body)
-                        .bold()
+                        .font(FontNameManager.CustomFont.headerTitleComponentFont)
                     Spacer()
                 }
-                .padding(.horizontal)
                 .padding(.top, 10)
             } else {
                 HStack {
                     Text(titleModal)
-                        .font(.largeTitle)
-                        .bold()
+                        .font(FontNameManager.CustomFont.headerLargeTitleComponentFont)
                         .padding(.top, 30)
+                        .padding(.horizontal)
                     Spacer()
                 }
-                .padding(.horizontal)
             }
         }
     }

@@ -20,9 +20,18 @@ struct ContentView: View {
                     MoneyDetails()
                     HStack {
                         Text("Minha Lista")
+                            .font(Font.custom(FontNameManager.Poppins.bold, size: 24))
                         Spacer()
-                        Button("Adicionar produto") {
+                        Button(action: {
                             showSheet.toggle()
+                        }) {
+                            Text("Adicionar produto")
+                                .frame(height: 10)
+                                .font(Font.custom(FontNameManager.Poppins.medium, size: 17))
+                                .padding()
+                                .background(Color("AccentColor"))
+                                .foregroundColor(Color("TitleColor"))
+                                .cornerRadius(40)
                         }
                     }.padding()
 
@@ -43,10 +52,11 @@ struct ContentView: View {
                         NavigationLink(
                             destination: SettingsView(shoppingList: shoppingList),
                             label: {
-                                Image(systemName: "gearshape")
+                                Image(systemName: "gearshape.fill")
                             })
                     }
                 }
+                .background(Color("BackgroundColor"))
             }
             .onAppear(perform: {
                 shoppingListVM.getAllItens()
