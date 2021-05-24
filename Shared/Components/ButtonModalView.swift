@@ -7,7 +7,7 @@ public struct ButtonModalView: View {
     let actionButton: (() -> ())?
 
     public init(foregrounColor: Color = Color("TitleColor"),
-                backgroundColor: Color = Color("ActionColorPrimary"),
+                backgroundColor: Color = Color("AccentColor"),
                 titleButton: String,
                 actionButton: (() -> ())? = nil) {
         self.foregrounColor = foregrounColor
