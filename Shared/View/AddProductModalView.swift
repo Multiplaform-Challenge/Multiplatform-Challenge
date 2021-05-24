@@ -1,6 +1,6 @@
 import SwiftUI
 import Combine
-import UIKit
+//import UIKit
 
 public struct AddProductModalView: View {
     @Binding var isShowing: Bool
@@ -39,7 +39,7 @@ public struct AddProductModalView: View {
                     titleButtonLeft: "Cancelar",
                     titleButtonRight: "Adicionar",
                     contentBuilder: {bodyContet})
-                .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
+//                .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
         }
     }
 }

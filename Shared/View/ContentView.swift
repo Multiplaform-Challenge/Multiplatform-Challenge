@@ -17,9 +17,9 @@ struct ContentView: View {
 
     var body: some View {
         ZStack {
-            NavigationView {
+//            NavigationView {
                 VStack {
-                    MoneyDetails()
+//                    MoneyDetails()
                     HStack {
                         Text("Minha Lista")
                         Spacer()
@@ -38,20 +38,33 @@ struct ContentView: View {
                         }
                     }
                 }
-                .navigationBarTitle("Compras da semana")
-                .listStyle(GroupedListStyle())
+//                .navigationBarTitle("Compras da semana")
+                .listStyle(PlainListStyle())
+//                .listStyle(GroupedListStyle())
+//                .toolbar {
+//                    ToolbarItem(placement: .navigationBarTrailing) {
+//                        NavigationLink(
+//                            destination: SettingsView(shoppingList: shoppingList),
+//                            label: {
+//                                Image(systemName: "gearshape")
+//                            })
+//                    }
+//                }
                 .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        NavigationLink(
-                            destination: SettingsView(shoppingList: shoppingList),
-                            label: {
-                                Image(systemName: "gearshape")
-                            })
+                    ToolbarItem(placement: .navigation) {
+                        Button(action: {
+                            NSApp.keyWindow?.firstResponder?.tryToPerform(#selector(NSSplitViewController.toggleSidebar(_:)), with: nil)
+                        }) {
+                            Image(systemName: "sidebar.left")
+                        }
+                        .keyboardShortcut("S", modifiers: .command)
                     }
                 }
-            }
+//            }
             .onAppear(perform: loadList)
+            #if os(iOS)
             AddProductModalView(isShowing: $showSheet)
+            #endif
         }
     }
 
