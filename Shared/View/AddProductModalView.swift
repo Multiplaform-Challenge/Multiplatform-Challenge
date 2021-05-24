@@ -7,7 +7,7 @@ public struct AddProductModalView: View {
     @State var nameItem: String = ""
     @State var quantityItem: Int = 0
     @State var priceItem: Double = 0.00
-    @StateObject private var shoppingListVM = ShoppingListViewModel()
+    @StateObject var shoppingListVM: ShoppingListViewModel
 
     var bodyContet: some View {
         VStack {
@@ -48,14 +48,6 @@ public struct AddProductModalView: View {
         shoppingListVM.prince = Float(priceItem)
         shoppingListVM.isChecked = false
         shoppingListVM.save()
-    }
-}
-
-struct AddProductModalView_Previews: PreviewProvider {
-    static var previews: some View {
-        VStack {
-            Spacer()
-            AddProductModalView(isShowing: .constant(true))
-        }
+        shoppingListVM.getAllItens()
     }
 }

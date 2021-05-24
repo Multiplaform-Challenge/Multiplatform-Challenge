@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
 
     @State var showSheet = false
-    @StateObject private var shoppingListVM = ShoppingListViewModel()
+    @StateObject var shoppingListVM = ShoppingListViewModel()
     @StateObject var shoppingList = ShoppingListDemo()
 
     var body: some View {
@@ -51,7 +51,7 @@ struct ContentView: View {
             .onAppear(perform: {
                 shoppingListVM.getAllItens()
             })
-            AddProductModalView(isShowing: $showSheet)
+            AddProductModalView(isShowing: $showSheet, shoppingListVM: shoppingListVM)
         }
     }
 

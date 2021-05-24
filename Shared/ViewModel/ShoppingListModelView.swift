@@ -24,7 +24,9 @@ class ShoppingListViewModel: ObservableObject {
     func save() {
         let item = Item(context: CoreDataManager.shared.viewContext)
         item.name = name
-
+        item.price = prince
+        item.isChecked = isChecked
+        item.quantity = quantity
         CoreDataManager.shared.save()
     }
 
