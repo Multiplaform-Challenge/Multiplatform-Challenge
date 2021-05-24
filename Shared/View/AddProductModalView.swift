@@ -6,7 +6,8 @@ public struct AddProductModalView: View {
     @Binding var isShowing: Bool
     @State var nameItem: String = ""
     @State var quantityItem: Int = 0
-    @State var priceItem: Double = 0.0
+    @State var priceItem: Double = 0.00
+    @StateObject private var shoppingListVM = ShoppingListViewModel()
 
     var bodyContet: some View {
         VStack {
@@ -21,10 +22,6 @@ public struct AddProductModalView: View {
                               title: "Quantidade",
                               backgroundRectangleColor: Color( "ActionColorSecond"))
                 .frame(height: 50)
-//            testar os State's
-//            Text(nameItem)
-//            Text("\(quantityItem)")
-//            Text("\(priceItem)")
         }
         .padding()
     }
@@ -38,9 +35,19 @@ public struct AddProductModalView: View {
                     titleModal: "Adicionar Produto",
                     titleButtonLeft: "Cancelar",
                     titleButtonRight: "Adicionar",
-                    contentBuilder: {bodyContet})
+                    contentBuilder: {bodyContet},
+                    action: addItem
+            )
                 .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
         }
+    }
+
+    func addItem() {
+        shoppingListVM.name = nameItem
+        shoppingListVM.quantity = Int16(quantityItem)
+        shoppingListVM.prince = Float(priceItem)
+        shoppingListVM.isChecked = false
+        shoppingListVM.save()
     }
 }
 
