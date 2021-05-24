@@ -22,9 +22,18 @@ struct ContentView: View {
 //                    MoneyDetails()
                     HStack {
                         Text("Minha Lista")
+                            .font(Font.custom(FontNameManager.Poppins.bold, size: 24))
                         Spacer()
-                        Button("Adicionar produto") {
+                        Button(action: {
                             showSheet.toggle()
+                        }) {
+                            Text("Adicionar produto")
+                                .frame(height: 10)
+                                .font(Font.custom(FontNameManager.Poppins.medium, size: 17))
+                                .padding()
+                                .background(Color("AccentColor"))
+                                .foregroundColor(Color("TitleColor"))
+                                .cornerRadius(40)
                         }
                     }.padding()
 

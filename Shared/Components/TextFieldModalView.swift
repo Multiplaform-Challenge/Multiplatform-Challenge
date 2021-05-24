@@ -23,14 +23,13 @@ public struct TextFieldModalView: View {
     var textFieldView: some View {
         HStack {
             Text(title)
-                .font(.callout)
-                .bold()
+                .font(FontNameManager.CustomFont.titleComponentFont)
             Spacer()
             TextField(placeholder, text: $nameText)
                 .frame(maxWidth: .infinity, alignment: .trailing)
                 .multilineTextAlignment(.trailing)
+                .font(FontNameManager.CustomFont.textfieldComponentFont)
         }
-        .padding(.horizontal)
     }
 
     public var body: some View {

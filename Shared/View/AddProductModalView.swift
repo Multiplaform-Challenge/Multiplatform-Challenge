@@ -7,20 +7,22 @@ public struct AddProductModalView: View {
     @State var nameItem: String = ""
     @State var quantityItem: Int = 0
     @State var priceItem: Double = 0.0
+    var heightCell: CGFloat = 50.0
 
     var bodyContet: some View {
         VStack {
             TextFieldModalView(nameText: $nameItem,
                                title: "Nome",
                                placeholder: "EX.: Arroz branco")
-                .frame(height: 50)
-            CurrencyTextFieldModalView(title: "Preço",
-                                       valueFinal: $priceItem)
-                .frame(height: 50)
+                .frame(height: heightCell)
+            CurrencyTextFieldModalView(valueFinal: $priceItem,
+                                       hasTitle: true,
+                                       title: "Preço")
+                .frame(height: heightCell)
             QuantityModalView(quantity: $quantityItem,
                               title: "Quantidade",
                               backgroundRectangleColor: Color( "ActionColorSecond"))
-                .frame(height: 50)
+                .frame(height: heightCell)
 //            testar os State's
 //            Text(nameItem)
 //            Text("\(quantityItem)")

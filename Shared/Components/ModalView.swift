@@ -74,15 +74,19 @@ public struct ModalView<Content: View>: View {
                 HeaderModalView(titleModal: titleModal,
                                 isTitleLarge: isTitleLarge)
                 content
+                    .frame(width: UIScreen.main.bounds.width * 0.9)
                 HStack {
                     ButtonModalView(backgroundColor: .clear,
                                     titleButton: titleButtonLeft,
                                     actionButton: hide)
+                    Spacer()
                     ButtonModalView(titleButton: titleButtonRight)
                 }
+                .frame(width: UIScreen.main.bounds.width * 0.9)
                 .padding(.top, 30)
                 Text("").frame(height:  keyboardRef.isActive ? keyboardRef.currentHeight : 50)
             }
+            .padding(.horizontal)
             .background(backgroundColor)
             .cornerRadius(15)
             .offset(y: offset)
