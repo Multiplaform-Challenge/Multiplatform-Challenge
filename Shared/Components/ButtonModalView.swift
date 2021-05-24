@@ -21,9 +21,8 @@ public struct ButtonModalView: View {
             actionButton?()
         }) {
             Text(titleButton)
-                .fontWeight(.bold)
-                .font(.callout)
-                .frame(width: 100, height: 20)
+                .font(FontNameManager.CustomFont.titleComponentFont)
+                .frame(width: 120, height: 20)
                 .padding()
                 .background(backgroundColor)
                 .foregroundColor(foregrounColor)

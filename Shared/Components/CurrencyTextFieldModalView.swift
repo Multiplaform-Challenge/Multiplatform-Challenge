@@ -1,9 +1,18 @@
 import SwiftUI
 
 public struct CurrencyTextFieldModalView: View {
-    @State var title: String = ""
+    var title: String
     @State var valueText: String = ""
     @Binding var valueFinal: Double
+    var hasTitle: Bool
+
+    public init(valueFinal: Binding<Double>,
+                hasTitle: Bool,
+                title: String = "") {
+        _valueFinal = valueFinal
+        self.hasTitle = hasTitle
+        self.title = title
+    }
 
     var value: Double {
         (Double(self.valueText) ?? 0.0) / 100
@@ -20,15 +29,25 @@ public struct CurrencyTextFieldModalView: View {
             self.valueText = text
             self.valueFinal = (Double(self.valueText) ?? 0.0) / 100
         }
-        HStack {
-            Text(title)
-                .font(.callout)
-                .bold()
-            Spacer()
-            TextField("R$ 0.00", text: typing).keyboardType(.numbersAndPunctuation)
-                .frame(maxWidth: .infinity, alignment: .trailing)
-                .multilineTextAlignment(.trailing)
+        if hasTitle {
+            HStack {
+                Text(title)
+                    .font(FontNameManager.CustomFont.titleComponentFont)
+                Spacer()
+                TextField("R$ 0.00", text: typing).keyboardType(.numbersAndPunctuation)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                    .multilineTextAlignment(.trailing)
+                    .font(FontNameManager.CustomFont.textfieldComponentFont)
+                    .foregroundColor(value == 0.0 ? Color("PlaceholderColor") : Color("TitleColor"))
+            }
+        } else {
+            HStack {
+                TextField("R$ 0.00", text: typing).keyboardType(.numbersAndPunctuation)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .multilineTextAlignment(.center)
+                    .font(Font.custom(FontNameManager.Poppins.medium, size: 30))
+                    .foregroundColor(value == 0.0 ? Color("PlaceholderColor") : Color("TitleColor"))
+            }
         }
-        .padding(.horizontal)
     }
 }
