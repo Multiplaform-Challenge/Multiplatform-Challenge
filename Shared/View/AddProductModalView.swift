@@ -35,12 +35,12 @@ public struct AddProductModalView: View {
         VStack {
             Spacer()
             ModalView(isShowing: $isShowing,
-                    keyboardRef: KeyboardResponder(),
-                    isTitleLarge: false,
-                    titleModal: "Adicionar Produto",
-                    titleButtonLeft: "Cancelar",
-                    titleButtonRight: "Adicionar",
-                    contentBuilder: {bodyContet})
+                      keyboardRef: KeyboardResponder(),
+                      isTitleLarge: false,
+                      titleModal: "Adicionar Produto",
+                      titleButtonLeft: "Cancelar",
+                      titleButtonRight: "Adicionar",
+                      contentBuilder: {bodyContet})
 //                .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
         }
     }

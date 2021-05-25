@@ -15,50 +15,45 @@ struct ContentView: View {
     @State var showSheet = false
     @StateObject var shoppingList = ShoppingListDemo()
 
+    private var view: some View {
+        VStack {
+            #if os(iOS)
+            MoneyDetails()
+            #endif
+            HStack {
+                Text("Minha Lista")
+                    .font(Font.custom(FontNameManager.Poppins.bold, size: 24))
+                Spacer()
+                Button(action: {
+                    showSheet.toggle()
+                }) {
+                    Text("Adicionar produto")
+                        .frame(height: 10)
+                        .font(Font.custom(FontNameManager.Poppins.medium, size: 17))
+                        .padding()
+                        .background(Color("AccentColor"))
+                        .foregroundColor(Color("TitleColor"))
+                        .cornerRadius(40)
+                }
+            }.padding()
+
+            List {
+                ForEach(allItens) { item in
+                    ListRow(item: ProductItem(id: UUID.init(), name: "arroz", price: 32.99, itemNumber: 4))
+                }
+                .onDelete(perform: deleteItem)
+                .onTapGesture {
+                    self.showSheet.toggle()
+                }
+            }
+        }
+    }
+
     var body: some View {
         ZStack {
-//            NavigationView {
-                VStack {
-//                    MoneyDetails()
-                    HStack {
-                        Text("Minha Lista")
-                            .font(Font.custom(FontNameManager.Poppins.bold, size: 24))
-                        Spacer()
-                        Button(action: {
-                            showSheet.toggle()
-                        }) {
-                            Text("Adicionar produto")
-                                .frame(height: 10)
-                                .font(Font.custom(FontNameManager.Poppins.medium, size: 17))
-                                .padding()
-                                .background(Color("AccentColor"))
-                                .foregroundColor(Color("TitleColor"))
-                                .cornerRadius(40)
-                        }
-                    }.padding()
-
-                    List {
-                        ForEach(allItens) { item in
-                            ListRow(item: ProductItem(id: UUID.init(), name: "arroz", price: 32.99, itemNumber: 4))
-                        }
-                        .onDelete(perform: deleteItem)
-                        .onTapGesture {
-                            self.showSheet.toggle()
-                        }
-                    }
-                }
-//                .navigationBarTitle("Compras da semana")
+            #if os(macOS)
+            view
                 .listStyle(PlainListStyle())
-//                .listStyle(GroupedListStyle())
-//                .toolbar {
-//                    ToolbarItem(placement: .navigationBarTrailing) {
-//                        NavigationLink(
-//                            destination: SettingsView(shoppingList: shoppingList),
-//                            label: {
-//                                Image(systemName: "gearshape")
-//                            })
-//                    }
-//                }
                 .toolbar {
                     ToolbarItem(placement: .navigation) {
                         Button(action: {
@@ -69,10 +64,24 @@ struct ContentView: View {
                         .keyboardShortcut("S", modifiers: .command)
                     }
                 }
+                .onAppear(perform: loadList)
+            #else
+//            NavigationView {
+                view
+                    .navigationBarTitle("Compras da semana")
+                    .listStyle(GroupedListStyle())
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            NavigationLink(
+                                destination: SettingsView(shoppingList: shoppingList),
+                                label: {
+                                    Image(systemName: "gearshape.fill")
+                                })
+                        }
+                    }
+                    .onAppear(perform: loadList)
+                    .fullScreenCover(isPresented: $showSheet, content: { AddProductModalView(isShowing: $showSheet) })
 //            }
-            .onAppear(perform: loadList)
-            #if os(iOS)
-            AddProductModalView(isShowing: $showSheet)
             #endif
         }
     }
