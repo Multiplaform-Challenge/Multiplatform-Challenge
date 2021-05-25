@@ -56,6 +56,8 @@
 		39A3A92D26582C0400370754 /* FontNameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A3A92C26582C0400370754 /* FontNameManager.swift */; };
 		39A3A92E26582C0400370754 /* FontNameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A3A92C26582C0400370754 /* FontNameManager.swift */; };
 		39A3A9342658367300370754 /* WithoutPriceModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A3A9332658367300370754 /* WithoutPriceModalView.swift */; };
+		4B848C5C265D36D10029F817 /* SettingsModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B848C5B265D36D10029F817 /* SettingsModalView.swift */; };
+		4B848C5D265D37310029F817 /* BudgetViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5706561B265555F300903AC1 /* BudgetViewCell.swift */; };
 		570656142655405400903AC1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570656132655405400903AC1 /* SettingsView.swift */; };
 		5706561A265555E800903AC1 /* ObjectiveViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57065619265555E800903AC1 /* ObjectiveViewCell.swift */; };
 		5706561C265555F300903AC1 /* BudgetViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5706561B265555F300903AC1 /* BudgetViewCell.swift */; };
@@ -185,6 +187,7 @@
 		39A3A901265829FA00370754 /* Poppins-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.otf"; sourceTree = "<group>"; };
 		39A3A92C26582C0400370754 /* FontNameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontNameManager.swift; sourceTree = "<group>"; };
 		39A3A9332658367300370754 /* WithoutPriceModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithoutPriceModalView.swift; sourceTree = "<group>"; };
+		4B848C5B265D36D10029F817 /* SettingsModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModalView.swift; sourceTree = "<group>"; };
 		570656132655405400903AC1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		57065619265555E800903AC1 /* ObjectiveViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectiveViewCell.swift; sourceTree = "<group>"; };
 		5706561B265555F300903AC1 /* BudgetViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewCell.swift; sourceTree = "<group>"; };
@@ -276,6 +279,15 @@
 				39A3A900265829FA00370754 /* SIL Open Font License.txt */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		4B848C5A265D366E0029F817 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				5788BA54265BE3F5008ED0BC /* MoneyDetailsMac.swift */,
+				4B848C5B265D36D10029F817 /* SettingsModalView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		572EA686265683F900993D79 /* Components */ = {
@@ -374,10 +386,10 @@
 		57F24AB82653FB9C001E4B05 /* macOS */ = {
 			isa = PBXGroup;
 			children = (
+				4B848C5A265D366E0029F817 /* Components */,
 				57F24AB92653FB9C001E4B05 /* Info.plist */,
 				57F24ABA2653FB9C001E4B05 /* macOS.entitlements */,
 				57AF03462657FC1D00D1DB5A /* Sidebar.swift */,
-				5788BA54265BE3F5008ED0BC /* MoneyDetailsMac.swift */,
 			);
 			path = macOS;
 			sourceTree = "<group>";
@@ -664,12 +676,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B848C5D265D37310029F817 /* BudgetViewCell.swift in Sources */,
 				57F24AD42653FB9C001E4B05 /* MultiplatformChallengeApp.swift in Sources */,
 				57FFD9E72657FE7100A61EF4 /* ProductItem.swift in Sources */,
 				57F24AD82653FB9C001E4B05 /* Persistence.swift in Sources */,
 				57FFD9E42657FD2400A61EF4 /* ButtonModalView.swift in Sources */,
 				57FFD9E62657FD2C00A61EF4 /* QuantityModalView.swift in Sources */,
 				57FFD9DC2657FD1000A61EF4 /* ListRow.swift in Sources */,
+				4B848C5C265D36D10029F817 /* SettingsModalView.swift in Sources */,
 				5788BA55265BE3F5008ED0BC /* MoneyDetailsMac.swift in Sources */,
 				57FFD9DD2657FD1300A61EF4 /* MoneyDetails.swift in Sources */,
 				57AF03472657FC1D00D1DB5A /* Sidebar.swift in Sources */,

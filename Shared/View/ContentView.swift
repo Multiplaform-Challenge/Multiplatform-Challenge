@@ -35,6 +35,7 @@ struct ContentView: View {
                         .foregroundColor(Color("TitleColor"))
                         .cornerRadius(40)
                 }
+                .buttonStyle(BorderlessButtonStyle())
             }.padding()
 
             List {

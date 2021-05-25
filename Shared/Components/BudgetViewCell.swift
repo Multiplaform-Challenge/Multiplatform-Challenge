@@ -12,17 +12,21 @@ struct BudgetViewCell: View {
             Text("Orçamento")
                 .fixedSize()
             Spacer(minLength: 16)
+            #if os(macOS)
+            TextField("Orçamento", text: Binding(get: { self.format(value: budget) }, set: { self.budget = self.format(text: $0) }))
+                .multilineTextAlignment(.trailing)
+            #else
             TextField("Orçamento", text: Binding(get: { self.format(value: budget) }, set: { self.budget = self.format(text: $0) }))
                 .keyboardType(.decimalPad)
                 .multilineTextAlignment(.trailing)
-//                .border(Color.blue)
+            //                .border(Color.blue)
+            #endif
         }
     }
-
     func format(value: Double) -> String {
         // for presentation
         // replace "." with decimal separator
-//        print("Value: \(value)")
+        //        print("Value: \(value)")
         let separator = Locale.current.decimalSeparator ?? "."
         var formattedValue = String(format: "%f", value)
             .replacingOccurrences(of: ".", with: separator)
@@ -38,7 +42,7 @@ struct BudgetViewCell: View {
     }
 
     func format(text: String) -> Double {
-//        print("Text: \(text)")
+        //        print("Text: \(text)")
         if text.count >= budgetCharLimit {
             return budget
         }
@@ -48,7 +52,7 @@ struct BudgetViewCell: View {
             .replacingOccurrences(of: "R", with: "")
             .replacingOccurrences(of: "$", with: "")
             .replacingOccurrences(of: " ", with: "")
-//        print(formattedText)
+        //        print(formattedText)
         if formattedText.contains(".") {
             showSeparator = true
         } else {
