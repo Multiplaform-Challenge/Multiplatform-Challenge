@@ -38,7 +38,7 @@ Deseja adicionar o preço?
                     titleModal: "Produto sem preço",
                     titleButtonLeft: "Pular",
                     titleButtonRight: "Salvar",
-                    contentBuilder: {bodyContet})
+                    contentBuilder: {bodyContet}, action: addPriceItem)
                 .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
         }
     }

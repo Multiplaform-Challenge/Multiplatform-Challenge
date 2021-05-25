@@ -14,5 +14,4 @@ struct MultiplatformChallengeApp: App {
             ContentView()
         }
     }
-
 }

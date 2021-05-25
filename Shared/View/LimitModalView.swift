@@ -35,7 +35,7 @@ Deseja remover o item?
                     titleModal: "No Limite",
                     titleButtonLeft: "Cancelar",
                     titleButtonRight: "Remover",
-                    contentBuilder: {bodyContet})
+                    contentBuilder: {bodyContet}, action: removerItem)
                 .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
         }
     }
