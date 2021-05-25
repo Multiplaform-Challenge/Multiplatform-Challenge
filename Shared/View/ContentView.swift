@@ -13,6 +13,12 @@ struct ContentView: View {
     @StateObject var shoppingListVM = ShoppingListViewModel()
     @StateObject var shoppingList = ShoppingListDemo()
 
+    init() {
+        let appearance = UINavigationBar.appearance()
+        appearance.largeTitleTextAttributes = [.font : UIFont(name: FontNameManager.Poppins.bold, size: 30)!]
+        appearance.backgroundColor = UIColor(named: "BackgroundColor")
+    }
+
     var body: some View {
         ZStack {
             NavigationView {
@@ -44,9 +50,10 @@ struct ContentView: View {
                             self.showSheet.toggle()
                         }
                     }
+                    .listStyle(PlainListStyle())
+                    .colorMultiply(Color("BackgroundColor")).padding(.top)
                 }
                 .navigationBarTitle("Compras da semana")
-                .listStyle(GroupedListStyle())
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         NavigationLink(
@@ -61,17 +68,19 @@ struct ContentView: View {
             .onAppear(perform: {
                 shoppingListVM.getAllItens()
             })
-            AddProductModalView(isShowing: $showSheet, shoppingListVM: shoppingListVM)
+            AddProductModalView(isShowing: $showSheet,
+                                shoppingListVM: shoppingListVM)
         }
     }
 
     func deleteItem(at offsets: IndexSet) {
-            offsets.forEach { index in
-                let item = shoppingListVM.itens[index]
-                shoppingListVM.delete(item)
-            }
-            shoppingListVM.getAllItens()
+        offsets.forEach { index in
+            let item = shoppingListVM.itens[index]
+            shoppingListVM.delete(item)
         }
+        shoppingListVM.getAllItens()
+    }
+
 }
 
 class ShoppingListDemo: ObservableObject {
