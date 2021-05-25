@@ -18,6 +18,7 @@ struct MultiplatformChallengeApp: App {
                 Sidebar()
                 ContentView()
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                    .frame(minWidth: 500)
                 #else
                 ContentView()
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
