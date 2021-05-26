@@ -38,8 +38,11 @@ struct ListRow: View {
             }
             Spacer()
             VStack {
-                Text("R$ \(String(format: "%.2f", item.price))")
+                Text("R$ \(String(format: "%.2f", (item.price*Float(item.quantity))))")
                     .font(FontNameManager.CustomFont.titleComponentFont)
+                Text("\(item.quantity) x R$\(String(format: "%.2f", item.price))")
+                    .font(Font.custom(FontNameManager.Poppins.regular, size: 12))
+                    .foregroundColor(Color("TextColor"))
             }
         }
         .padding()
