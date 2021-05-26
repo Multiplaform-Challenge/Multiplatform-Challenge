@@ -11,13 +11,11 @@ struct ContentView: View {
 
     @State var showSheet = false
     @StateObject var shoppingListVM = ShoppingListViewModel()
-    @StateObject var shoppingList = ShoppingListDemo()
-
     var body: some View {
         ZStack {
             NavigationView {
                 VStack {
-                    MoneyDetails()
+                    MoneyDetails(shoppingListVM: shoppingListVM)
                     HStack {
                         Text("Minha Lista")
                             .font(Font.custom(FontNameManager.Poppins.bold, size: 24))
@@ -45,12 +43,12 @@ struct ContentView: View {
                         }
                     }
                 }
-                .navigationBarTitle("Compras da semana")
+                .navigationBarTitle("\(shoppingListVM.objective)")
                 .listStyle(GroupedListStyle())
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         NavigationLink(
-                            destination: SettingsView(shoppingList: shoppingList),
+                            destination: SettingsView(shoppingListVM: shoppingListVM),
                             label: {
                                 Image(systemName: "gearshape.fill")
                             })
@@ -72,11 +70,6 @@ struct ContentView: View {
             }
             shoppingListVM.getAllItens()
         }
-}
-
-class ShoppingListDemo: ObservableObject {
-    @Published var objective: String = ""
-    @Published var budget: Double = 0
 }
 
 struct ContentView_Previews: PreviewProvider {
