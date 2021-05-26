@@ -9,10 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @State private var newItem = ""
-    @State private var allItens: [ItemList] = []
-    private let key = "ItensKey"
     @State var showSheet = false
+    @StateObject var shoppingListVM = ShoppingListViewModel()
     @StateObject var shoppingList = ShoppingListDemo()
 
     private var view: some View {
@@ -37,10 +35,9 @@ struct ContentView: View {
                 }
                 .buttonStyle(BorderlessButtonStyle())
             }.padding()
-
             List {
-                ForEach(allItens) { item in
-                    ListRow(item: ProductItem(id: UUID.init(), name: "arroz", price: 32.99, itemNumber: 4))
+                ForEach(shoppingListVM.itens, id: \.id) { item in
+                    ListRow(item: ItemList(name: item.name, price: item.price, quantity: item.quantity, isChecked: item.isChecked))
                 }
                 .onDelete(perform: deleteItem)
                 .onTapGesture {
@@ -49,6 +46,13 @@ struct ContentView: View {
             }
         }
     }
+    #if os(iOS)
+    //    init() {
+    //        let appearance = UINavigationBar.appearance()
+    //        appearance.largeTitleTextAttributes = [.font : UIFont(name: FontNameManager.Poppins.bold, size: 30)!]
+    //        appearance.backgroundColor = UIColor(named: "BackgroundColor")
+    //    }
+    #endif
 
     var body: some View {
         ZStack {
@@ -64,50 +68,44 @@ struct ContentView: View {
                         }
                         .keyboardShortcut("S", modifiers: .command)
                     }
+//                    .listStyle(PlainListStyle())
+//                    .colorMultiply(Color("BackgroundColor")).padding(.top)
                 }
-                .onAppear(perform: loadList)
+                .onAppear(perform: {
+                    shoppingListVM.getAllItens()
+                })
             #else
-//            NavigationView {
-                view
-                    .navigationBarTitle("Compras da semana")
-                    .listStyle(GroupedListStyle())
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            NavigationLink(
-                                destination: SettingsView(shoppingList: shoppingList),
-                                label: {
-                                    Image(systemName: "gearshape.fill")
-                                })
-                        }
+            //            NavigationView {
+            view
+                .navigationBarTitle("Compras da semana")
+                .listStyle(GroupedListStyle())
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        NavigationLink(
+                            destination: SettingsView(shoppingList: shoppingList),
+                            label: {
+                                Image(systemName: "gearshape.fill")
+                            })
                     }
-                    .onAppear(perform: loadList)
-                    .fullScreenCover(isPresented: $showSheet, content: { AddProductModalView(isShowing: $showSheet) })
-//            }
+                }
+                .background(Color("BackgroundColor"))
+                .onAppear(perform: {
+                    shoppingListVM.getAllItens()
+                })
+            AddProductModalView(isShowing: $showSheet, shoppingListVM: shoppingListVM)
+        //}
             #endif
         }
     }
 
-    private func saveList() {
-        UserDefaults.standard.set(try? PropertyListEncoder().encode(self.allItens), forKey: key)
-    }
-
-    private func loadList() {
-        if let todosData = UserDefaults.standard.value(forKey: key) as? Data {
-            if let todosList = try? PropertyListDecoder().decode(Array<ItemList>.self, from: todosData) {
-                self.allItens = todosList
-            }
+    func deleteItem(at offsets: IndexSet) {
+        offsets.forEach { index in
+            let item = shoppingListVM.itens[index]
+            shoppingListVM.delete(item)
         }
+        shoppingListVM.getAllItens()
     }
 
-    private func deleteItem(at offsets: IndexSet) {
-        self.allItens.remove(atOffsets: offsets)
-        saveList()
-    }
-}
-
-struct ItemList: Codable, Identifiable {
-    var id = UUID()
-    let itemName: String
 }
 
 class ShoppingListDemo: ObservableObject {

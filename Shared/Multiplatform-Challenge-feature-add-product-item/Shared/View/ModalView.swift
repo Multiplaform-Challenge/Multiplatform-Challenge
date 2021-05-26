@@ -2,8 +2,8 @@ import SwiftUI
 import Combine
 import UIKit
 
-public struct ModalView<Content: View>: View {
-    @ObservedObject var keyboardRef: KeyboardResponder
+public struct ModalSheetMain: View {
+    
     @State var offset = UIScreen.main.bounds.height
     @Binding var isShowing: Bool
 
@@ -11,36 +11,80 @@ public struct ModalView<Content: View>: View {
     let cellHeight: CGFloat = 50
     let backgroundColor: Color
 
-    var isTitleLarge: Bool
     var titleModal: String
     var titleButtonRight: String
     var titleButtonLeft: String
-    let content: Content
-    var actionButtonRight: () -> Void
+
+    var buttonsBar: Bool
 
     public init(isShowing: Binding<Bool>,
-                keyboardRef: KeyboardResponder,
                 backgroundColor: Color = Color.white,
-                isTitleLarge: Bool,
                 titleModal: String,
-                titleButtonLeft: String = "Cancelar",
+                buttonsBar: Bool,
                 titleButtonRight: String = "Adicionar",
-                @ViewBuilder contentBuilder: () -> Content,
-                actionButtonRight: @escaping () -> Void) {
+                titleButtonLeft: String = "Cancelar") {
         _isShowing = isShowing
-        self.keyboardRef = keyboardRef
         self.backgroundColor = backgroundColor
-        self.isTitleLarge = isTitleLarge
         self.titleModal = titleModal
-        self.content = contentBuilder()
-        self.titleButtonLeft = titleButtonLeft
+        self.buttonsBar = buttonsBar
         self.titleButtonRight = titleButtonRight
-        self.actionButtonRight = actionButtonRight
+        self.titleButtonLeft = titleButtonLeft
     }
 
     func hide() {
         offset = heightToDisappear
         isShowing = false
+    }
+
+    var headerModalViewCustom: some View {
+        VStack() {
+            Capsule()
+                .frame(width: 50, height: 5)
+                .foregroundColor(Color.gray)
+                .padding(.top, 20)
+
+            if buttonsBar {
+
+                HStack {
+                    Button(titleButtonLeft) {
+                        hide()
+                    }
+                    Spacer()
+                    Text(titleModal)
+                        .font(.title3)
+                        .bold()
+                    Spacer()
+                    Button(action: {
+
+                    }) {
+                        Text(titleButtonRight)
+                            .bold()
+                    }
+                }
+                .padding(.horizontal)
+                .padding(.top, 10)
+
+            } else {
+
+                HStack {
+                    Text(titleModal)
+                        .font(.largeTitle)
+                        .bold()
+                        .padding(.top, 30)
+                    Spacer()
+                }
+                .padding(.horizontal)
+
+            }
+        }
+
+    }
+
+    var itemsView: some View {
+        VStack {
+
+        }
+        .padding()
     }
 
     var dragGestureDismissModal: some Gesture {
@@ -73,26 +117,12 @@ public struct ModalView<Content: View>: View {
     var sheetView: some View {
         VStack {
             Spacer()
+
             VStack {
-                HeaderModalView(titleModal: titleModal,
-                                isTitleLarge: isTitleLarge)
-                content
-                    .frame(width: UIScreen.main.bounds.width * 0.9)
-                HStack {
-                    ButtonModalView(backgroundColor: .clear,
-                                    titleButton: titleButtonLeft,
-                                    actionButton: hide)
-                    ButtonModalView(titleButton: titleButtonRight,
-                                    actionButton: {
-                                        self.actionButtonRight()
-                                        self.hide()
-                                    })
-                }
-                .frame(width: UIScreen.main.bounds.width * 0.9)
-                .padding(.top, 30)
-                Text("").frame(height:  keyboardRef.isActive ? keyboardRef.currentHeight : 50)
+                headerModalViewCustom
+                itemsView
+                Text("").frame(height: 50)
             }
-            .padding(.horizontal)
             .background(backgroundColor)
             .cornerRadius(15)
             .offset(y: offset)
@@ -113,10 +143,20 @@ public struct ModalView<Content: View>: View {
                 bodyContet
             }
         }
-//        .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
         .animation(.default)
         .onReceive(Just(isShowing), perform: { isShowing in
             offset = isShowing ? 0 : heightToDisappear
         })
+    }
+}
+
+struct ModalSheetMain_Previews: PreviewProvider {
+    static var previews: some View {
+        VStack {
+            Spacer()
+            ModalSheetMain(isShowing: .constant(true),
+                            titleModal: "Adicionar Produto",
+                            buttonsBar: true)
+        }
     }
 }

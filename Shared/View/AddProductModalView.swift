@@ -3,10 +3,13 @@ import Combine
 //import UIKit
 
 public struct AddProductModalView: View {
+    
+    var isEditItem: Bool? = nil
     @Binding var isShowing: Bool
     @State var nameItem: String = ""
     @State var quantityItem: Int = 0
-    @State var priceItem: Double = 0.0
+    @State var priceItem: Double = 0.00
+    @StateObject var shoppingListVM: ShoppingListViewModel
     var heightCell: CGFloat = 50.0
 
     var bodyContet: some View {
@@ -22,11 +25,8 @@ public struct AddProductModalView: View {
             QuantityModalView(quantity: $quantityItem,
                               title: "Quantidade",
                               backgroundRectangleColor: Color( "ActionColorSecond"))
+
                 .frame(height: heightCell)
-//            testar os State's
-//            Text(nameItem)
-//            Text("\(quantityItem)")
-//            Text("\(priceItem)")
         }
         .padding()
     }
@@ -35,22 +35,24 @@ public struct AddProductModalView: View {
         VStack {
             Spacer()
             ModalView(isShowing: $isShowing,
-                      keyboardRef: KeyboardResponder(),
-                      isTitleLarge: false,
-                      titleModal: "Adicionar Produto",
-                      titleButtonLeft: "Cancelar",
-                      titleButtonRight: "Adicionar",
-                      contentBuilder: {bodyContet})
-//                .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
+                    keyboardRef: KeyboardResponder(),
+                    isTitleLarge: false,
+                    titleModal: "Adicionar Produto",
+                    titleButtonLeft: "Cancelar",
+                    titleButtonRight: "Adicionar",
+                    contentBuilder: {bodyContet},
+                    actionButtonRight: addItem
+            )
+                .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
         }
     }
-}
 
-struct AddProductModalView_Previews: PreviewProvider {
-    static var previews: some View {
-        VStack {
-            Spacer()
-            AddProductModalView(isShowing: .constant(true))
-        }
+    func addItem() {
+        shoppingListVM.name = nameItem
+        shoppingListVM.quantity = Int16(quantityItem)
+        shoppingListVM.prince = Float(priceItem)
+        shoppingListVM.isChecked = false
+        shoppingListVM.save()
+        shoppingListVM.getAllItens()
     }
 }

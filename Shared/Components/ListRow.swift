@@ -1,15 +1,8 @@
-//
-//  ListRow.swift
-//  SwiftUITests
-//
-//  Created by José Mateus Azevedo on 13/05/21.
-//
-
 import SwiftUI
 
 struct ListRow: View {
 
-    let item: ProductItem
+    let item: ItemList
     @State var checkState:Bool = false
 
     var checkboxFieldView: some View {
@@ -39,14 +32,17 @@ struct ListRow: View {
             VStack(alignment: .leading) {
                 Text(item.name)
                     .font(FontNameManager.CustomFont.titleComponentFont)
-                Text("\(item.itemNumber) unidades")
+                Text("\(item.quantity) unidades")
                     .font(Font.custom(FontNameManager.Poppins.regular, size: 17))
                     .foregroundColor(Color("TextColor"))
             }
             Spacer()
             VStack {
-                Text("R$ \(String(format: "%.2f", item.price))")
+                Text("R$ \(String(format: "%.2f", (item.price*Float(item.quantity))))")
                     .font(FontNameManager.CustomFont.titleComponentFont)
+                Text("\(item.quantity) x R$\(String(format: "%.2f", item.price))")
+                    .font(Font.custom(FontNameManager.Poppins.regular, size: 12))
+                    .foregroundColor(Color("TextColor"))
             }
         }
         .padding()
@@ -57,6 +53,6 @@ struct ListRow: View {
 
 struct ListRow_Previews: PreviewProvider {
     static var previews: some View {
-        ListRow(item: ProductItem(id: UUID.init(), name: "Arroz branco", price: 32.99, itemNumber: 4))
+        ListRow(item: ItemList(name: "Macarrão", price: 3.35, quantity: 5, isChecked: false))
     }
 }
