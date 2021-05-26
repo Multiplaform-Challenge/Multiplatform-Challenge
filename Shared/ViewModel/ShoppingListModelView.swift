@@ -5,7 +5,7 @@ class ShoppingListViewModel: ObservableObject {
 
     var name: String = ""
     var quantity: Int16 = 0
-    var prince: Float = 1.00
+    var price: Float = 1.00
     var isChecked: Bool = false
 
     @Published var itens: [ProductItem] = []
@@ -24,10 +24,18 @@ class ShoppingListViewModel: ObservableObject {
     func save() {
         let item = Item(context: CoreDataManager.shared.viewContext)
         item.name = name
-        item.price = prince
+        item.price = price
         item.isChecked = isChecked
         item.quantity = quantity
         CoreDataManager.shared.save()
+    }
+
+    func upDate(id: NSManagedObjectID) {
+        CoreDataManager.shared.updateItem(itemId: id,
+                                          name: name,
+                                          price: price,
+                                          quantity: quantity,
+                                          isChecked: isChecked)
     }
 
 }

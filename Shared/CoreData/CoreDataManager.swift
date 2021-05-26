@@ -24,6 +24,18 @@ class CoreDataManager {
         save()
     }
 
+    func updateItem(itemId: NSManagedObjectID, name: String,
+                    price: Float, quantity: Int16, isChecked: Bool) {
+        let item = getItemById(id: itemId)
+        if let item = item {
+            item.name = name
+            item.price = price
+            item.quantity = quantity
+            item.isChecked = isChecked
+            save()
+        }
+    }
+
     func getAllItens() -> [Item] {
         let request: NSFetchRequest<Item> = Item.fetchRequest()
         do {
