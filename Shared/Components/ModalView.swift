@@ -76,8 +76,10 @@ public struct ModalView<Content: View>: View {
             VStack {
                 HeaderModalView(titleModal: titleModal,
                                 isTitleLarge: isTitleLarge)
-                content
-                    .frame(width: UIScreen.main.bounds.width * 0.9)
+                ScrollView {
+                    content
+                        .frame(width: UIScreen.main.bounds.width * 0.9)
+                }
                 HStack {
                     ButtonModalView(backgroundColor: .clear,
                                     titleButton: titleButtonLeft,
@@ -90,7 +92,7 @@ public struct ModalView<Content: View>: View {
                 }
                 .frame(width: UIScreen.main.bounds.width * 0.9)
                 .padding(.top, 30)
-                Text("").frame(height:  keyboardRef.isActive ? keyboardRef.currentHeight : 50)
+                Text("").frame(height: 50)
             }
             .padding(.horizontal)
             .background(backgroundColor)
@@ -104,6 +106,7 @@ public struct ModalView<Content: View>: View {
         ZStack {
             backgroundAreaView
             sheetView
+                .padding(.top,  UIScreen.main.bounds.height * 0.4)
         }
     }
 
