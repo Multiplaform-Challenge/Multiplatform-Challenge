@@ -3,7 +3,7 @@ import Combine
 //import UIKit
 
 public struct AddProductModalView: View {
-    
+
     var isEditItem: Bool? = nil
     @Binding var isShowing: Bool
     @State var nameItem: String = ""

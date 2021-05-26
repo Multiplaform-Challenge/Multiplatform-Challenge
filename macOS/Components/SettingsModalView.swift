@@ -16,7 +16,7 @@ struct SettingsModalView: View {
 
     var body: some View {
         let titleFont = Font.custom(FontNameManager.Poppins.bold, size: 22)
-        let priceFont = Font.custom(FontNameManager.Poppins.regular, size: 17)
+        let textFont = Font.custom(FontNameManager.Poppins.medium, size: 17)
         VStack {
             HStack {
                 Text("Configurações")
@@ -39,7 +39,7 @@ struct SettingsModalView: View {
         .frame(width: 430, height: 300, alignment: .center)
         .background(Color.white)
         .foregroundColor(Color.black)
-        .font(priceFont)
+        .font(textFont)
         .textFieldStyle(PlainTextFieldStyle())
     }
 }

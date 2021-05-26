@@ -34,10 +34,18 @@ struct ContentView: View {
                         .cornerRadius(40)
                 }
                 .buttonStyle(BorderlessButtonStyle())
-            }.padding()
+            }
+            .padding()
+            
             List {
                 ForEach(shoppingListVM.itens, id: \.id) { item in
+                    #if os(iOS)
                     ListRow(item: ItemList(name: item.name, price: item.price, quantity: item.quantity, isChecked: item.isChecked))
+                    #else
+                    ListRow(item: ItemList(name: item.name, price: item.price, quantity: item.quantity, isChecked: item.isChecked))
+                        .padding(.horizontal, 20)
+                        .padding(.top, 10)
+                    #endif
                 }
                 .onDelete(perform: deleteItem)
                 .onTapGesture {
@@ -45,6 +53,7 @@ struct ContentView: View {
                 }
             }
         }
+        .background(Color.white)
     }
     #if os(iOS)
     //    init() {
@@ -74,6 +83,10 @@ struct ContentView: View {
                 .onAppear(perform: {
                     shoppingListVM.getAllItens()
                 })
+                .sheet(isPresented: $showSheet, content: {
+                    AddProductMac(shoppingListVM: shoppingListVM, showModal: $showSheet)
+                })
+                
             #else
             //            NavigationView {
             view
@@ -113,8 +126,8 @@ class ShoppingListDemo: ObservableObject {
     @Published var budget: Double = 0
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//    }
+//}

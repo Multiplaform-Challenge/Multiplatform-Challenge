@@ -60,6 +60,8 @@
 		4B7D549C265E743400637BD5 /* ProductItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C76FFF3265802DF00C853E2 /* ProductItem.swift */; };
 		4B7D549D265E77CE00637BD5 /* MultiplatformChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7C76FFF1265802DF00C853E2 /* MultiplatformChallenge.xcdatamodeld */; };
 		4B7D549E265E784400637BD5 /* MultiplatformChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F24AA72653FB9B001E4B05 /* MultiplatformChallengeApp.swift */; };
+		4B7D54A0265E82E200637BD5 /* AddProductMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7D549F265E82E200637BD5 /* AddProductMac.swift */; };
+		4B7D54A1265E8AA000637BD5 /* CurrencyTextFieldModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3944E117265727930095934A /* CurrencyTextFieldModalView.swift */; };
 		4B848C5C265D36D10029F817 /* SettingsModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B848C5B265D36D10029F817 /* SettingsModalView.swift */; };
 		4B848C5D265D37310029F817 /* BudgetViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5706561B265555F300903AC1 /* BudgetViewCell.swift */; };
 		570656142655405400903AC1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570656132655405400903AC1 /* SettingsView.swift */; };
@@ -193,6 +195,7 @@
 		39A3A901265829FA00370754 /* Poppins-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.otf"; sourceTree = "<group>"; };
 		39A3A92C26582C0400370754 /* FontNameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontNameManager.swift; sourceTree = "<group>"; };
 		39A3A9332658367300370754 /* WithoutPriceModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithoutPriceModalView.swift; sourceTree = "<group>"; };
+		4B7D549F265E82E200637BD5 /* AddProductMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductMac.swift; sourceTree = "<group>"; };
 		4B848C5B265D36D10029F817 /* SettingsModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModalView.swift; sourceTree = "<group>"; };
 		570656132655405400903AC1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		57065619265555E800903AC1 /* ObjectiveViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectiveViewCell.swift; sourceTree = "<group>"; };
@@ -294,6 +297,7 @@
 			children = (
 				5788BA54265BE3F5008ED0BC /* MoneyDetailsMac.swift */,
 				4B848C5B265D36D10029F817 /* SettingsModalView.swift */,
+				4B7D549F265E82E200637BD5 /* AddProductMac.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -704,6 +708,7 @@
 				57FFD9DC2657FD1000A61EF4 /* ListRow.swift in Sources */,
 				4B848C5C265D36D10029F817 /* SettingsModalView.swift in Sources */,
 				5788BA55265BE3F5008ED0BC /* MoneyDetailsMac.swift in Sources */,
+				4B7D54A1265E8AA000637BD5 /* CurrencyTextFieldModalView.swift in Sources */,
 				57FFD9DD2657FD1300A61EF4 /* MoneyDetails.swift in Sources */,
 				57AF03472657FC1D00D1DB5A /* Sidebar.swift in Sources */,
 				57FFD9E22657FD1E00A61EF4 /* HeaderModalView.swift in Sources */,
@@ -715,6 +720,7 @@
 				7C76FFE62658017300C853E2 /* ItemList.swift in Sources */,
 				7C76FFF5265802DF00C853E2 /* CoreDataManager.swift in Sources */,
 				4B7D549E265E784400637BD5 /* MultiplatformChallengeApp.swift in Sources */,
+				4B7D54A0265E82E200637BD5 /* AddProductMac.swift in Sources */,
 				39A3A92E26582C0400370754 /* FontNameManager.swift in Sources */,
 				4B7D549C265E743400637BD5 /* ProductItem.swift in Sources */,
 			);
@@ -869,6 +875,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = DB9XDYKBL8;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
@@ -891,6 +898,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = DB9XDYKBL8;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
@@ -917,6 +925,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = DB9XDYKBL8;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -942,6 +951,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = DB9XDYKBL8;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
