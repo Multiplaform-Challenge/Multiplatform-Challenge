@@ -4,6 +4,7 @@ import UIKit
 
 public struct AddProductModalView: View {
     
+    var isEditItem: Bool? = nil
     @Binding var isShowing: Bool
     @State var nameItem: String = ""
     @State var quantityItem: Int = 0
@@ -40,7 +41,7 @@ public struct AddProductModalView: View {
                     titleButtonLeft: "Cancelar",
                     titleButtonRight: "Adicionar",
                     contentBuilder: {bodyContet},
-                    action: addItem
+                    actionButtonRight: addItem
             )
                 .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
         }

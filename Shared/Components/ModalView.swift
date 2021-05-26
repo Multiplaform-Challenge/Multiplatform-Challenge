@@ -16,7 +16,7 @@ public struct ModalView<Content: View>: View {
     var titleButtonRight: String
     var titleButtonLeft: String
     let content: Content
-    var addItem: () -> Void
+    var actionButtonRight: () -> Void
 
     public init(isShowing: Binding<Bool>,
                 keyboardRef: KeyboardResponder,
@@ -26,7 +26,7 @@ public struct ModalView<Content: View>: View {
                 titleButtonLeft: String = "Cancelar",
                 titleButtonRight: String = "Adicionar",
                 @ViewBuilder contentBuilder: () -> Content,
-                action: @escaping () -> Void) {
+                actionButtonRight: @escaping () -> Void) {
         _isShowing = isShowing
         self.keyboardRef = keyboardRef
         self.backgroundColor = backgroundColor
@@ -35,16 +35,10 @@ public struct ModalView<Content: View>: View {
         self.content = contentBuilder()
         self.titleButtonLeft = titleButtonLeft
         self.titleButtonRight = titleButtonRight
-        self.addItem = action
+        self.actionButtonRight = actionButtonRight
     }
 
     func hide() {
-        offset = heightToDisappear
-        isShowing = false
-    }
-
-    func actionAddItem() {
-        self.addItem()
         offset = heightToDisappear
         isShowing = false
     }
@@ -89,7 +83,10 @@ public struct ModalView<Content: View>: View {
                                     titleButton: titleButtonLeft,
                                     actionButton: hide)
                     ButtonModalView(titleButton: titleButtonRight,
-                                    actionButton: actionAddItem)
+                                    actionButton: {
+                                        self.actionButtonRight()
+                                        self.hide()
+                                    })
                 }
                 .frame(width: UIScreen.main.bounds.width * 0.9)
                 .padding(.top, 30)

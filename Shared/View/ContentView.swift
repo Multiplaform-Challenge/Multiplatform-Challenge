@@ -11,6 +11,13 @@ struct ContentView: View {
 
     @State var showSheet = false
     @StateObject var shoppingListVM = ShoppingListViewModel()
+
+    init() {
+        let appearance = UINavigationBar.appearance()
+        appearance.largeTitleTextAttributes = [.font : UIFont(name: FontNameManager.Poppins.bold, size: 30)!]
+        appearance.backgroundColor = UIColor(named: "BackgroundColor")
+    }
+
     var body: some View {
         ZStack {
             NavigationView {
@@ -42,6 +49,8 @@ struct ContentView: View {
                             self.showSheet.toggle()
                         }
                     }
+                    .listStyle(PlainListStyle())
+                    .colorMultiply(Color("BackgroundColor")).padding(.top)
                 }
                 .navigationBarTitle("\(shoppingListVM.objective)")
                 .listStyle(GroupedListStyle())
@@ -59,17 +68,19 @@ struct ContentView: View {
             .onAppear(perform: {
                 shoppingListVM.getAllItens()
             })
-            AddProductModalView(isShowing: $showSheet, shoppingListVM: shoppingListVM)
+            AddProductModalView(isShowing: $showSheet,
+                                shoppingListVM: shoppingListVM)
         }
     }
 
     func deleteItem(at offsets: IndexSet) {
-            offsets.forEach { index in
-                let item = shoppingListVM.itens[index]
-                shoppingListVM.delete(item)
-            }
-            shoppingListVM.getAllItens()
+        offsets.forEach { index in
+            let item = shoppingListVM.itens[index]
+            shoppingListVM.delete(item)
         }
+        shoppingListVM.getAllItens()
+    }
+
 }
 
 struct ContentView_Previews: PreviewProvider {

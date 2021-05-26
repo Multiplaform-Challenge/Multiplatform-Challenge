@@ -58,14 +58,13 @@
 		39A3A92D26582C0400370754 /* FontNameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A3A92C26582C0400370754 /* FontNameManager.swift */; };
 		39A3A92E26582C0400370754 /* FontNameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A3A92C26582C0400370754 /* FontNameManager.swift */; };
 		39A3A9342658367300370754 /* WithoutPriceModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A3A9332658367300370754 /* WithoutPriceModalView.swift */; };
-		39A3A9352658367300370754 /* WithoutPriceModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A3A9332658367300370754 /* WithoutPriceModalView.swift */; };
 		570656142655405400903AC1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570656132655405400903AC1 /* SettingsView.swift */; };
 		5706561A265555E800903AC1 /* ObjectiveViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57065619265555E800903AC1 /* ObjectiveViewCell.swift */; };
 		5706561C265555F300903AC1 /* BudgetViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5706561B265555F300903AC1 /* BudgetViewCell.swift */; };
 		57F24AC42653FB9C001E4B05 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F24AC32653FB9C001E4B05 /* Tests_iOS.swift */; };
 		57F24ACF2653FB9C001E4B05 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F24ACE2653FB9C001E4B05 /* Tests_macOS.swift */; };
 		57F24AD32653FB9C001E4B05 /* MultiplatformChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F24AA72653FB9B001E4B05 /* MultiplatformChallengeApp.swift */; };
-		57F24AD42653FB9C001E4B05 /* MultiplatformChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F24AA72653FB9B001E4B05 /* MultiplatformChallengeApp.swift */; };
+		57F24AD82653FB9C001E4B05 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		57F24AD92653FB9C001E4B05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57F24AAA2653FB9C001E4B05 /* Assets.xcassets */; };
 		57F24ADA2653FB9C001E4B05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57F24AAA2653FB9C001E4B05 /* Assets.xcassets */; };
 		7C0DC14A265C8AF70013746B /* ListDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0DC149265C8AF70013746B /* ListDetails.swift */; };
@@ -630,9 +629,7 @@
 				7C76FFDB2658014A00C853E2 /* ShoppingListModelView.swift in Sources */,
 				7C76FFE62658017300C853E2 /* ItemList.swift in Sources */,
 				7C76FFF5265802DF00C853E2 /* CoreDataManager.swift in Sources */,
-				57F24AD42653FB9C001E4B05 /* MultiplatformChallengeApp.swift in Sources */,
 				7C76FFF7265802DF00C853E2 /* MultiplatformChallenge.xcdatamodeld in Sources */,
-				39A3A9352658367300370754 /* WithoutPriceModalView.swift in Sources */,
 				39A3A92E26582C0400370754 /* FontNameManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -831,9 +828,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 828XYUZTZQ;
+				DEVELOPMENT_TEAM = DB9XDYKBL8;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = macOS/Info.plist;
@@ -855,9 +853,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 828XYUZTZQ;
+				DEVELOPMENT_TEAM = DB9XDYKBL8;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = macOS/Info.plist;
