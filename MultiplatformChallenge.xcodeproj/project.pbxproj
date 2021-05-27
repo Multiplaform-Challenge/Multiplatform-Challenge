@@ -41,7 +41,6 @@
 		39A3A917265829FA00370754 /* Poppins-ThinItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 39A3A8F9265829FA00370754 /* Poppins-ThinItalic.otf */; };
 		39A3A918265829FA00370754 /* Poppins-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 39A3A8FA265829FA00370754 /* Poppins-Regular.otf */; };
 		39A3A919265829FA00370754 /* Poppins-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 39A3A8FA265829FA00370754 /* Poppins-Regular.otf */; };
-		39A3A91A265829FA00370754 /* Poppins-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 39A3A8FB265829FA00370754 /* Poppins-LightItalic.otf */; };
 		39A3A91B265829FA00370754 /* Poppins-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 39A3A8FB265829FA00370754 /* Poppins-LightItalic.otf */; };
 		39A3A91C265829FA00370754 /* Poppins-ExtraLightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 39A3A8FC265829FA00370754 /* Poppins-ExtraLightItalic.otf */; };
 		39A3A91D265829FA00370754 /* Poppins-ExtraLightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 39A3A8FC265829FA00370754 /* Poppins-ExtraLightItalic.otf */; };
@@ -49,7 +48,6 @@
 		39A3A91F265829FA00370754 /* Poppins-SemiBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 39A3A8FD265829FA00370754 /* Poppins-SemiBoldItalic.otf */; };
 		39A3A920265829FA00370754 /* Poppins-ExtraBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 39A3A8FE265829FA00370754 /* Poppins-ExtraBoldItalic.otf */; };
 		39A3A921265829FA00370754 /* Poppins-ExtraBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 39A3A8FE265829FA00370754 /* Poppins-ExtraBoldItalic.otf */; };
-		39A3A922265829FA00370754 /* Poppins-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 39A3A8FF265829FA00370754 /* Poppins-Bold.otf */; };
 		39A3A923265829FA00370754 /* Poppins-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 39A3A8FF265829FA00370754 /* Poppins-Bold.otf */; };
 		39A3A924265829FA00370754 /* SIL Open Font License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 39A3A900265829FA00370754 /* SIL Open Font License.txt */; };
 		39A3A925265829FA00370754 /* SIL Open Font License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 39A3A900265829FA00370754 /* SIL Open Font License.txt */; };
@@ -58,15 +56,54 @@
 		39A3A92D26582C0400370754 /* FontNameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A3A92C26582C0400370754 /* FontNameManager.swift */; };
 		39A3A92E26582C0400370754 /* FontNameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A3A92C26582C0400370754 /* FontNameManager.swift */; };
 		39A3A9342658367300370754 /* WithoutPriceModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A3A9332658367300370754 /* WithoutPriceModalView.swift */; };
+		4B7D549B265E743400637BD5 /* ProductItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C76FFF3265802DF00C853E2 /* ProductItem.swift */; };
+		4B7D549C265E743400637BD5 /* ProductItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C76FFF3265802DF00C853E2 /* ProductItem.swift */; };
+		4B7D549D265E77CE00637BD5 /* MultiplatformChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7C76FFF1265802DF00C853E2 /* MultiplatformChallenge.xcdatamodeld */; };
+		4B7D549E265E784400637BD5 /* MultiplatformChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F24AA72653FB9B001E4B05 /* MultiplatformChallengeApp.swift */; };
+		4B7D54A0265E82E200637BD5 /* AddProductMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7D549F265E82E200637BD5 /* AddProductMac.swift */; };
+		4B7D54A1265E8AA000637BD5 /* CurrencyTextFieldModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3944E117265727930095934A /* CurrencyTextFieldModalView.swift */; };
+		4B848C5C265D36D10029F817 /* SettingsModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B848C5B265D36D10029F817 /* SettingsModalView.swift */; };
+		4B848C5D265D37310029F817 /* BudgetViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5706561B265555F300903AC1 /* BudgetViewCell.swift */; };
 		570656142655405400903AC1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570656132655405400903AC1 /* SettingsView.swift */; };
 		5706561A265555E800903AC1 /* ObjectiveViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57065619265555E800903AC1 /* ObjectiveViewCell.swift */; };
 		5706561C265555F300903AC1 /* BudgetViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5706561B265555F300903AC1 /* BudgetViewCell.swift */; };
+		5788BA55265BE3F5008ED0BC /* MoneyDetailsMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5788BA54265BE3F5008ED0BC /* MoneyDetailsMac.swift */; };
+		5788BA56265BE8FC008ED0BC /* Poppins-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 39A3A8FF265829FA00370754 /* Poppins-Bold.otf */; };
+		5788BA57265BE8FC008ED0BC /* Poppins-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 39A3A8FB265829FA00370754 /* Poppins-LightItalic.otf */; };
+		5788BA59265BEFF3008ED0BC /* Poppins-Black.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 39A3A8F7265829FA00370754 /* Poppins-Black.otf */; };
+		5788BA5A265BEFF3008ED0BC /* Poppins-BlackItalic.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 39A3A8F5265829FA00370754 /* Poppins-BlackItalic.otf */; };
+		5788BA5B265BEFF3008ED0BC /* Poppins-Bold.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 39A3A8FF265829FA00370754 /* Poppins-Bold.otf */; };
+		5788BA5C265BEFF3008ED0BC /* Poppins-BoldItalic.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 39A3A8F2265829F900370754 /* Poppins-BoldItalic.otf */; };
+		5788BA5D265BEFF3008ED0BC /* Poppins-ExtraBold.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 39A3A8F0265829F900370754 /* Poppins-ExtraBold.otf */; };
+		5788BA5E265BEFF3008ED0BC /* Poppins-ExtraBoldItalic.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 39A3A8FE265829FA00370754 /* Poppins-ExtraBoldItalic.otf */; };
+		5788BA5F265BEFF3008ED0BC /* Poppins-ExtraLight.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 39A3A8F6265829FA00370754 /* Poppins-ExtraLight.otf */; };
+		5788BA60265BEFF3008ED0BC /* Poppins-ExtraLightItalic.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 39A3A8FC265829FA00370754 /* Poppins-ExtraLightItalic.otf */; };
+		5788BA61265BEFF3008ED0BC /* Poppins-Italic.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 39A3A8F3265829FA00370754 /* Poppins-Italic.otf */; };
+		5788BA62265BEFF3008ED0BC /* Poppins-Light.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 39A3A8EF265829F900370754 /* Poppins-Light.otf */; };
+		5788BA63265BEFF3008ED0BC /* Poppins-LightItalic.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 39A3A8FB265829FA00370754 /* Poppins-LightItalic.otf */; };
+		5788BA64265BEFF3008ED0BC /* Poppins-Medium.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 39A3A901265829FA00370754 /* Poppins-Medium.otf */; };
+		5788BA65265BEFF3008ED0BC /* Poppins-MediumItalic.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 39A3A8F4265829FA00370754 /* Poppins-MediumItalic.otf */; };
+		5788BA66265BEFF3008ED0BC /* Poppins-Regular.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 39A3A8FA265829FA00370754 /* Poppins-Regular.otf */; };
+		5788BA67265BEFF3008ED0BC /* Poppins-SemiBold.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 39A3A8F1265829F900370754 /* Poppins-SemiBold.otf */; };
+		5788BA68265BEFF3008ED0BC /* Poppins-SemiBoldItalic.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 39A3A8FD265829FA00370754 /* Poppins-SemiBoldItalic.otf */; };
+		5788BA69265BEFF3008ED0BC /* Poppins-Thin.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 39A3A8F8265829FA00370754 /* Poppins-Thin.otf */; };
+		5788BA6A265BEFF3008ED0BC /* Poppins-ThinItalic.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 39A3A8F9265829FA00370754 /* Poppins-ThinItalic.otf */; };
+		57AF03472657FC1D00D1DB5A /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AF03462657FC1D00D1DB5A /* Sidebar.swift */; };
 		57F24AC42653FB9C001E4B05 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F24AC32653FB9C001E4B05 /* Tests_iOS.swift */; };
 		57F24ACF2653FB9C001E4B05 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F24ACE2653FB9C001E4B05 /* Tests_macOS.swift */; };
 		57F24AD32653FB9C001E4B05 /* MultiplatformChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F24AA72653FB9B001E4B05 /* MultiplatformChallengeApp.swift */; };
 		57F24AD82653FB9C001E4B05 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		57F24AD92653FB9C001E4B05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57F24AAA2653FB9C001E4B05 /* Assets.xcassets */; };
 		57F24ADA2653FB9C001E4B05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57F24AAA2653FB9C001E4B05 /* Assets.xcassets */; };
+		57FFD9DC2657FD1000A61EF4 /* ListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7C9BBB265539CD002E2F78 /* ListRow.swift */; };
+		57FFD9DD2657FD1300A61EF4 /* MoneyDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7C9BBC265539CD002E2F78 /* MoneyDetails.swift */; };
+		57FFD9DE2657FD1500A61EF4 /* ObjectiveViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57065619265555E800903AC1 /* ObjectiveViewCell.swift */; };
+		57FFD9E22657FD1E00A61EF4 /* HeaderModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3994778F2657157A00D66D82 /* HeaderModalView.swift */; };
+		57FFD9E42657FD2400A61EF4 /* ButtonModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3944E13A2657678D0095934A /* ButtonModalView.swift */; };
+		57FFD9E52657FD2700A61EF4 /* TextFieldModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3944E12526575BD60095934A /* TextFieldModalView.swift */; };
+		57FFD9E62657FD2C00A61EF4 /* QuantityModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3944E14026576B5A0095934A /* QuantityModalView.swift */; };
+		57FFD9E72657FE7100A61EF4 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		57FFD9E82657FEA200A61EF4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7C9BBA265539CD002E2F78 /* ContentView.swift */; };
 		7C76FFDA2658014A00C853E2 /* ShoppingListModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C76FFD92658014A00C853E2 /* ShoppingListModelView.swift */; };
 		7C76FFDB2658014A00C853E2 /* ShoppingListModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C76FFD92658014A00C853E2 /* ShoppingListModelView.swift */; };
 		7C76FFE52658017300C853E2 /* ItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C76FFE42658017300C853E2 /* ItemList.swift */; };
@@ -74,9 +111,6 @@
 		7C76FFF4265802DF00C853E2 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C76FFF0265802DF00C853E2 /* CoreDataManager.swift */; };
 		7C76FFF5265802DF00C853E2 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C76FFF0265802DF00C853E2 /* CoreDataManager.swift */; };
 		7C76FFF6265802DF00C853E2 /* MultiplatformChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7C76FFF1265802DF00C853E2 /* MultiplatformChallenge.xcdatamodeld */; };
-		7C76FFF7265802DF00C853E2 /* MultiplatformChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7C76FFF1265802DF00C853E2 /* MultiplatformChallenge.xcdatamodeld */; };
-		7C76FFF8265802DF00C853E2 /* ProductItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C76FFF3265802DF00C853E2 /* ProductItem.swift */; };
-		7C76FFF9265802DF00C853E2 /* ProductItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C76FFF3265802DF00C853E2 /* ProductItem.swift */; };
 		7C7C9BBE265539CD002E2F78 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7C9BBA265539CD002E2F78 /* ContentView.swift */; };
 		7C7C9BBF265539CD002E2F78 /* ListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7C9BBB265539CD002E2F78 /* ListRow.swift */; };
 		7C7C9BC0265539CD002E2F78 /* MoneyDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7C9BBC265539CD002E2F78 /* MoneyDetails.swift */; };
@@ -98,6 +132,36 @@
 			remoteInfo = "MultiplatformChallenge (macOS)";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5788BA58265BEFB2008ED0BC /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Fonts;
+			dstSubfolderSpec = 7;
+			files = (
+				5788BA59265BEFF3008ED0BC /* Poppins-Black.otf in CopyFiles */,
+				5788BA5A265BEFF3008ED0BC /* Poppins-BlackItalic.otf in CopyFiles */,
+				5788BA5B265BEFF3008ED0BC /* Poppins-Bold.otf in CopyFiles */,
+				5788BA5C265BEFF3008ED0BC /* Poppins-BoldItalic.otf in CopyFiles */,
+				5788BA5D265BEFF3008ED0BC /* Poppins-ExtraBold.otf in CopyFiles */,
+				5788BA5E265BEFF3008ED0BC /* Poppins-ExtraBoldItalic.otf in CopyFiles */,
+				5788BA5F265BEFF3008ED0BC /* Poppins-ExtraLight.otf in CopyFiles */,
+				5788BA60265BEFF3008ED0BC /* Poppins-ExtraLightItalic.otf in CopyFiles */,
+				5788BA61265BEFF3008ED0BC /* Poppins-Italic.otf in CopyFiles */,
+				5788BA62265BEFF3008ED0BC /* Poppins-Light.otf in CopyFiles */,
+				5788BA63265BEFF3008ED0BC /* Poppins-LightItalic.otf in CopyFiles */,
+				5788BA64265BEFF3008ED0BC /* Poppins-Medium.otf in CopyFiles */,
+				5788BA65265BEFF3008ED0BC /* Poppins-MediumItalic.otf in CopyFiles */,
+				5788BA66265BEFF3008ED0BC /* Poppins-Regular.otf in CopyFiles */,
+				5788BA67265BEFF3008ED0BC /* Poppins-SemiBold.otf in CopyFiles */,
+				5788BA68265BEFF3008ED0BC /* Poppins-SemiBoldItalic.otf in CopyFiles */,
+				5788BA69265BEFF3008ED0BC /* Poppins-Thin.otf in CopyFiles */,
+				5788BA6A265BEFF3008ED0BC /* Poppins-ThinItalic.otf in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		390FE40426547CB30065F26C /* BackgroundModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundModelView.swift; sourceTree = "<group>"; };
@@ -131,9 +195,13 @@
 		39A3A901265829FA00370754 /* Poppins-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.otf"; sourceTree = "<group>"; };
 		39A3A92C26582C0400370754 /* FontNameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontNameManager.swift; sourceTree = "<group>"; };
 		39A3A9332658367300370754 /* WithoutPriceModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithoutPriceModalView.swift; sourceTree = "<group>"; };
+		4B7D549F265E82E200637BD5 /* AddProductMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductMac.swift; sourceTree = "<group>"; };
+		4B848C5B265D36D10029F817 /* SettingsModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModalView.swift; sourceTree = "<group>"; };
 		570656132655405400903AC1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		57065619265555E800903AC1 /* ObjectiveViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectiveViewCell.swift; sourceTree = "<group>"; };
 		5706561B265555F300903AC1 /* BudgetViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewCell.swift; sourceTree = "<group>"; };
+		5788BA54265BE3F5008ED0BC /* MoneyDetailsMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyDetailsMac.swift; sourceTree = "<group>"; };
+		57AF03462657FC1D00D1DB5A /* Sidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
 		57F24AA72653FB9B001E4B05 /* MultiplatformChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplatformChallengeApp.swift; sourceTree = "<group>"; };
 		57F24AAA2653FB9C001E4B05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		57F24AAF2653FB9C001E4B05 /* MultiplatformChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MultiplatformChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -222,6 +290,16 @@
 				39A3A900265829FA00370754 /* SIL Open Font License.txt */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		4B848C5A265D366E0029F817 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				5788BA54265BE3F5008ED0BC /* MoneyDetailsMac.swift */,
+				4B848C5B265D36D10029F817 /* SettingsModalView.swift */,
+				4B7D549F265E82E200637BD5 /* AddProductMac.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		572EA686265683F900993D79 /* Components */ = {
@@ -320,8 +398,10 @@
 		57F24AB82653FB9C001E4B05 /* macOS */ = {
 			isa = PBXGroup;
 			children = (
+				4B848C5A265D366E0029F817 /* Components */,
 				57F24AB92653FB9C001E4B05 /* Info.plist */,
 				57F24ABA2653FB9C001E4B05 /* macOS.entitlements */,
+				57AF03462657FC1D00D1DB5A /* Sidebar.swift */,
 			);
 			path = macOS;
 			sourceTree = "<group>";
@@ -383,6 +463,7 @@
 				57F24AB42653FB9C001E4B05 /* Frameworks */,
 				57F24AB52653FB9C001E4B05 /* Resources */,
 				57F03CA92653FEA8006613AE /* ShellScript */,
+				5788BA58265BEFB2008ED0BC /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -480,8 +561,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39A3A922265829FA00370754 /* Poppins-Bold.otf in Resources */,
-				39A3A91A265829FA00370754 /* Poppins-LightItalic.otf in Resources */,
+				5788BA56265BE8FC008ED0BC /* Poppins-Bold.otf in Resources */,
+				5788BA57265BE8FC008ED0BC /* Poppins-LightItalic.otf in Resources */,
 				39A3A90C265829FA00370754 /* Poppins-MediumItalic.otf in Resources */,
 				39A3A91C265829FA00370754 /* Poppins-ExtraLightItalic.otf in Resources */,
 				39A3A926265829FA00370754 /* Poppins-Medium.otf in Resources */,
@@ -600,13 +681,13 @@
 				7C7C9BBF265539CD002E2F78 /* ListRow.swift in Sources */,
 				7C76FFDA2658014A00C853E2 /* ShoppingListModelView.swift in Sources */,
 				5706561A265555E800903AC1 /* ObjectiveViewCell.swift in Sources */,
+				4B7D549B265E743400637BD5 /* ProductItem.swift in Sources */,
 				39A3A92D26582C0400370754 /* FontNameManager.swift in Sources */,
 				3944E14726576E430095934A /* AddProductModalView.swift in Sources */,
 				3944E13526575E190095934A /* KeyboardResponder.swift in Sources */,
 				3944E14126576B5A0095934A /* QuantityModalView.swift in Sources */,
 				3944E13B2657678D0095934A /* ButtonModalView.swift in Sources */,
 				7C76FFF6265802DF00C853E2 /* MultiplatformChallenge.xcdatamodeld in Sources */,
-				7C76FFF8265802DF00C853E2 /* ProductItem.swift in Sources */,
 				399477902657157A00D66D82 /* HeaderModalView.swift in Sources */,
 				390FE40526547CB30065F26C /* BackgroundModelView.swift in Sources */,
 				3944E12626575BD60095934A /* TextFieldModalView.swift in Sources */,
@@ -619,13 +700,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B848C5D265D37310029F817 /* BudgetViewCell.swift in Sources */,
+				57FFD9E72657FE7100A61EF4 /* (null) in Sources */,
 				57F24AD82653FB9C001E4B05 /* (null) in Sources */,
-				7C76FFF9265802DF00C853E2 /* ProductItem.swift in Sources */,
+				57FFD9E42657FD2400A61EF4 /* ButtonModalView.swift in Sources */,
+				57FFD9E62657FD2C00A61EF4 /* QuantityModalView.swift in Sources */,
+				57FFD9DC2657FD1000A61EF4 /* ListRow.swift in Sources */,
+				4B848C5C265D36D10029F817 /* SettingsModalView.swift in Sources */,
+				5788BA55265BE3F5008ED0BC /* MoneyDetailsMac.swift in Sources */,
+				4B7D54A1265E8AA000637BD5 /* CurrencyTextFieldModalView.swift in Sources */,
+				57FFD9DD2657FD1300A61EF4 /* MoneyDetails.swift in Sources */,
+				57AF03472657FC1D00D1DB5A /* Sidebar.swift in Sources */,
+				57FFD9E22657FD1E00A61EF4 /* HeaderModalView.swift in Sources */,
+				57FFD9DE2657FD1500A61EF4 /* ObjectiveViewCell.swift in Sources */,
+				57FFD9E82657FEA200A61EF4 /* ContentView.swift in Sources */,
+				57FFD9E52657FD2700A61EF4 /* TextFieldModalView.swift in Sources */,
+				4B7D549D265E77CE00637BD5 /* MultiplatformChallenge.xcdatamodeld in Sources */,
 				7C76FFDB2658014A00C853E2 /* ShoppingListModelView.swift in Sources */,
 				7C76FFE62658017300C853E2 /* ItemList.swift in Sources */,
 				7C76FFF5265802DF00C853E2 /* CoreDataManager.swift in Sources */,
-				7C76FFF7265802DF00C853E2 /* MultiplatformChallenge.xcdatamodeld in Sources */,
+				4B7D549E265E784400637BD5 /* MultiplatformChallengeApp.swift in Sources */,
+				4B7D54A0265E82E200637BD5 /* AddProductMac.swift in Sources */,
 				39A3A92E26582C0400370754 /* FontNameManager.swift in Sources */,
+				4B7D549C265E743400637BD5 /* ProductItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -778,7 +875,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 828XYUZTZQ;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = DB9XDYKBL8;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -800,7 +898,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 828XYUZTZQ;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = DB9XDYKBL8;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -826,6 +925,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = DB9XDYKBL8;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -851,6 +951,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = DB9XDYKBL8;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;

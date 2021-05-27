@@ -13,47 +13,85 @@ struct ContentView: View {
     @StateObject var shoppingListVM = ShoppingListViewModel()
     @StateObject var shoppingList = ShoppingListDemo()
 
-    init() {
-        let appearance = UINavigationBar.appearance()
-        appearance.largeTitleTextAttributes = [.font : UIFont(name: FontNameManager.Poppins.bold, size: 30)!]
-        appearance.backgroundColor = UIColor(named: "BackgroundColor")
+    private var view: some View {
+        VStack {
+            #if os(iOS)
+            MoneyDetails()
+            #endif
+            HStack {
+                Text("Minha Lista")
+                    .font(Font.custom(FontNameManager.Poppins.bold, size: 24))
+                Spacer()
+                Button(action: {
+                    showSheet.toggle()
+                }) {
+                    Text("Adicionar produto")
+                        .frame(height: 10)
+                        .font(Font.custom(FontNameManager.Poppins.medium, size: 17))
+                        .padding()
+                        .background(Color("AccentColor"))
+                        .foregroundColor(Color("TitleColor"))
+                        .cornerRadius(40)
+                }
+                .buttonStyle(BorderlessButtonStyle())
+            }
+            .padding()
+            
+            List {
+                ForEach(shoppingListVM.itens, id: \.id) { item in
+                    #if os(iOS)
+                    ListRow(item: ItemList(name: item.name, price: item.price, quantity: item.quantity, isChecked: item.isChecked))
+                    #else
+                    ListRow(item: ItemList(name: item.name, price: item.price, quantity: item.quantity, isChecked: item.isChecked))
+                        .padding(.horizontal, 20)
+                        .padding(.top, 10)
+                    #endif
+                }
+                .onDelete(perform: deleteItem)
+                .onTapGesture {
+                    self.showSheet.toggle()
+                }
+            }
+        }
+        .background(Color.white)
     }
+    #if os(iOS)
+    //    init() {
+    //        let appearance = UINavigationBar.appearance()
+    //        appearance.largeTitleTextAttributes = [.font : UIFont(name: FontNameManager.Poppins.bold, size: 30)!]
+    //        appearance.backgroundColor = UIColor(named: "BackgroundColor")
+    //    }
+    #endif
 
     var body: some View {
         ZStack {
-            NavigationView {
-                VStack {
-                    MoneyDetails()
-                    HStack {
-                        Text("Minha Lista")
-                            .font(Font.custom(FontNameManager.Poppins.bold, size: 24))
-                        Spacer()
+            #if os(macOS)
+            view
+                .listStyle(PlainListStyle())
+                .toolbar {
+                    ToolbarItem(placement: .navigation) {
                         Button(action: {
-                            showSheet.toggle()
+                            NSApp.keyWindow?.firstResponder?.tryToPerform(#selector(NSSplitViewController.toggleSidebar(_:)), with: nil)
                         }) {
-                            Text("Adicionar produto")
-                                .frame(height: 10)
-                                .font(Font.custom(FontNameManager.Poppins.medium, size: 17))
-                                .padding()
-                                .background(Color("AccentColor"))
-                                .foregroundColor(Color("TitleColor"))
-                                .cornerRadius(40)
+                            Image(systemName: "sidebar.left")
                         }
-                    }.padding()
-
-                    List {
-                        ForEach(shoppingListVM.itens, id: \.id) { item in
-                            ListRow(item: ItemList(name: item.name, price: item.price, quantity: item.quantity, isChecked: item.isChecked))
-                        }
-                        .onDelete(perform: deleteItem)
-                        .onTapGesture {
-                            self.showSheet.toggle()
-                        }
+                        .keyboardShortcut("S", modifiers: .command)
                     }
-                    .listStyle(PlainListStyle())
-                    .colorMultiply(Color("BackgroundColor")).padding(.top)
+//                    .listStyle(PlainListStyle())
+//                    .colorMultiply(Color("BackgroundColor")).padding(.top)
                 }
+                .onAppear(perform: {
+                    shoppingListVM.getAllItens()
+                })
+                .sheet(isPresented: $showSheet, content: {
+                    AddProductMac(shoppingListVM: shoppingListVM, showModal: $showSheet)
+                })
+                
+            #else
+            //            NavigationView {
+            view
                 .navigationBarTitle("Compras da semana")
+                .listStyle(GroupedListStyle())
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         NavigationLink(
@@ -64,12 +102,12 @@ struct ContentView: View {
                     }
                 }
                 .background(Color("BackgroundColor"))
-            }
-            .onAppear(perform: {
-                shoppingListVM.getAllItens()
-            })
-            AddProductModalView(isShowing: $showSheet,
-                                shoppingListVM: shoppingListVM)
+                .onAppear(perform: {
+                    shoppingListVM.getAllItens()
+                })
+            AddProductModalView(isShowing: $showSheet, shoppingListVM: shoppingListVM)
+        //}
+            #endif
         }
     }
 
@@ -88,8 +126,8 @@ class ShoppingListDemo: ObservableObject {
     @Published var budget: Double = 0
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//    }
+//}
