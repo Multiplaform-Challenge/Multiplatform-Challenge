@@ -9,19 +9,27 @@ import SwiftUI
 
 struct SettingsView: View {
 
-    @ObservedObject var shoppingList: ShoppingListDemo
+    @StateObject var shoppingListVM: ShoppingListViewModel
 
     private var view: some View {
         List {
-            ObjectiveViewCell(objective: $shoppingList.objective)
-            BudgetViewCell(budget: $shoppingList.budget)
+            ObjectiveViewCell(objective: $shoppingListVM.objective)
+            BudgetViewCell(budget: $shoppingListVM.budget)
         }
+        .onDisappear(perform: {
+            save()
+        })
     }
 
     var body: some View {
         return view
             .navigationTitle("Configurações")
             .listStyle(PlainListStyle())
+    }
+
+    func save() {
+        shoppingListVM.updateMoneyDatails(shoppingListVM.list.first!, newList: (shoppingListVM.budget, shoppingListVM.objective))
+        shoppingListVM.getAllItens()
     }
 
 }

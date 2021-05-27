@@ -1,11 +1,12 @@
 import SwiftUI
 import Combine
-import UIKit
+//import UIKit
 
 public struct AddProductModalView: View {
     var heightCell: CGFloat = 50.0
     var isEdit = false
     var item: ProductItem?
+
     @Binding var isShowing: Bool
     @State var nameItem: String = ""
     @State var quantityItem: Int = 0

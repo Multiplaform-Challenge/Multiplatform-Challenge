@@ -8,11 +8,10 @@
     </entity>
     <entity name="ShoppingList" representedClassName="ShoppingList" parentEntity="Item" syncable="YES" codeGenerationType="class">
         <attribute name="budget" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="itens" optional="YES" attributeType="Transformable"/>
         <attribute name="objective" optional="YES" attributeType="String"/>
     </entity>
     <elements>
         <element name="Item" positionX="-63" positionY="-18" width="128" height="89"/>
-        <element name="ShoppingList" positionX="-63" positionY="9" width="128" height="74"/>
+        <element name="ShoppingList" positionX="-63" positionY="9" width="128" height="59"/>
     </elements>
 </model>
