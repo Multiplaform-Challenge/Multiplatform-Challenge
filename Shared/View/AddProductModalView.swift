@@ -10,7 +10,7 @@ public struct AddProductModalView: View {
     @State var nameItem: String = ""
     @State var quantityItem: Int = 0
     @State var priceItem: Double = 0.00
-    @StateObject var shoppingListVM: ShoppingListViewModel
+    @ObservedObject var shoppingListVM: ShoppingListViewModel
 
     var bodyContet: some View {
         VStack {

@@ -5,7 +5,7 @@ import UIKit
 public struct WithoutPriceModalView: View {
     @Binding var isShowing: Bool
     @State var valueItem: Double = 0.0
-    @StateObject var shoppingListVM: ShoppingListViewModel
+    @ObservedObject var shoppingListVM: ShoppingListViewModel
     var item: ProductItem?
 
     var bodyContet: some View {
