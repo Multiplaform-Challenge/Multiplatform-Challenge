@@ -7,11 +7,19 @@
 
 import SwiftUI
 
+enum TypeModal {
+    case addModal
+    case editModal
+}
+
 struct ContentView: View {
 
     @State var showSheet = false
+    @State var showWithoutPriceModal = false
+    @State var itemSelect: ProductItem? = nil
     @StateObject var shoppingListVM = ShoppingListViewModel()
     @StateObject var shoppingList = ShoppingListDemo()
+    @State var typeModal: TypeModal = .addModal
 
     init() {
         let appearance = UINavigationBar.appearance()
@@ -23,12 +31,13 @@ struct ContentView: View {
         ZStack {
             NavigationView {
                 VStack {
-                    MoneyDetails()
+                    MoneyDetails(shoppingListVM: shoppingListVM)
                     HStack {
                         Text("Minha Lista")
                             .font(Font.custom(FontNameManager.Poppins.bold, size: 24))
                         Spacer()
                         Button(action: {
+                            self.typeModal = .addModal
                             showSheet.toggle()
                         }) {
                             Text("Adicionar produto")
@@ -43,12 +52,18 @@ struct ContentView: View {
 
                     List {
                         ForEach(shoppingListVM.itens, id: \.id) { item in
-                            ListRow(item: ItemList(name: item.name, price: item.price, quantity: item.quantity, isChecked: item.isChecked))
+                            ListRow(item: item,
+                                    isShowingWithoutPriceModal: $showWithoutPriceModal,
+                                    action: {
+                                        self.itemSelect = item
+                                    }, shoppingListVM: shoppingListVM)
+                                .onTapGesture {
+                                    self.itemSelect = item
+                                    self.typeModal = .editModal
+                                    self.showSheet.toggle()
+                                }
                         }
                         .onDelete(perform: deleteItem)
-                        .onTapGesture {
-                            self.showSheet.toggle()
-                        }
                     }
                     .listStyle(PlainListStyle())
                     .colorMultiply(Color("BackgroundColor")).padding(.top)
@@ -68,8 +83,10 @@ struct ContentView: View {
             .onAppear(perform: {
                 shoppingListVM.getAllItens()
             })
-            AddProductModalView(isShowing: $showSheet,
-                                shoppingListVM: shoppingListVM)
+            WithoutPriceModalView(isShowing: $showWithoutPriceModal,
+                                  shoppingListVM: shoppingListVM,
+                                  item: itemSelect)
+            modalView(typeModal)
         }
     }
 
@@ -79,6 +96,20 @@ struct ContentView: View {
             shoppingListVM.delete(item)
         }
         shoppingListVM.getAllItens()
+    }
+
+    func modalView(_ type: TypeModal) -> some View {
+        switch type {
+        case .addModal:
+            return AddProductModalView(isEdit: false,
+                                       isShowing: $showSheet,
+                                       shoppingListVM: shoppingListVM)
+        case .editModal:
+            return AddProductModalView(isEdit: true,
+                                       item: itemSelect,
+                                       isShowing: $showSheet,
+                                       shoppingListVM: shoppingListVM)
+        }
     }
 
 }
