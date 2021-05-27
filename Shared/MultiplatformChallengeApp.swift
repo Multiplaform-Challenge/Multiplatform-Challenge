@@ -11,8 +11,20 @@ import SwiftUI
 struct MultiplatformChallengeApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            
+                #if os(macOS)
+                NavigationView {
+                Sidebar()
+                ContentView()
+//                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                    .frame(minWidth: 500)
+                }
+                #else
+                ContentView()
+//                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+//                    .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
+                #endif
+            
         }
     }
-
 }
