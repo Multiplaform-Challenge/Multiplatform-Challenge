@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct MoneyDetails: View {
+    @StateObject var shoppingListVM: ShoppingListViewModel
     let titleFont = Font.custom(FontNameManager.Poppins.bold, size: 27)
     let priceFont = Font.custom(FontNameManager.Poppins.regular, size: 17)
     var body: some View {
         HStack(spacing: 5) {
             VStack(alignment: .center) {
-                Text("R$250.00")
+                Text("R$\(String(format: "%.2f", shoppingListVM.list.first?.budget ?? 250.00))")
                     .font(titleFont)
                     .frame(maxWidth: .infinity)
                 Text("Orçamento")
@@ -61,6 +62,6 @@ struct MoneyDetails: View {
 
 struct MoneyDetails_Previews: PreviewProvider {
     static var previews: some View {
-        MoneyDetails()
+        MoneyDetails(shoppingListVM: ShoppingListViewModel())
     }
 }

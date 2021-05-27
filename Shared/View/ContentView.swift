@@ -3,7 +3,7 @@
 //  Shared
 //
 //  Created by José Mateus Azevedo on 11/05/21.
-// swiftlint:disable identifier_name
+// swiftlint: disable identifier_name
 
 import SwiftUI
 
@@ -11,12 +11,11 @@ struct ContentView: View {
 
     @State var showSheet = false
     @StateObject var shoppingListVM = ShoppingListViewModel()
-    @StateObject var shoppingList = ShoppingListDemo()
-
+    
     private var view: some View {
         VStack {
             #if os(iOS)
-            MoneyDetails()
+            MoneyDetails(shoppingListVM: shoppingListVM)
             #endif
             HStack {
                 Text("Minha Lista")
@@ -36,7 +35,6 @@ struct ContentView: View {
                 .buttonStyle(BorderlessButtonStyle())
             }
             .padding()
-            
             List {
                 ForEach(shoppingListVM.itens, id: \.id) { item in
                     #if os(iOS)
@@ -52,17 +50,18 @@ struct ContentView: View {
                     self.showSheet.toggle()
                 }
             }
+            .listStyle(PlainListStyle())
+            .colorMultiply(Color("BackgroundColor")).padding(.top)
         }
-        .background(Color.white)
+        .background(Color("BackgroundColor"))
     }
     #if os(iOS)
-    //    init() {
-    //        let appearance = UINavigationBar.appearance()
-    //        appearance.largeTitleTextAttributes = [.font : UIFont(name: FontNameManager.Poppins.bold, size: 30)!]
-    //        appearance.backgroundColor = UIColor(named: "BackgroundColor")
-    //    }
+    init() {
+        let appearance = UINavigationBar.appearance()
+        appearance.largeTitleTextAttributes = [.font : UIFont(name: FontNameManager.Poppins.bold, size: 30)!]
+        appearance.backgroundColor = UIColor(named: "BackgroundColor")
+    }
     #endif
-
     var body: some View {
         ZStack {
             #if os(macOS)
@@ -77,8 +76,6 @@ struct ContentView: View {
                         }
                         .keyboardShortcut("S", modifiers: .command)
                     }
-//                    .listStyle(PlainListStyle())
-//                    .colorMultiply(Color("BackgroundColor")).padding(.top)
                 }
                 .onAppear(perform: {
                     shoppingListVM.getAllItens()
@@ -86,31 +83,28 @@ struct ContentView: View {
                 .sheet(isPresented: $showSheet, content: {
                     AddProductMac(shoppingListVM: shoppingListVM, showModal: $showSheet)
                 })
-                
             #else
-            //            NavigationView {
-            view
-                .navigationBarTitle("Compras da semana")
-                .listStyle(GroupedListStyle())
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        NavigationLink(
-                            destination: SettingsView(shoppingList: shoppingList),
-                            label: {
-                                Image(systemName: "gearshape.fill")
-                            })
+            NavigationView {
+                view
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            NavigationLink(
+                                destination: SettingsView(shoppingListVM: shoppingListVM),
+                                label: {
+                                    Image(systemName: "gearshape.fill")
+                                })
+                        }
                     }
-                }
-                .background(Color("BackgroundColor"))
-                .onAppear(perform: {
-                    shoppingListVM.getAllItens()
-                })
+                    .navigationBarTitle("\(shoppingListVM.objective)")
+                    
+            }
+            .onAppear(perform: {
+                shoppingListVM.getAllItens()
+            })
             AddProductModalView(isShowing: $showSheet, shoppingListVM: shoppingListVM)
-        //}
             #endif
         }
     }
-
     func deleteItem(at offsets: IndexSet) {
         offsets.forEach { index in
             let item = shoppingListVM.itens[index]
@@ -118,9 +112,13 @@ struct ContentView: View {
         }
         shoppingListVM.getAllItens()
     }
-
 }
 
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
 class ShoppingListDemo: ObservableObject {
     @Published var objective: String = ""
     @Published var budget: Double = 0

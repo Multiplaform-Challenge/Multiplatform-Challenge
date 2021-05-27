@@ -16,7 +16,6 @@ class CoreDataManager {
         } catch {
             return nil
         }
-
     }
 
     func deleteItem(item: Item) {
@@ -31,7 +30,6 @@ class CoreDataManager {
         } catch {
             return []
         }
-
     }
 
     func save() {
@@ -43,6 +41,15 @@ class CoreDataManager {
         }
     }
 
+    func getMonayInfo() -> [ShoppingList] {
+        let request: NSFetchRequest = ShoppingList.fetchRequest()
+        do {
+            return try viewContext.fetch(request)
+        } catch {
+            return []
+        }
+    }
+
     private init() {
         persistentContainer = NSPersistentContainer(name: "MultiplatformChallenge")
         persistentContainer.loadPersistentStores { (_ , error) in
@@ -51,5 +58,4 @@ class CoreDataManager {
             }
         }
     }
-
 }
