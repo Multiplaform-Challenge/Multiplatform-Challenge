@@ -2,14 +2,41 @@ import SwiftUI
 
 struct ListRow: View {
 
-    let item: ItemList
-    @State var checkState:Bool = false
+    let item: ProductItem
+    @State var checkState: Bool = false
+    @Binding var isShowingWithoutPriceModal: Bool
+    @Binding var isShowingLimitModal: Bool
+    var action: () -> Void
+    @ObservedObject var shoppingListVM: ShoppingListViewModel
+
+    func checkItem() {
+        shoppingListVM.name = item.name
+        shoppingListVM.quantity = Int16(item.quantity)
+        shoppingListVM.price = Float(item.price)
+        shoppingListVM.isChecked = checkState
+        shoppingListVM.upDate(id: item.id)
+        shoppingListVM.getAllItens()
+    }
 
     var checkboxFieldView: some View {
          Button(action: {
-                self.checkState = !self.checkState
-            }) {
-            if checkState {
+            if item.price == 0.0 && !item.isChecked {
+                action()
+                self.isShowingWithoutPriceModal.toggle()
+            } else if (calculateSum() + Double(item.price)) > (shoppingListVM.list.first?.budget ?? 0.00) && !item.isChecked {
+                action()
+                if calculateSum() <= (shoppingListVM.list.first?.budget ?? 0.00) {
+                    self.isShowingLimitModal.toggle()
+                } else {
+                    self.checkState = !item.isChecked
+                    checkItem()
+                }
+            } else {
+                self.checkState = !item.isChecked
+                checkItem()
+            }
+        }) {
+            if item.isChecked {
                 Image(systemName: "checkmark.circle.fill")
                     .resizable()
                     .frame(width: 30, height: 30)
@@ -23,6 +50,16 @@ struct ListRow: View {
         }
         .foregroundColor(Color.white)
         .buttonStyle(PlainButtonStyle())
+    }
+
+    func calculateSum() -> Double {
+     var totalSum: Double = 0.00
+     shoppingListVM.itens.forEach { item in
+         if item.isChecked {
+             totalSum += Double((item.price * Float(item.quantity)))
+         }
+     }
+     return totalSum
     }
 
     var body: some View {
@@ -46,13 +83,7 @@ struct ListRow: View {
             }
         }
         .padding()
-        .background(RoundedRectangle(cornerRadius: 15).foregroundColor(self.checkState ? Color("ActionColorSecond") : Color.white).shadow(radius: checkState ? 0 : 1))
+        .background(RoundedRectangle(cornerRadius: 15).foregroundColor(self.item.isChecked ? Color("ActionColorSecond") : Color.white).shadow(radius: self.item.isChecked ? 0 : 1))
 
-    }
-}
-
-struct ListRow_Previews: PreviewProvider {
-    static var previews: some View {
-        ListRow(item: ItemList(name: "Macarrão", price: 3.35, quantity: 5, isChecked: false))
     }
 }

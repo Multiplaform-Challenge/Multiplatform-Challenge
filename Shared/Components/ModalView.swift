@@ -17,6 +17,7 @@ public struct ModalView<Content: View>: View {
     var titleButtonLeft: String
     let content: Content
     var actionButtonRight: () -> Void
+    var actionButtonLeft: (() -> Void)?
 
     public init(isShowing: Binding<Bool>,
                 keyboardRef: KeyboardResponder,
@@ -26,7 +27,8 @@ public struct ModalView<Content: View>: View {
                 titleButtonLeft: String = "Cancelar",
                 titleButtonRight: String = "Adicionar",
                 @ViewBuilder contentBuilder: () -> Content,
-                actionButtonRight: @escaping () -> Void) {
+                actionButtonRight: @escaping () -> Void,
+                actionButtonLeft: (() -> Void)? ){
         _isShowing = isShowing
         self.keyboardRef = keyboardRef
         self.backgroundColor = backgroundColor
@@ -36,6 +38,7 @@ public struct ModalView<Content: View>: View {
         self.titleButtonLeft = titleButtonLeft
         self.titleButtonRight = titleButtonRight
         self.actionButtonRight = actionButtonRight
+        self.actionButtonLeft = actionButtonLeft
     }
 
     func hide() {
@@ -76,12 +79,17 @@ public struct ModalView<Content: View>: View {
             VStack {
                 HeaderModalView(titleModal: titleModal,
                                 isTitleLarge: isTitleLarge)
-                content
-                    .frame(width: UIScreen.main.bounds.width * 0.9)
+                ScrollView {
+                    content
+                        .frame(width: UIScreen.main.bounds.width * 0.9)
+                }
                 HStack {
                     ButtonModalView(backgroundColor: .clear,
                                     titleButton: titleButtonLeft,
-                                    actionButton: hide)
+                                    actionButton: {
+                                        self.actionButtonLeft?()
+                                        self.hide()
+                                    })
                     ButtonModalView(titleButton: titleButtonRight,
                                     actionButton: {
                                         self.actionButtonRight()
@@ -90,7 +98,7 @@ public struct ModalView<Content: View>: View {
                 }
                 .frame(width: UIScreen.main.bounds.width * 0.9)
                 .padding(.top, 30)
-                Text("").frame(height:  keyboardRef.isActive ? keyboardRef.currentHeight : 50)
+                Text("").frame(height: 50)
             }
             .padding(.horizontal)
             .background(backgroundColor)
@@ -104,6 +112,7 @@ public struct ModalView<Content: View>: View {
         ZStack {
             backgroundAreaView
             sheetView
+                .padding(.top,  UIScreen.main.bounds.height * 0.4)
         }
     }
 

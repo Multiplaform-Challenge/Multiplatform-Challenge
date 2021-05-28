@@ -11,6 +11,22 @@ struct MoneyDetails: View {
     @StateObject var shoppingListVM: ShoppingListViewModel
     let titleFont = Font.custom(FontNameManager.Poppins.bold, size: 27)
     let priceFont = Font.custom(FontNameManager.Poppins.regular, size: 17)
+
+    func calculateSum() -> Double {
+        var totalSum: Double = 0.00
+        shoppingListVM.itens.forEach { item in
+            if item.isChecked {
+                totalSum += Double((item.price * Float(item.quantity)))
+            }
+        }
+        return totalSum
+    }
+
+    func calculateRest() -> Double {
+        let rest: Double = (shoppingListVM.list.first?.budget ?? 0.00) - calculateSum()
+        return rest
+    }
+
     var body: some View {
         HStack(spacing: 5) {
             VStack(alignment: .center) {
@@ -34,7 +50,7 @@ struct MoneyDetails: View {
                             .fill(Color("CardPrimaryColor"))
                             .cornerRadius(30)
                         VStack(alignment: .center) {
-                            Text("R$1000.00")
+                            Text("R$\(String(format: "%.2f", calculateSum()))")
                                 .font(titleFont)
                                 .frame(maxWidth: .infinity)
                             Text("Total da lista")
@@ -43,7 +59,7 @@ struct MoneyDetails: View {
                         .padding()
                     }
                     VStack(alignment: .center) {
-                        Text("R$100.00")
+                        Text("R$\(String(format: "%.2f", calculateRest()))")
                             .font(Font.custom(FontNameManager.Poppins.bold, size: 20))
                             .frame(maxWidth: .infinity)
                         Text("Disponível")
