@@ -3,10 +3,11 @@ import SwiftUI
 struct ListRow: View {
 
     let item: ProductItem
-    @State var checkState:Bool = false
+    @State var checkState: Bool = false
     @Binding var isShowingWithoutPriceModal: Bool
+    @Binding var isShowingLimitModal: Bool
     var action: () -> Void
-    @StateObject var shoppingListVM: ShoppingListViewModel
+    @ObservedObject var shoppingListVM: ShoppingListViewModel
 
     func checkItem() {
         shoppingListVM.name = item.name
@@ -22,6 +23,14 @@ struct ListRow: View {
             if item.price == 0.0 && !item.isChecked {
                 action()
                 self.isShowingWithoutPriceModal.toggle()
+            } else if (calculateSum() + Double(item.price)) > (shoppingListVM.list.first?.budget ?? 0.00) && !item.isChecked {
+                action()
+                if calculateSum() <= (shoppingListVM.list.first?.budget ?? 0.00) {
+                    self.isShowingLimitModal.toggle()
+                } else {
+                    self.checkState = !item.isChecked
+                    checkItem()
+                }
             } else {
                 self.checkState = !item.isChecked
                 checkItem()
@@ -41,6 +50,16 @@ struct ListRow: View {
         }
         .foregroundColor(Color.white)
         .buttonStyle(PlainButtonStyle())
+    }
+
+    func calculateSum() -> Double {
+     var totalSum: Double = 0.00
+     shoppingListVM.itens.forEach { item in
+         if item.isChecked {
+             totalSum += Double((item.price * Float(item.quantity)))
+         }
+     }
+     return totalSum
     }
 
     var body: some View {

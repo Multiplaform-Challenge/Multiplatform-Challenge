@@ -17,6 +17,7 @@ public struct ModalView<Content: View>: View {
     var titleButtonLeft: String
     let content: Content
     var actionButtonRight: () -> Void
+    var actionButtonLeft: (() -> Void)?
 
     public init(isShowing: Binding<Bool>,
                 keyboardRef: KeyboardResponder,
@@ -26,7 +27,8 @@ public struct ModalView<Content: View>: View {
                 titleButtonLeft: String = "Cancelar",
                 titleButtonRight: String = "Adicionar",
                 @ViewBuilder contentBuilder: () -> Content,
-                actionButtonRight: @escaping () -> Void) {
+                actionButtonRight: @escaping () -> Void,
+                actionButtonLeft: (() -> Void)? ){
         _isShowing = isShowing
         self.keyboardRef = keyboardRef
         self.backgroundColor = backgroundColor
@@ -36,6 +38,7 @@ public struct ModalView<Content: View>: View {
         self.titleButtonLeft = titleButtonLeft
         self.titleButtonRight = titleButtonRight
         self.actionButtonRight = actionButtonRight
+        self.actionButtonLeft = actionButtonLeft
     }
 
     func hide() {
@@ -83,7 +86,10 @@ public struct ModalView<Content: View>: View {
                 HStack {
                     ButtonModalView(backgroundColor: .clear,
                                     titleButton: titleButtonLeft,
-                                    actionButton: hide)
+                                    actionButton: {
+                                        self.actionButtonLeft?()
+                                        self.hide()
+                                    })
                     ButtonModalView(titleButton: titleButtonRight,
                                     actionButton: {
                                         self.actionButtonRight()

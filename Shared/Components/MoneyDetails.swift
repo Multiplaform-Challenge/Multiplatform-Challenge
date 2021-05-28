@@ -11,8 +11,6 @@ struct MoneyDetails: View {
     @StateObject var shoppingListVM: ShoppingListViewModel
     let titleFont = Font.custom(FontNameManager.Poppins.bold, size: 27)
     let priceFont = Font.custom(FontNameManager.Poppins.regular, size: 17)
-    @StateObject var shoppingListVM: ShoppingListViewModel = ShoppingListViewModel()
-    var orcamentoTest = 250.0
 
     func calculateSum() -> Double {
         var totalSum: Double = 0.00
@@ -25,7 +23,7 @@ struct MoneyDetails: View {
     }
 
     func calculateRest() -> Double {
-        let rest: Double = orcamentoTest - calculateSum()
+        let rest: Double = (shoppingListVM.list.first?.budget ?? 0.00) - calculateSum()
         return rest
     }
 

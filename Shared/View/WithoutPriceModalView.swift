@@ -37,6 +37,11 @@ Deseja adicionar o preço?
         shoppingListVM.getAllItens()
     }
 
+    func jumpAction() {
+        self.valueItem = 0.0
+        editPriceItem()
+    }
+
     public var body: some View {
         VStack {
             Spacer()
@@ -47,7 +52,8 @@ Deseja adicionar o preço?
                     titleButtonLeft: "Pular",
                     titleButtonRight: "Salvar",
                     contentBuilder: {bodyContet},
-                    actionButtonRight: editPriceItem)
+                    actionButtonRight: editPriceItem,
+                    actionButtonLeft: jumpAction)
                 .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
         }
     }

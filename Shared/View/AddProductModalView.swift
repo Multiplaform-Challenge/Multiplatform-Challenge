@@ -1,6 +1,5 @@
 import SwiftUI
 import Combine
-//import UIKit
 
 public struct AddProductModalView: View {
     var heightCell: CGFloat = 50.0
@@ -47,7 +46,8 @@ public struct AddProductModalView: View {
                     titleButtonLeft: "Cancelar",
                     titleButtonRight: isEdit ? "Salvar" : "Adicionar",
                     contentBuilder: {bodyContet},
-                    actionButtonRight: isEdit ? editItem : addItem
+                    actionButtonRight: isEdit ? editItem : addItem,
+                    actionButtonLeft: nil
             )
                 .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
         }
