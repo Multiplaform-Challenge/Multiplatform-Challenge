@@ -6,6 +6,7 @@ struct ListRow: View {
     @State var checkState: Bool = false
     @Binding var isShowingWithoutPriceModal: Bool
     @Binding var isShowingLimitModal: Bool
+    @Binding var isShowDeleteConfirmation: Bool
     var action: () -> Void
     @ObservedObject var shoppingListVM: ShoppingListViewModel
 
@@ -90,8 +91,8 @@ struct ListRow: View {
                     .background(Color.clear)
                     .border(Color.clear, width: 0)
                     .onTapGesture {
-                        shoppingListVM.delete(item)
-                        shoppingListVM.getAllItens()
+                        action()
+                        isShowDeleteConfirmation.toggle()
                     }
             #endif
         }
