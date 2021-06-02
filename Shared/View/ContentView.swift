@@ -16,6 +16,7 @@ struct ContentView: View {
 
     @State var showSheet = false
     @State var showWithoutPriceModal = false
+    @State var isShowDeleteConfirmation = false
 
     @State var showLimitModal = false
 
@@ -73,6 +74,7 @@ struct ContentView: View {
                     ListRow(item: item,
                             isShowingWithoutPriceModal: $showWithoutPriceModal,
                             isShowingLimitModal: $showLimitModal,
+                            isShowDeleteConfirmation: $isShowDeleteConfirmation,
                             action: {
                                 self.itemSelect = item
                             },
@@ -132,6 +134,11 @@ struct ContentView: View {
                     WithoutPriceMac(showModal: $showWithoutPriceModal,
                                   shoppingListVM: shoppingListVM,
                                   item: itemSelect)
+                })
+                .sheet(isPresented: $isShowDeleteConfirmation, content: {
+                      DeleteConfirmationMac(showModal: $isShowDeleteConfirmation,
+                      shoppingListVM: shoppingListVM,
+                      item: itemSelect)
                 })
             #else
             NavigationView {
