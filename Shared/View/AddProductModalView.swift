@@ -77,7 +77,7 @@ public struct AddProductModalView: View {
         shoppingListVM.quantity = Int16(quantityItem)
         shoppingListVM.price = Float(priceItem)
         shoppingListVM.isChecked = item.isChecked
-        shoppingListVM.upDate(id: item.id)
+        shoppingListVM.update(id: item.id)
         shoppingListVM.getAllItens()
         self.isShowing.toggle()
     }

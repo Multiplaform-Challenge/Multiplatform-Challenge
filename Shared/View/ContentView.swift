@@ -61,7 +61,7 @@ struct ContentView: View {
                     ListRow(item: item,
                             isShowingWithoutPriceModal: $showWithoutPriceModal,
                             isShowingLimitModal: $showLimitModal,
-                            action: {
+                            isShowDeleteConfirmation: $isShowDeleteConfirmation, action: {
                                 self.itemSelect = item
                             },
                             shoppingListVM: shoppingListVM)
