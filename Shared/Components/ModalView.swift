@@ -13,32 +13,20 @@ public struct ModalView<Content: View>: View {
 
     var isTitleLarge: Bool
     var titleModal: String
-    var titleButtonRight: String
-    var titleButtonLeft: String
     let content: Content
-    var actionButtonRight: () -> Void
-    var actionButtonLeft: (() -> Void)?
 
     public init(isShowing: Binding<Bool>,
                 keyboardRef: KeyboardResponder,
                 backgroundColor: Color = Color.white,
                 isTitleLarge: Bool,
                 titleModal: String,
-                titleButtonLeft: String = "Cancelar",
-                titleButtonRight: String = "Adicionar",
-                @ViewBuilder contentBuilder: () -> Content,
-                actionButtonRight: @escaping () -> Void,
-                actionButtonLeft: (() -> Void)? ){
+                @ViewBuilder contentBuilder: () -> Content) {
         _isShowing = isShowing
         self.keyboardRef = keyboardRef
         self.backgroundColor = backgroundColor
         self.isTitleLarge = isTitleLarge
         self.titleModal = titleModal
         self.content = contentBuilder()
-        self.titleButtonLeft = titleButtonLeft
-        self.titleButtonRight = titleButtonRight
-        self.actionButtonRight = actionButtonRight
-        self.actionButtonLeft = actionButtonLeft
     }
 
     func hide() {
@@ -79,26 +67,10 @@ public struct ModalView<Content: View>: View {
             VStack {
                 HeaderModalView(titleModal: titleModal,
                                 isTitleLarge: isTitleLarge)
-                ScrollView {
-                    content
-                        .frame(width: UIScreen.main.bounds.width * 0.9)
-                }
-                HStack {
-                    ButtonModalView(backgroundColor: .clear,
-                                    titleButton: titleButtonLeft,
-                                    actionButton: {
-                                        self.actionButtonLeft?()
-                                        self.hide()
-                                    })
-                    ButtonModalView(titleButton: titleButtonRight,
-                                    actionButton: {
-                                        self.actionButtonRight()
-                                        self.hide()
-                                    })
-                }
-                .frame(width: UIScreen.main.bounds.width * 0.9)
-                .padding(.top, 30)
-                Text("").frame(height: 50)
+                content
+                    .frame(width: UIScreen.main.bounds.width * 0.9)
+                    .padding(.top, 10)
+                Text("").frame(height: keyboardRef.isActive ? keyboardRef.currentHeight : 50)
             }
             .padding(.horizontal)
             .background(backgroundColor)

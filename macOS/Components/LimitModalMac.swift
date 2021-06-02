@@ -5,7 +5,7 @@ public struct LimitModalMac: View {
     @Binding var showModal: Bool
     @ObservedObject var shoppingListVM: ShoppingListViewModel
     var item: ProductItem?
-    
+
     public var body: some View {
         let textFont = Font.custom(FontNameManager.Poppins.regular, size: 17)
         VStack {

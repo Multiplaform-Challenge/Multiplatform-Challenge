@@ -27,6 +27,18 @@ public struct AddProductModalView: View {
                               backgroundRectangleColor: Color( "ActionColorSecond"))
 
                 .frame(height: heightCell)
+            Spacer()
+            HStack {
+                ButtonModalView(backgroundColor: .clear,
+                                titleButton: "Cancelar",
+                                actionButton: {
+                                    self.isShowing.toggle()
+                                })
+                ButtonModalView(titleButton: isEdit ? "Salvar" : "Adicionar",
+                                actionButton: isEdit ? editItem : addItem)
+            }
+            .padding(.top)
+            .frame(height: heightCell)
         }
         .onAppear {
             self.nameItem = item?.name ?? ""
@@ -43,11 +55,7 @@ public struct AddProductModalView: View {
                     keyboardRef: KeyboardResponder(),
                     isTitleLarge: false,
                     titleModal: isEdit ? "Editar Produto" : "Adicionar Produto",
-                    titleButtonLeft: "Cancelar",
-                    titleButtonRight: isEdit ? "Salvar" : "Adicionar",
-                    contentBuilder: {bodyContet},
-                    actionButtonRight: isEdit ? editItem : addItem,
-                    actionButtonLeft: nil
+                    contentBuilder: {bodyContet}
             )
                 .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
         }
@@ -60,6 +68,7 @@ public struct AddProductModalView: View {
         shoppingListVM.isChecked = false
         shoppingListVM.save()
         shoppingListVM.getAllItens()
+        self.isShowing.toggle()
     }
 
     func editItem() {
@@ -70,5 +79,6 @@ public struct AddProductModalView: View {
         shoppingListVM.isChecked = item.isChecked
         shoppingListVM.upDate(id: item.id)
         shoppingListVM.getAllItens()
+        self.isShowing.toggle()
     }
 }

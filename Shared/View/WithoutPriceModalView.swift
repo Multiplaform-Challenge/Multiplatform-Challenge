@@ -22,8 +22,25 @@ Deseja adicionar o preço?
             .font(FontNameManager.CustomFont.textAreaComponentFont)
             CurrencyTextFieldModalView(valueFinal: $valueItem,
                                        hasTitle: false)
-                .padding(.top, 30)
+                .padding(.top, 10)
+            Spacer()
+            HStack {
+                ButtonModalView(backgroundColor: .clear,
+                                titleButton: "Pular",
+                                actionButton: {
+                                    self.jumpAction()
+                                    self.isShowing.toggle()
+                                })
+                ButtonModalView(titleButton: "Salvar",
+                                actionButton: {
+                                    self.editPriceItem()
+                                    self.isShowing.toggle()
+                                })
+            }
+            .padding(.top)
+            .padding(.bottom)
         }
+        .frame(height: 300)
         .padding(.top, 10)
     }
 
@@ -49,11 +66,7 @@ Deseja adicionar o preço?
                     keyboardRef: KeyboardResponder(),
                     isTitleLarge: true,
                     titleModal: "Produto sem preço",
-                    titleButtonLeft: "Pular",
-                    titleButtonRight: "Salvar",
-                    contentBuilder: {bodyContet},
-                    actionButtonRight: editPriceItem,
-                    actionButtonLeft: jumpAction)
+                    contentBuilder: {bodyContet})
                 .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
         }
     }

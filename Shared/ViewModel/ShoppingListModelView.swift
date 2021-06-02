@@ -2,7 +2,6 @@ import Foundation
 import CoreData
 
 class ShoppingListViewModel: ObservableObject {
-
     var name: String = ""
     var quantity: Int16 = 0
     var price: Float = 1.00
