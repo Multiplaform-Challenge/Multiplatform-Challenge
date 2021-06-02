@@ -17,6 +17,7 @@
 		3944E14726576E430095934A /* AddProductModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3944E14626576E430095934A /* AddProductModalView.swift */; };
 		395231532660EBD4007BEB51 /* LimitModalMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395231522660EBD4007BEB51 /* LimitModalMac.swift */; };
 		395231592660F394007BEB51 /* WithoutPriceMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395231582660F394007BEB51 /* WithoutPriceMac.swift */; };
+		3952319D2667B70D007BEB51 /* DeleteConfirmationMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3952319C2667B70D007BEB51 /* DeleteConfirmationMac.swift */; };
 		399477902657157A00D66D82 /* HeaderModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3994778F2657157A00D66D82 /* HeaderModalView.swift */; };
 		39A3A8DE2657F9DD00370754 /* LimitModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A3A8DD2657F9DD00370754 /* LimitModalView.swift */; };
 		39A3A902265829FA00370754 /* Poppins-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 39A3A8EF265829F900370754 /* Poppins-Light.otf */; };
@@ -178,6 +179,7 @@
 		3944E14626576E430095934A /* AddProductModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductModalView.swift; sourceTree = "<group>"; };
 		395231522660EBD4007BEB51 /* LimitModalMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitModalMac.swift; sourceTree = "<group>"; };
 		395231582660F394007BEB51 /* WithoutPriceMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithoutPriceMac.swift; sourceTree = "<group>"; };
+		3952319C2667B70D007BEB51 /* DeleteConfirmationMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteConfirmationMac.swift; sourceTree = "<group>"; };
 		3994778F2657157A00D66D82 /* HeaderModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderModalView.swift; sourceTree = "<group>"; };
 		39A3A8DD2657F9DD00370754 /* LimitModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitModalView.swift; sourceTree = "<group>"; };
 		39A3A8EF265829F900370754 /* Poppins-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.otf"; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 				4B7D549F265E82E200637BD5 /* AddProductMac.swift */,
 				395231522660EBD4007BEB51 /* LimitModalMac.swift */,
 				395231582660F394007BEB51 /* WithoutPriceMac.swift */,
+				3952319C2667B70D007BEB51 /* DeleteConfirmationMac.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -729,6 +732,7 @@
 				57FFD9DE2657FD1500A61EF4 /* ObjectiveViewCell.swift in Sources */,
 				57FFD9E82657FEA200A61EF4 /* ContentView.swift in Sources */,
 				57FFD9E52657FD2700A61EF4 /* TextFieldModalView.swift in Sources */,
+				3952319D2667B70D007BEB51 /* DeleteConfirmationMac.swift in Sources */,
 				4B7D549D265E77CE00637BD5 /* MultiplatformChallenge.xcdatamodeld in Sources */,
 				7C76FFE62658017300C853E2 /* ItemList.swift in Sources */,
 				7C76FFF5265802DF00C853E2 /* CoreDataManager.swift in Sources */,

@@ -1,7 +1,7 @@
 import SwiftUI
 import Combine
 
-public struct LimitModalMac: View {
+public struct DeleteConfirmationMac: View {
     @Binding var showModal: Bool
     @ObservedObject var shoppingListVM: ShoppingListViewModel
     var item: ProductItem?
@@ -10,7 +10,7 @@ public struct LimitModalMac: View {
         let textFont = Font.custom(FontNameManager.Poppins.regular, size: 17)
         VStack {
             HStack {
-                Text("No Limite")
+                Text("Confirmação")
                     .font(FontNameManager.CustomFont.headerLargeTitleComponentFont)
                 Spacer()
             }
@@ -18,7 +18,7 @@ public struct LimitModalMac: View {
 
             Text(
 """
-Com o item \(item?.name ?? "") a sua lista passa R$\(String(format: "%.2f", calculate())) do limite estabelecido de \(String(format: "%.2f",shoppingListVM.list.first?.budget ?? 0.00)).
+O item \(item?.name ?? "") será permanentemente deletado da lista.
 
 Deseja remover o item?
 """
@@ -31,7 +31,6 @@ Deseja remover o item?
                 ButtonModalView(foregrounColor: .black, backgroundColor: .clear,
                                 titleButton: "Cancelar",
                                 actionButton: {
-                                                checkItem()
                                                 showModal = false
                                                 })
                 ButtonModalView(foregrounColor: .black, backgroundColor: Color("AccentColor"),

@@ -6,6 +6,7 @@ struct ListRow: View {
     @State var checkState: Bool = false
     @Binding var isShowingWithoutPriceModal: Bool
     @Binding var isShowingLimitModal: Bool
+    @Binding var isShowDeleteConfirmation: Bool
     var action: () -> Void
     @ObservedObject var shoppingListVM: ShoppingListViewModel
 
@@ -14,7 +15,7 @@ struct ListRow: View {
         shoppingListVM.quantity = Int16(item.quantity)
         shoppingListVM.price = Float(item.price)
         shoppingListVM.isChecked = checkState
-        shoppingListVM.upDate(id: item.id)
+        shoppingListVM.update(id: item.id)
         shoppingListVM.getAllItens()
     }
 
@@ -82,6 +83,18 @@ struct ListRow: View {
                     .font(Font.custom(FontNameManager.Poppins.regular, size: 12))
                     .foregroundColor(Color("TextColor"))
             }
+            #if os(macOS)
+            Text("").frame(width: 20)
+            Image(systemName: "trash")
+                    .resizable()
+                    .frame(width: 30, height: 30)
+                    .background(Color.clear)
+                    .border(Color.clear, width: 0)
+                    .onTapGesture {
+                        action()
+                        isShowDeleteConfirmation.toggle()
+                    }
+            #endif
         }
         .padding()
         .background(RoundedRectangle(cornerRadius: 15).foregroundColor(self.item.isChecked ? Color("ActionColorSecond") : Color.white).shadow(radius: self.item.isChecked ? 0 : 1))

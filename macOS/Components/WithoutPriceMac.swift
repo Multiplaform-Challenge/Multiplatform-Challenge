@@ -62,7 +62,7 @@ Deseja adicionar o preço?
         shoppingListVM.quantity = Int16(item.quantity)
         shoppingListVM.price = Float(valueItem)
         shoppingListVM.isChecked = true
-        shoppingListVM.upDate(id: item.id)
+        shoppingListVM.update(id: item.id)
         shoppingListVM.getAllItens()
     }
 
