@@ -5,7 +5,7 @@ public struct CurrencyTextFieldModalView: View {
     @State var valueText: String = ""
     @Binding var valueFinal: Double
     var hasTitle: Bool
-    
+
     public init(valueFinal: Binding<Double>,
                 hasTitle: Bool,
                 title: String = "") {
@@ -13,11 +13,11 @@ public struct CurrencyTextFieldModalView: View {
         self.hasTitle = hasTitle
         self.title = title
     }
-    
+
     var value: Double {
         (Double(self.valueText) ?? 0.0) / 100
     }
-    
+
     public var body: some View {
         let typing = Binding<String>(get: { () -> String in
             return String(format: "R$ %.2f", self.value)

@@ -7,11 +7,28 @@
 
 import SwiftUI
 
+enum TypeModal {
+    case addModal
+    case editModal
+}
+
 struct ContentView: View {
 
     @State var showSheet = false
+    @State var showWithoutPriceModal = false
+
+    @State var showLimitModal = false
+
+    @State var itemSelect: ProductItem?
+    #if os(iOS)
     @StateObject var shoppingListVM = ShoppingListViewModel()
-    
+    #else
+    @StateObject var shoppingListVM: ShoppingListViewModel
+    #endif
+
+    @State var typeModal: TypeModal = .addModal
+    @State var isEdit: Bool = false
+
     private var view: some View {
         VStack {
             #if os(iOS)
@@ -23,6 +40,8 @@ struct ContentView: View {
                 Spacer()
                 Button(action: {
                     showSheet.toggle()
+                    self.typeModal = .addModal
+                    self.isEdit = false
                 }) {
                     Text("Adicionar produto")
                         .frame(height: 10)
@@ -38,17 +57,36 @@ struct ContentView: View {
             List {
                 ForEach(shoppingListVM.itens, id: \.id) { item in
                     #if os(iOS)
-                    ListRow(item: ItemList(name: item.name, price: item.price, quantity: item.quantity, isChecked: item.isChecked))
+                    ListRow(item: item,
+                            isShowingWithoutPriceModal: $showWithoutPriceModal,
+                            isShowingLimitModal: $showLimitModal,
+                            action: {
+                                self.itemSelect = item
+                            },
+                            shoppingListVM: shoppingListVM)
+                        .onTapGesture {
+                            self.itemSelect = item
+                            self.typeModal = .editModal
+                            self.showSheet.toggle()
+                        }
                     #else
-                    ListRow(item: ItemList(name: item.name, price: item.price, quantity: item.quantity, isChecked: item.isChecked))
+                    ListRow(item: item,
+                            isShowingWithoutPriceModal: $showWithoutPriceModal,
+                            isShowingLimitModal: $showLimitModal,
+                            action: {
+                                self.itemSelect = item
+                            },
+                            shoppingListVM: shoppingListVM)
                         .padding(.horizontal, 20)
                         .padding(.top, 10)
+                        .onTapGesture {
+                            self.itemSelect = item
+                            self.isEdit = true
+                            self.showSheet.toggle()
+                        }
                     #endif
                 }
                 .onDelete(perform: deleteItem)
-                .onTapGesture {
-                    self.showSheet.toggle()
-                }
             }
             .listStyle(PlainListStyle())
             .colorMultiply(Color("BackgroundColor")).padding(.top)
@@ -66,7 +104,6 @@ struct ContentView: View {
         ZStack {
             #if os(macOS)
             view
-                .listStyle(PlainListStyle())
                 .toolbar {
                     ToolbarItem(placement: .navigation) {
                         Button(action: {
@@ -81,7 +118,20 @@ struct ContentView: View {
                     shoppingListVM.getAllItens()
                 })
                 .sheet(isPresented: $showSheet, content: {
-                    AddProductMac(shoppingListVM: shoppingListVM, showModal: $showSheet)
+                    AddProductMac(shoppingListVM: shoppingListVM,
+                                  showModal: $showSheet,
+                                  isEdit: $isEdit,
+                                  item: itemSelect)
+                })
+                .sheet(isPresented: $showLimitModal, content: {
+                    LimitModalMac(showModal: $showLimitModal,
+                                  shoppingListVM: shoppingListVM,
+                                  item: itemSelect)
+                })
+                .sheet(isPresented: $showWithoutPriceModal, content: {
+                    WithoutPriceMac(showModal: $showWithoutPriceModal,
+                                  shoppingListVM: shoppingListVM,
+                                  item: itemSelect)
                 })
             #else
             NavigationView {
@@ -96,12 +146,17 @@ struct ContentView: View {
                         }
                     }
                     .navigationBarTitle("\(shoppingListVM.objective)")
-                    
             }
             .onAppear(perform: {
                 shoppingListVM.getAllItens()
             })
-            AddProductModalView(isShowing: $showSheet, shoppingListVM: shoppingListVM)
+            LimitModalView(isShowing: $showLimitModal,
+                           shoppingListVM: shoppingListVM,
+                           item: itemSelect)
+            WithoutPriceModalView(isShowing: $showWithoutPriceModal,
+                                  shoppingListVM: shoppingListVM,
+                                  item: itemSelect)
+            modalView(typeModal)
             #endif
         }
     }
@@ -112,13 +167,29 @@ struct ContentView: View {
         }
         shoppingListVM.getAllItens()
     }
+    #if os(iOS)
+    func modalView(_ type: TypeModal) -> some View {
+        switch type {
+        case .addModal:
+            return AddProductModalView(isEdit: false,
+                                       isShowing: $showSheet,
+                                       shoppingListVM: shoppingListVM)
+        case .editModal:
+            return AddProductModalView(isEdit: true,
+                                       item: itemSelect,
+                                       isShowing: $showSheet,
+                                       shoppingListVM: shoppingListVM)
+        }
+    }
+    #endif
+
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//    }
+//}
 class ShoppingListDemo: ObservableObject {
     @Published var objective: String = ""
     @Published var budget: Double = 0

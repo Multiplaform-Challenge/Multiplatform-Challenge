@@ -1,19 +1,24 @@
 import SwiftUI
 import Combine
-import UIKit
 
-public struct LimitModalView: View {
-    @Binding var isShowing: Bool
+public struct LimitModalMac: View {
+    @Binding var showModal: Bool
     @ObservedObject var shoppingListVM: ShoppingListViewModel
     var item: ProductItem?
 
-    var bodyContet: some View {
+    public var body: some View {
+        let textFont = Font.custom(FontNameManager.Poppins.regular, size: 17)
         VStack {
+            HStack {
+                Text("No Limite")
+                    .font(FontNameManager.CustomFont.headerLargeTitleComponentFont)
+                Spacer()
+            }
+            .padding(.bottom, 35)
+
             Text(
 """
-Com o item \(item?.name ?? "") a sua
-lista passa R$\(String(format: "%.2f", calculate())) do
-limite estabelecido de \(String(format: "%.2f",shoppingListVM.list.first?.budget ?? 0.00)).
+Com o item \(item?.name ?? "") a sua lista passa R$\(String(format: "%.2f", calculate())) do limite estabelecido de \(String(format: "%.2f",shoppingListVM.list.first?.budget ?? 0.00)).
 
 Deseja remover o item?
 """
@@ -21,24 +26,31 @@ Deseja remover o item?
             .frame(maxWidth: .infinity)
             .multilineTextAlignment(.leading)
             .font(FontNameManager.CustomFont.textAreaComponentFont)
-            Spacer()
+
             HStack {
-                ButtonModalView(backgroundColor: .clear,
+                ButtonModalView(foregrounColor: .black, backgroundColor: .clear,
                                 titleButton: "Cancelar",
                                 actionButton: {
-                                    self.checkItem()
-                                    self.isShowing.toggle()
-                                })
-                ButtonModalView(titleButton: "Remover",
+                                                checkItem()
+                                                showModal = false
+                                                })
+                ButtonModalView(foregrounColor: .black, backgroundColor: Color("AccentColor"),
+                                titleButton: "Remover",
                                 actionButton: {
-                                    self.removerItem()
-                                    self.isShowing.toggle()
-                                })
+                                                removerItem()
+                                                showModal = false
+                                                })
             }
-            .padding(.top)
-            .padding(.bottom)
+            .padding(.top, 40)
+
         }
-        .frame(height: 300)
+        .padding(.horizontal, 30)
+        .buttonStyle(BorderlessButtonStyle())
+        .frame(width: 430, height: 420, alignment: .center)
+        .background(Color.white)
+        .foregroundColor(Color.black)
+        .font(textFont)
+        .textFieldStyle(PlainTextFieldStyle())
     }
 
     func removerItem() {
@@ -68,27 +80,5 @@ Deseja remover o item?
         totalSum += Double(item.price * Float(item.quantity))
         let rest = totalSum - Double(shoppingListVM.list.first?.budget ?? 0.00)
         return rest
-    }
-
-    public var body: some View {
-        VStack {
-            Spacer()
-            ModalView(isShowing: $isShowing,
-                    keyboardRef: KeyboardResponder(),
-                    isTitleLarge: true,
-                    titleModal: "No Limite",
-                    contentBuilder: {bodyContet})
-                .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
-        }
-    }
-}
-
-struct LimitModalView_Previews: PreviewProvider {
-    static var previews: some View {
-        VStack {
-            Spacer()
-            LimitModalView(isShowing: .constant(true),
-                           shoppingListVM: ShoppingListViewModel())
-        }
     }
 }

@@ -2,7 +2,7 @@ import SwiftUI
 
 struct Sidebar: View {
     let titleFont = Font.custom(FontNameManager.Poppins.bold, size: 22)
-
+    @ObservedObject var shoppingListVM: ShoppingListViewModel
     @State var showModal = false
 
     var body: some View {
@@ -20,7 +20,7 @@ struct Sidebar: View {
             }
             .padding(.horizontal, 20)
             .sheet(isPresented: $showModal, content: { SettingsModalView(showModal: $showModal) })
-            MoneyDetailsMac()
+            MoneyDetailsMac(shoppingListVM: shoppingListVM)
             Spacer()
         }
     }

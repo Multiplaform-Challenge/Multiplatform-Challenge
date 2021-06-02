@@ -13,29 +13,20 @@ public struct ModalView<Content: View>: View {
 
     var isTitleLarge: Bool
     var titleModal: String
-    var titleButtonRight: String
-    var titleButtonLeft: String
     let content: Content
-    var actionButtonRight: () -> Void
 
     public init(isShowing: Binding<Bool>,
                 keyboardRef: KeyboardResponder,
                 backgroundColor: Color = Color.white,
                 isTitleLarge: Bool,
                 titleModal: String,
-                titleButtonLeft: String = "Cancelar",
-                titleButtonRight: String = "Adicionar",
-                @ViewBuilder contentBuilder: () -> Content,
-                actionButtonRight: @escaping () -> Void) {
+                @ViewBuilder contentBuilder: () -> Content) {
         _isShowing = isShowing
         self.keyboardRef = keyboardRef
         self.backgroundColor = backgroundColor
         self.isTitleLarge = isTitleLarge
         self.titleModal = titleModal
         self.content = contentBuilder()
-        self.titleButtonLeft = titleButtonLeft
-        self.titleButtonRight = titleButtonRight
-        self.actionButtonRight = actionButtonRight
     }
 
     func hide() {
@@ -78,19 +69,8 @@ public struct ModalView<Content: View>: View {
                                 isTitleLarge: isTitleLarge)
                 content
                     .frame(width: UIScreen.main.bounds.width * 0.9)
-                HStack {
-                    ButtonModalView(backgroundColor: .clear,
-                                    titleButton: titleButtonLeft,
-                                    actionButton: hide)
-                    ButtonModalView(titleButton: titleButtonRight,
-                                    actionButton: {
-                                        self.actionButtonRight()
-                                        self.hide()
-                                    })
-                }
-                .frame(width: UIScreen.main.bounds.width * 0.9)
-                .padding(.top, 30)
-                Text("").frame(height:  keyboardRef.isActive ? keyboardRef.currentHeight : 50)
+                    .padding(.top, 10)
+                Text("").frame(height: keyboardRef.isActive ? keyboardRef.currentHeight : 50)
             }
             .padding(.horizontal)
             .background(backgroundColor)
@@ -104,6 +84,7 @@ public struct ModalView<Content: View>: View {
         ZStack {
             backgroundAreaView
             sheetView
+                .padding(.top,  UIScreen.main.bounds.height * 0.4)
         }
     }
 

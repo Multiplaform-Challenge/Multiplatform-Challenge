@@ -14,20 +14,25 @@ struct AddProductMac: View {
     @StateObject var shoppingListVM: ShoppingListViewModel
 
     @Binding var showModal: Bool
+    @Binding var isEdit: Bool
+    var item: ProductItem?
 
     var body: some View {
         let titleFont = Font.custom(FontNameManager.Poppins.bold, size: 22)
         let textFont = Font.custom(FontNameManager.Poppins.regular, size: 17)
         VStack {
             HStack {
-                Text("Adicionar Produto")
+                Text(isEdit ? "Editar Produto" : "Adicionar Produto")
                     .font(titleFont)
                 Spacer()
             }
             .padding(.bottom, 35)
 
             //Components
-            TextFieldModalView(nameText: $nameItem, title: "Produto", placeholder: "Ex.: Arroz branco", titleFont: textFont)
+            TextFieldModalView(nameText: $nameItem,
+                               title: "Produto",
+                               placeholder: "Ex.: Arroz branco",
+                               titleFont: textFont)
             CurrencyTextFieldModalView(valueFinal: $priceItem,
                                        hasTitle: true,
                                        title: "Preço")
@@ -36,13 +41,22 @@ struct AddProductMac: View {
                               backgroundRectangleColor: Color( "ActionColorSecond"))
             HStack {
                 ButtonModalView(foregrounColor: .black, backgroundColor: .clear, titleButton: "Cancelar", actionButton: {showModal = false})
-                ButtonModalView(foregrounColor: .black, backgroundColor: Color("AccentColor"), titleButton: "Salvar", actionButton: {
-                    addItem()
+                ButtonModalView(foregrounColor: .black, backgroundColor: Color("AccentColor"), titleButton: isEdit ? "Salvar" : "Adicionar", actionButton: {
+                    if isEdit {
+                        editItem()
+                    } else {
+                        addItem()
+                    }
                     showModal = false
                 })
             }
             .padding(.top, 40)
 
+        }
+        .onAppear {
+            self.nameItem = item?.name ?? ""
+            self.quantityItem = Int(item?.quantity ?? 0)
+            self.priceItem = Double(item?.price ?? 0.00)
         }
         .padding(.horizontal, 30)
         .buttonStyle(BorderlessButtonStyle())
@@ -52,18 +66,25 @@ struct AddProductMac: View {
         .font(textFont)
         .textFieldStyle(PlainTextFieldStyle())
     }
-    
+
     func addItem() {
         shoppingListVM.name = nameItem
         shoppingListVM.quantity = Int16(quantityItem)
-        shoppingListVM.prince = Float(priceItem)
+        shoppingListVM.price = Float(priceItem)
         shoppingListVM.isChecked = false
         shoppingListVM.save()
         shoppingListVM.getAllItens()
     }
+    func editItem() {
+        guard let item = item else {return}
+        shoppingListVM.name = nameItem
+        shoppingListVM.quantity = Int16(quantityItem)
+        shoppingListVM.price = Float(priceItem)
+        shoppingListVM.isChecked = item.isChecked
+        shoppingListVM.upDate(id: item.id)
+        shoppingListVM.getAllItens()
+    }
 }
-
-
 //struct AddProductMac_Previews: PreviewProvider {
 //    static var previews: some View {
 //        AddProductMac(showModal: .constant(true), shoppingListVM: <#ShoppingListViewModel#>)
