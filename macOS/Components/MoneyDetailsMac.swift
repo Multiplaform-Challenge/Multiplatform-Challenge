@@ -23,10 +23,10 @@ struct MoneyDetailsMac: View {
     var body: some View {
         VStack(spacing: 20) {
             HStack(alignment: .center) {
-                Text("Orçamento")
+                Text("Total da lista")
                     .font(titleFont)
                 Spacer()
-                Text("R$\(String(format: "%.2f", shoppingListVM.list.first?.budget ?? 250.00))")
+                Text("R$\(String(format: "%.2f", calculateSum()))")
                     .font(priceFont)
             }
             .frame(maxHeight: 40)
@@ -44,10 +44,10 @@ struct MoneyDetailsMac: View {
                             .fill(Color("CardPrimaryColor"))
                             .cornerRadius(30)
                         HStack(alignment: .center) {
-                            Text("Total da lista")
+                            Text("Orçamento")
                                 .font(titleFont)
                             Spacer()
-                            Text("R$\(String(format: "%.2f", calculateSum()))")
+                            Text("R$\(String(format: "%.2f", shoppingListVM.list.first?.budget ?? 250.00))")
                                 .font(Font.custom(FontNameManager.Poppins.bold, size: 20))
                         }
                         .padding()

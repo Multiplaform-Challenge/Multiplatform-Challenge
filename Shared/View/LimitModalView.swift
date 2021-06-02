@@ -11,7 +11,9 @@ public struct LimitModalView: View {
         VStack {
             Text(
 """
-Com o item \(item?.name ?? "") a sua lista passa R$\(String(format: "%.2f", calculate())) do limite estabelecido de \(String(format: "%.2f",shoppingListVM.list.first?.budget ?? 0.00)).
+Com o item \(item?.name ?? "") a sua
+lista passa R$\(String(format: "%.2f", calculate())) do
+limite estabelecido de \(String(format: "%.2f",shoppingListVM.list.first?.budget ?? 0.00)).
 
 Deseja remover o item?
 """
@@ -19,9 +21,24 @@ Deseja remover o item?
             .frame(maxWidth: .infinity)
             .multilineTextAlignment(.leading)
             .font(FontNameManager.CustomFont.textAreaComponentFont)
+            Spacer()
+            HStack {
+                ButtonModalView(backgroundColor: .clear,
+                                titleButton: "Cancelar",
+                                actionButton: {
+                                    self.checkItem()
+                                    self.isShowing.toggle()
+                                })
+                ButtonModalView(titleButton: "Remover",
+                                actionButton: {
+                                    self.removerItem()
+                                    self.isShowing.toggle()
+                                })
+            }
+            .padding(.top)
+            .padding(.bottom)
         }
-        .padding(.top, 10)
-        .padding(.bottom, 50)
+        .frame(height: 300)
     }
 
     func removerItem() {
@@ -60,22 +77,18 @@ Deseja remover o item?
                     keyboardRef: KeyboardResponder(),
                     isTitleLarge: true,
                     titleModal: "No Limite",
-                    titleButtonLeft: "Cancelar",
-                    titleButtonRight: "Remover",
-                    contentBuilder: {bodyContet},
-                    actionButtonRight: removerItem,
-                    actionButtonLeft: checkItem)
+                    contentBuilder: {bodyContet})
                 .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
         }
     }
 }
 
-//struct LimitModalView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        VStack {
-//            Spacer()
-//            LimitModalView(isShowing: .constant(true),
-//                           shoppingListVM: ShoppingListViewModel())
-//        }
-//    }
-//}
+struct LimitModalView_Previews: PreviewProvider {
+    static var previews: some View {
+        VStack {
+            Spacer()
+            LimitModalView(isShowing: .constant(true),
+                           shoppingListVM: ShoppingListViewModel())
+        }
+    }
+}

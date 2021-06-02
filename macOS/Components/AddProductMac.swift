@@ -57,7 +57,6 @@ struct AddProductMac: View {
             self.nameItem = item?.name ?? ""
             self.quantityItem = Int(item?.quantity ?? 0)
             self.priceItem = Double(item?.price ?? 0.00)
-            print("::::::::::::::isEdit \(isEdit)")
         }
         .padding(.horizontal, 30)
         .buttonStyle(BorderlessButtonStyle())
@@ -86,8 +85,6 @@ struct AddProductMac: View {
         shoppingListVM.getAllItens()
     }
 }
-
-
 //struct AddProductMac_Previews: PreviewProvider {
 //    static var previews: some View {
 //        AddProductMac(showModal: .constant(true), shoppingListVM: <#ShoppingListViewModel#>)

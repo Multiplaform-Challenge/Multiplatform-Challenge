@@ -23,8 +23,9 @@ struct ListRow: View {
             if item.price == 0.0 && !item.isChecked {
                 action()
                 self.isShowingWithoutPriceModal.toggle()
-            } else if (calculateSum() + Double(item.price)) > (shoppingListVM.list.first?.budget ?? 0.00) && !item.isChecked {
+            } else if (calculateSum() + Double(item.price * Float(item.quantity))) > (shoppingListVM.list.first?.budget ?? 0.00) && !item.isChecked {
                 action()
+                print("Soma total::::::\(calculateSum())")
                 if calculateSum() <= (shoppingListVM.list.first?.budget ?? 0.00) {
                     self.isShowingLimitModal.toggle()
                 } else {

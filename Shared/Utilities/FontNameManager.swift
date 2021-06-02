@@ -21,7 +21,7 @@ struct FontNameManager {
     }
     struct CustomFont {
         static let headerTitleComponentFont = Font.custom(FontNameManager.Poppins.semiBold, size: 17)
-        static let headerLargeTitleComponentFont = Font.custom(FontNameManager.Poppins.bold, size: 32)
+        static let headerLargeTitleComponentFont = Font.custom(FontNameManager.Poppins.bold, size: 30)
         static let titleComponentFont = Font.custom(FontNameManager.Poppins.medium, size: 20)
         static let textfieldComponentFont = Font.custom(FontNameManager.Poppins.regular, size: 20)
         static let boxQuantityComponentFont = Font.custom(FontNameManager.Poppins.medium, size: 27)
