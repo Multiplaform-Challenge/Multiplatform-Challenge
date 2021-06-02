@@ -30,10 +30,10 @@ struct MoneyDetails: View {
     var body: some View {
         HStack(spacing: 5) {
             VStack(alignment: .center) {
-                Text("R$\(String(format: "%.2f", shoppingListVM.list.first?.budget ?? 250.00))")
+                Text("R$\(String(format: "%.2f", calculateSum()))")
                     .font(titleFont)
                     .frame(maxWidth: .infinity)
-                Text("Orçamento")
+                Text("Total da lista")
                     .font(priceFont)
             }
             .frame(maxHeight: .infinity)
@@ -50,10 +50,10 @@ struct MoneyDetails: View {
                             .fill(Color("CardPrimaryColor"))
                             .cornerRadius(30)
                         VStack(alignment: .center) {
-                            Text("R$\(String(format: "%.2f", calculateSum()))")
+                            Text("R$\(String(format: "%.2f", shoppingListVM.list.first?.budget ?? 250.00))")
                                 .font(titleFont)
                                 .frame(maxWidth: .infinity)
-                            Text("Total da lista")
+                            Text("Orçamento")
                                 .font(priceFont)
                         }
                         .padding()

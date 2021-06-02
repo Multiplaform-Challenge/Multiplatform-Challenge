@@ -12,10 +12,10 @@ struct MultiplatformChallengeApp: App {
     @StateObject var shoppingListVM = ShoppingListViewModel()
     var body: some Scene {
         WindowGroup {
-            
+
                 #if os(macOS)
                 NavigationView {
-                
+
                 Sidebar(shoppingListVM: shoppingListVM)
                 ContentView(shoppingListVM: shoppingListVM)
 //                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
@@ -26,7 +26,7 @@ struct MultiplatformChallengeApp: App {
 //                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
 //                    .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
                 #endif
-            
+
         }
     }
 }
