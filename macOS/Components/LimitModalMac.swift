@@ -65,7 +65,7 @@ Deseja remover o item?
         shoppingListVM.quantity = Int16(item.quantity)
         shoppingListVM.price = Float(item.price)
         shoppingListVM.isChecked = true
-        shoppingListVM.upDate(id: item.id)
+        shoppingListVM.update(id: item.id)
         shoppingListVM.getAllItens()
     }
 

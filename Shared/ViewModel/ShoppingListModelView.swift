@@ -39,7 +39,7 @@ class ShoppingListViewModel: ObservableObject {
         CoreDataManager.shared.save()
     }
 
-    func upDate(id: NSManagedObjectID) {
+    func update(id: NSManagedObjectID) {
         CoreDataManager.shared.updateItem(itemId: id,
                                           name: name,
                                           price: price,
