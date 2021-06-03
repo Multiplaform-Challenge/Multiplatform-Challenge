@@ -2,10 +2,7 @@ import Foundation
 import CoreData
 
 class ShoppingListViewModel: ObservableObject {
-    var name: String = ""
-    var quantity: Int16 = 0
-    var price: Float = 1.00
-    var isChecked: Bool = false
+    
     var budget: Double = 250.00
     var objective: String = "Compras da semana"
 
@@ -30,21 +27,21 @@ class ShoppingListViewModel: ObservableObject {
         }
     }
 
-    func save() {
+    func save(newItem: ItemList) {
         let item = Item(context: CoreDataManager.shared.viewContext)
-        item.name = name
-        item.price = price
-        item.isChecked = isChecked
-        item.quantity = quantity
+        item.name = newItem.name
+        item.price = newItem.price
+        item.isChecked = newItem.isChecked
+        item.quantity = newItem.quantity
         CoreDataManager.shared.save()
     }
 
-    func update(id: NSManagedObjectID) {
+    func update(updatedList: ItemList, id: NSManagedObjectID) {
         CoreDataManager.shared.updateItem(itemId: id,
-                                          name: name,
-                                          price: price,
-                                          quantity: quantity,
-                                          isChecked: isChecked)
+                                          name: updatedList.name,
+                                          price: updatedList.price,
+                                          quantity: updatedList.quantity,
+                                          isChecked: updatedList.isChecked)
     }
 
     func saveMoneyInfo() -> ListDetails {

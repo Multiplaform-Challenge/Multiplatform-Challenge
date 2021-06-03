@@ -11,11 +11,12 @@ struct ListRow: View {
     @ObservedObject var shoppingListVM: ShoppingListViewModel
 
     func checkItem() {
-        shoppingListVM.name = item.name
-        shoppingListVM.quantity = Int16(item.quantity)
-        shoppingListVM.price = Float(item.price)
-        shoppingListVM.isChecked = checkState
-        shoppingListVM.update(id: item.id)
+        var newItem = ItemList()
+        newItem.name = item.name
+        newItem.price = item.price
+        newItem.quantity = item.quantity
+        newItem.isChecked = checkState
+        shoppingListVM.update(updatedList: newItem, id: item.id)
         shoppingListVM.getAllItens()
     }
 
@@ -26,7 +27,6 @@ struct ListRow: View {
                 self.isShowingWithoutPriceModal.toggle()
             } else if (calculateSum() + Double(item.price * Float(item.quantity))) > (shoppingListVM.list.first?.budget ?? 0.00) && !item.isChecked {
                 action()
-                print("Soma total::::::\(calculateSum())")
                 if calculateSum() <= (shoppingListVM.list.first?.budget ?? 0.00) {
                     self.isShowingLimitModal.toggle()
                 } else {

@@ -49,11 +49,12 @@ Deseja remover o item?
 
     func checkItem() {
         guard let item = item else {return}
-        shoppingListVM.name = item.name
-        shoppingListVM.quantity = Int16(item.quantity)
-        shoppingListVM.price = Float(item.price)
-        shoppingListVM.isChecked = true
-        shoppingListVM.update(id: item.id)
+        var newItem = ItemList()
+        newItem.name = item.name
+        newItem.price = item.price
+        newItem.quantity = item.quantity
+        newItem.isChecked = true
+        shoppingListVM.update(updatedList: newItem, id: item.id)
         shoppingListVM.getAllItens()
     }
 
