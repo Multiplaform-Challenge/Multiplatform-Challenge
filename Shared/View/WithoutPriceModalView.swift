@@ -46,11 +46,12 @@ Deseja adicionar o preço?
 
     func editPriceItem() {
        guard let item = item else {return}
-        shoppingListVM.name = item.name
-        shoppingListVM.quantity = Int16(item.quantity)
-        shoppingListVM.price = Float(valueItem)
-        shoppingListVM.isChecked = true
-        shoppingListVM.update(id: item.id)
+        var newItem = ItemList()
+        newItem.name = item.name
+        newItem.price = Float(valueItem)
+        newItem.quantity = item.quantity
+        newItem.isChecked = true
+        shoppingListVM.update(updatedList: newItem, id: item.id)
         shoppingListVM.getAllItens()
     }
 
