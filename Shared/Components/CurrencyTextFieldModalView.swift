@@ -2,7 +2,6 @@ import SwiftUI
 
 public struct CurrencyTextFieldModalView: View {
     var title: String
-    @State var valueText: String = ""
     @Binding var valueFinal: Double
     var hasTitle: Bool
 
@@ -14,58 +13,56 @@ public struct CurrencyTextFieldModalView: View {
         self.title = title
     }
 
-    var value: Double {
-        (Double(self.valueText) ?? 0.0) / 100
-    }
-
     public var body: some View {
-        let typing = Binding<String>(get: { () -> String in
-            return String(format: "R$ %.2f", self.value)
-        }) { (text) in
-            var text = text
-            text.removeAll { (char) -> Bool in
-                !char.isNumber
-            }
-            self.valueText = text
-            self.valueFinal = (Double(self.valueText) ?? 0.0) / 100
-        }
         if hasTitle {
             HStack {
                 Text(title)
                     .font(FontNameManager.CustomFont.titleComponentFont)
                 Spacer()
                 #if os(iOS)
-                TextField("R$ 0.00", text: typing)
-                    .keyboardType(.numbersAndPunctuation)
+                TextField("\(String(format: "R$ %.2f", valueFinal))", text: Binding(get: { self.format(value: valueFinal) }, set: { self.valueFinal = self.format(text: $0) }))
+                    .keyboardType(.numberPad)
                     .frame(maxWidth: .infinity, alignment: .trailing)
                     .multilineTextAlignment(.trailing)
                     .font(FontNameManager.CustomFont.textfieldComponentFont)
-                    .foregroundColor(value == 0.0 ? Color("PlaceholderColor") : Color("TitleColor"))
+                    .foregroundColor(valueFinal == 0.0 ? Color("PlaceholderColor") : Color("TitleColor"))
                 #else
-                TextField("R$ 0.00", text: typing)
+                TextField("\(String(format: "R$ %.2f", valueFinal))", text: Binding(get: { self.format(value: valueFinal) }, set: { self.valueFinal = self.format(text: $0) }))
                     .frame(maxWidth: .infinity, alignment: .trailing)
                     .multilineTextAlignment(.trailing)
                     .font(FontNameManager.CustomFont.textfieldComponentFont)
-                    .foregroundColor(value == 0.0 ? Color("PlaceholderColor") : Color("TitleColor"))
+                    .foregroundColor(valueFinal == 0.0 ? Color("PlaceholderColor") : Color("TitleColor"))
                 #endif
             }
         } else {
             HStack {
                 #if os(iOS)
-                TextField("R$ 0.00", text: typing)
-                    .keyboardType(.numbersAndPunctuation)
+                TextField("\(String(format: "R$ %.2f", valueFinal))", text: Binding(get: { self.format(value: valueFinal) }, set: { self.valueFinal = self.format(text: $0) }))
+                    .keyboardType(.numberPad)
                     .frame(maxWidth: .infinity, alignment: .center)
                     .multilineTextAlignment(.center)
                     .font(Font.custom(FontNameManager.Poppins.medium, size: 30))
-                    .foregroundColor(value == 0.0 ? Color("PlaceholderColor") : Color("TitleColor"))
+                    .foregroundColor(valueFinal == 0.0 ? Color("PlaceholderColor") : Color("TitleColor"))
                 #else
-                TextField("R$ 0.00", text: typing)
+                TextField("\(String(format: "R$ %.2f", valueFinal))", text: Binding(get: { self.format(value: valueFinal) }, set: { self.valueFinal = self.format(text: $0) }))
                     .frame(maxWidth: .infinity, alignment: .center)
                     .multilineTextAlignment(.center)
                     .font(Font.custom(FontNameManager.Poppins.medium, size: 30))
-                    .foregroundColor(value == 0.0 ? Color("PlaceholderColor") : Color("TitleColor"))
+                    .foregroundColor(valueFinal == 0.0 ? Color("PlaceholderColor") : Color("TitleColor"))
                 #endif
             }
         }
+    }
+
+    func format(value: Double) -> String {
+        return String(format: "R$ %.2f", value)
+    }
+
+    func format(text: String) -> Double {
+        var auxText = text
+        auxText.removeAll { (char) -> Bool in
+            !char.isNumber
+        }
+        return (Double(auxText) ?? 0.0) / 100
     }
 }

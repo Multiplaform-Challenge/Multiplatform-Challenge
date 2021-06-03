@@ -62,6 +62,7 @@ struct MoneyDetails: View {
                         Text("R$\(String(format: "%.2f", calculateRest()))")
                             .font(Font.custom(FontNameManager.Poppins.bold, size: 20))
                             .frame(maxWidth: .infinity)
+                            .foregroundColor(calculateRest() < 0 ? .red : .white)
                         Text("Disponível")
                             .font(priceFont)
                     }
@@ -72,7 +73,7 @@ struct MoneyDetails: View {
         }
         .padding()
         .background(RoundedRectangle(cornerRadius: 10).foregroundColor(Color("BackgroundColor")))
-        .frame(width: 400, height: 200, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+        .frame(width: 400, height: 200, alignment: .center)
     }
 }
 

@@ -7,11 +7,12 @@ public struct LimitModalMac: View {
     var item: ProductItem?
 
     public var body: some View {
-        let textFont = Font.custom(FontNameManager.Poppins.regular, size: 17)
+        let titleFont = Font.custom(FontNameManager.Poppins.bold, size: 22)
+        let textFont = Font.custom(FontNameManager.Poppins.medium, size: 20)
         VStack {
             HStack {
                 Text("No Limite")
-                    .font(FontNameManager.CustomFont.headerLargeTitleComponentFont)
+                    .font(titleFont)
                 Spacer()
             }
             .padding(.bottom, 35)
@@ -25,7 +26,7 @@ Deseja remover o item?
             )
             .frame(maxWidth: .infinity)
             .multilineTextAlignment(.leading)
-            .font(FontNameManager.CustomFont.textAreaComponentFont)
+            .font(textFont)
 
             HStack {
                 ButtonModalView(foregrounColor: .black, backgroundColor: .clear,

@@ -8,8 +8,8 @@ public struct AddProductModalView: View {
 
     @Binding var isShowing: Bool
     @State var nameItem: String = ""
-    @State var quantityItem: Int = 0
-    @State var priceItem: Double = 0.00
+    @State var quantityItem: Int = 1
+    @State var priceItem: Double = 0.0
     @ObservedObject var shoppingListVM: ShoppingListViewModel
 
     var bodyContet: some View {
@@ -21,6 +21,9 @@ public struct AddProductModalView: View {
             CurrencyTextFieldModalView(valueFinal: $priceItem,
                                        hasTitle: true,
                                        title: "Preço")
+                .onAppear {
+                    self.priceItem = Double(item?.price ?? 0.00)
+                }
                 .frame(height: heightCell)
             QuantityModalView(quantity: $quantityItem,
                               title: "Quantidade",
@@ -42,8 +45,7 @@ public struct AddProductModalView: View {
         }
         .onAppear {
             self.nameItem = item?.name ?? ""
-            self.quantityItem = Int(item?.quantity ?? 0)
-            self.priceItem = Double(item?.price ?? 0.00)
+            self.quantityItem = Int(item?.quantity ?? 1)
         }
         .padding()
     }

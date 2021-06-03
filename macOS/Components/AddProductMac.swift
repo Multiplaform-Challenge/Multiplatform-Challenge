@@ -54,9 +54,11 @@ struct AddProductMac: View {
 
         }
         .onAppear {
-            self.nameItem = item?.name ?? ""
-            self.quantityItem = Int(item?.quantity ?? 0)
-            self.priceItem = Double(item?.price ?? 0.00)
+            if isEdit {
+                self.nameItem = item?.name ?? ""
+                self.quantityItem = Int(item?.quantity ?? 0)
+                self.priceItem = Double(item?.price ?? 0.00)
+            }
         }
         .padding(.horizontal, 30)
         .buttonStyle(BorderlessButtonStyle())

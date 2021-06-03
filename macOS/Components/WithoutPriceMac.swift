@@ -8,11 +8,12 @@ public struct WithoutPriceMac: View {
     var item: ProductItem?
 
     public var body: some View {
-        let textFont = Font.custom(FontNameManager.Poppins.regular, size: 17)
+        let titleFont = Font.custom(FontNameManager.Poppins.bold, size: 22)
+        let textFont = Font.custom(FontNameManager.Poppins.medium, size: 20)
         VStack {
             HStack {
                 Text("Produto sem preço")
-                    .font(FontNameManager.CustomFont.headerLargeTitleComponentFont)
+                    .font(titleFont)
                 Spacer()
             }
             .padding(.bottom, 35)
@@ -26,7 +27,7 @@ Deseja adicionar o preço?
             )
             .frame(maxWidth: .infinity)
             .multilineTextAlignment(.leading)
-            .font(FontNameManager.CustomFont.textAreaComponentFont)
+            .font(textFont)
             CurrencyTextFieldModalView(valueFinal: $valueItem,
                                        hasTitle: false)
 
