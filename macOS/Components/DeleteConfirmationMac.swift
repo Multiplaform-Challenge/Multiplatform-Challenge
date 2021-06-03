@@ -59,16 +59,6 @@ Deseja remover o item?
         shoppingListVM.getAllItens()
     }
 
-    func checkItem() {
-        guard let item = item else {return}
-        shoppingListVM.name = item.name
-        shoppingListVM.quantity = Int16(item.quantity)
-        shoppingListVM.price = Float(item.price)
-        shoppingListVM.isChecked = true
-        shoppingListVM.update(id: item.id)
-        shoppingListVM.getAllItens()
-    }
-
     func calculate() -> Double {
         var totalSum: Double = 0.00
         shoppingListVM.itens.forEach { item in

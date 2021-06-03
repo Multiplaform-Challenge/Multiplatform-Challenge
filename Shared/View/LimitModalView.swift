@@ -12,9 +12,8 @@ public struct LimitModalView: View {
             Text(
 """
 Com o item \(item?.name ?? "") a sua
-lista passa R$\(String(format: "%.2f", calculate())) do
-limite estabelecido
-de R$\(String(format: "%.2f",shoppingListVM.list.first?.budget ?? 0.00)).
+lista passa R$\(String(format: "%.2f", calculate())) do limite estabelecido de
+R$\(String(format: "%.2f",shoppingListVM.list.first?.budget ?? 0.00)).
 
 Deseja remover o item?
 """
@@ -29,7 +28,7 @@ Deseja remover o item?
                                 actionButton: {
                                     self.isShowing.toggle()
                                 })
-                ButtonModalView(titleButton: "Marcar o item",
+                ButtonModalView(titleButton: "Continuar",
                                 actionButton: {
                                     self.checkItem()
                                     self.isShowing.toggle()

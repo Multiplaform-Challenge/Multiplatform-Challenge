@@ -6,6 +6,7 @@
 // swiftlint: disable identifier_name
 
 import SwiftUI
+import UIKit
 
 enum TypeModal {
     case addModal
@@ -202,7 +203,6 @@ struct HideRowSeparatorModifier: ViewModifier {
         self.insets = insets
         var alpha: CGFloat = 0
         UIColor(background).getWhite(nil, alpha: &alpha)
-        assert(alpha == 1, "Setting background to a non-opaque color will result in separators remaining visible.")
         self.background = background
     }
 

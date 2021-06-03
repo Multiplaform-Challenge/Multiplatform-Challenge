@@ -19,7 +19,7 @@ public struct LimitModalMac: View {
 
             Text(
 """
-Com o item \(item?.name ?? "") a sua lista passa R$\(String(format: "%.2f", calculate())) do limite estabelecido de \(String(format: "%.2f",shoppingListVM.list.first?.budget ?? 0.00)).
+Com o item \(item?.name ?? "") a sua lista passa R$\(String(format: "%.2f", calculate())) do limite estabelecido de R$\(String(format: "%.2f",shoppingListVM.list.first?.budget ?? 0.00)).
 
 Deseja remover o item?
 """
@@ -32,13 +32,12 @@ Deseja remover o item?
                 ButtonModalView(foregrounColor: .black, backgroundColor: .clear,
                                 titleButton: "Cancelar",
                                 actionButton: {
-                                                checkItem()
                                                 showModal = false
                                                 })
                 ButtonModalView(foregrounColor: .black, backgroundColor: Color("AccentColor"),
-                                titleButton: "Remover",
+                                titleButton: "Continuar",
                                 actionButton: {
-                                                removerItem()
+                                                checkItem()
                                                 showModal = false
                                                 })
             }
@@ -62,11 +61,12 @@ Deseja remover o item?
 
     func checkItem() {
         guard let item = item else {return}
-        shoppingListVM.name = item.name
-        shoppingListVM.quantity = Int16(item.quantity)
-        shoppingListVM.price = Float(item.price)
-        shoppingListVM.isChecked = true
-        shoppingListVM.update(id: item.id)
+        var newItem = ItemList()
+        newItem.name = item.name
+        newItem.price = item.price
+        newItem.quantity = item.quantity
+        newItem.isChecked = true
+        shoppingListVM.update(updatedList: newItem, id: item.id)
         shoppingListVM.getAllItens()
     }
 
