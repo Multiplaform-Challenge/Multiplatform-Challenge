@@ -62,22 +62,24 @@ public struct AddProductModalView: View {
     }
 
     func addItem() {
-        shoppingListVM.name = nameItem
-        shoppingListVM.quantity = Int16(quantityItem)
-        shoppingListVM.price = Float(priceItem)
-        shoppingListVM.isChecked = false
-        shoppingListVM.save()
+        var newItem = ItemList()
+        newItem.name = nameItem
+        newItem.quantity = Int16(quantityItem)
+        newItem.price = Float(priceItem)
+        newItem.isChecked = false
+        shoppingListVM.save(newItem: newItem)
         shoppingListVM.getAllItens()
         self.isShowing.toggle()
     }
 
     func editItem() {
         guard let item = item else {return}
-        shoppingListVM.name = nameItem
-        shoppingListVM.quantity = Int16(quantityItem)
-        shoppingListVM.price = Float(priceItem)
-        shoppingListVM.isChecked = item.isChecked
-        shoppingListVM.update(id: item.id)
+        var newItem = ItemList()
+        newItem.name = nameItem
+        newItem.price = Float(priceItem)
+        newItem.quantity = Int16(quantityItem)
+        newItem.isChecked = item.isChecked
+        shoppingListVM.update(updatedList: newItem, id: item.id)
         shoppingListVM.getAllItens()
         self.isShowing.toggle()
     }
