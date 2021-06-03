@@ -8,7 +8,7 @@ struct Sidebar: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                Text("Café da manhã")
+                Text(shoppingListVM.objective)
                     .font(titleFont)
                 Spacer()
                 Button(action: { showModal = true}, label: {
@@ -19,7 +19,8 @@ struct Sidebar: View {
                 .buttonStyle(BorderlessButtonStyle())
             }
             .padding(.horizontal, 20)
-            .sheet(isPresented: $showModal, content: { SettingsModalView(showModal: $showModal) })
+            .sheet(isPresented: $showModal, content: { SettingsModalView(shoppingListVM: shoppingListVM,
+                                                                         showModal: $showModal) })
             MoneyDetailsMac(shoppingListVM: shoppingListVM)
             Spacer()
         }

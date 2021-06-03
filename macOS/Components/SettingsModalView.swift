@@ -11,8 +11,13 @@ struct SettingsModalView: View {
 
     @State var budget = 1.0
     @State var objective = "Ir pro ceu"
-
+    @ObservedObject var shoppingListVM: ShoppingListViewModel
     @Binding var showModal: Bool
+
+    func save() {
+        shoppingListVM.updateMoneyDatails(shoppingListVM.list.first!, newList: (shoppingListVM.budget, shoppingListVM.objective))
+        shoppingListVM.getAllItens()
+    }
 
     var body: some View {
         let titleFont = Font.custom(FontNameManager.Poppins.bold, size: 22)
@@ -25,11 +30,17 @@ struct SettingsModalView: View {
             }
             .padding(.bottom, 35)
 
-            ObjectiveViewCell(objective: $objective)
-            BudgetViewCell(budget: $budget)
+            ObjectiveViewCell(objective: $shoppingListVM.objective)
+            BudgetViewCell(budget: $shoppingListVM.budget)
             HStack {
                 ButtonModalView(foregrounColor: .black, backgroundColor: .clear, titleButton: "Cancelar", actionButton: {showModal = false})
-                ButtonModalView(foregrounColor: .black, backgroundColor: Color("AccentColor"), titleButton: "Salvar")
+                ButtonModalView(foregrounColor: .black,
+                                backgroundColor: Color("AccentColor"),
+                                titleButton: "Salvar",
+                                actionButton: {
+                                    save()
+                                    showModal.toggle()
+                                })
             }
             .padding(.top, 40)
 

@@ -6,7 +6,11 @@
 // swiftlint: disable identifier_name
 
 import SwiftUI
+#if os(iOS)
 import UIKit
+#else
+import AppKit
+#endif
 
 enum TypeModal {
     case addModal
@@ -202,7 +206,11 @@ struct HideRowSeparatorModifier: ViewModifier {
     init(insets: EdgeInsets, background: Color) {
         self.insets = insets
         var alpha: CGFloat = 0
+        #if os(iOS)
         UIColor(background).getWhite(nil, alpha: &alpha)
+        #else
+        NSColor(background).getWhite(nil, alpha: &alpha)
+        #endif
         self.background = background
     }
 
