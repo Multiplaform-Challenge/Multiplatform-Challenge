@@ -3,7 +3,6 @@ import Combine
 import UIKit
 
 public struct ModalSheetMain: View {
-    
     @State var offset = UIScreen.main.bounds.height
     @Binding var isShowing: Bool
 
@@ -37,7 +36,7 @@ public struct ModalSheetMain: View {
     }
 
     var headerModalViewCustom: some View {
-        VStack() {
+        VStack {
             Capsule()
                 .frame(width: 50, height: 5)
                 .foregroundColor(Color.gray)

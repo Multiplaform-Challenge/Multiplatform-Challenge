@@ -2,7 +2,6 @@ import Foundation
 import CoreData
 
 class ShoppingListViewModel: ObservableObject {
-    
     var budget: Double = 250.00
     var objective: String = "Compras da semana"
 

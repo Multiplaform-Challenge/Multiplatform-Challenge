@@ -27,7 +27,7 @@ public struct QuantityModalView: View {
             Spacer()
             HStack {
                 Button(action: {
-                    if quantity > 0 {
+                    if quantity > 1 {
                         quantity -= 1
                     }
                 }) {

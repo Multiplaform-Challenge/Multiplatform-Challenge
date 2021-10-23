@@ -94,7 +94,6 @@ public struct ModalView<Content: View>: View {
                 bodyContet
             }
         }
-//        .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
         .animation(.default)
         .onReceive(Just(isShowing), perform: { isShowing in
             offset = isShowing ? 0 : heightToDisappear

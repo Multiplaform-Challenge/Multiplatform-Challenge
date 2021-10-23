@@ -3,7 +3,6 @@ import SwiftUI
 public struct BackgroundModalView: View {
     let opacity: Double
     let callback: (() -> ())?
-    
     public init(opacity: Double = 0.5,
                 callback: (() -> ())? = nil) {
         self.opacity = opacity

@@ -58,6 +58,7 @@ struct MoneyDetailsMac: View {
                         Spacer()
                         Text("R$\(String(format: "%.2f", calculateRest()))")
                             .font(priceFont)
+                            .foregroundColor(calculateRest() < 0 ? .red : .white)
                     }
                     .padding()
                 }

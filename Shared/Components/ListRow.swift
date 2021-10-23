@@ -86,9 +86,9 @@ struct ListRow: View {
             #if os(macOS)
             Text("").frame(width: 20)
             Image(systemName: "trash")
-                    .resizable()
-                    .frame(width: 30, height: 30)
+                    .font(.system(size: 25))
                     .background(Color.clear)
+                    .foregroundColor(Color("PlaceholderColor"))
                     .border(Color.clear, width: 0)
                     .onTapGesture {
                         action()
